@@ -61,27 +61,56 @@ def GMM_weights(weights):
     DPGMM.weights_ = weights
     index = np.random.randint(full_data.shape[1], size=20_000)
     score = abs( min( DPGMM.score_samples(np.asarray(full_data[index,:])) ) )
-    DPGMM.weights_ = initial_weights
-    print(weights[0])
+    #DPGMM.weights_ = initial_weights
+    #print(weights[0])
     return score
 
 # GMM mixture weight constraint. Sum of mixture must equal 1 
 def constraint(t):
     return sum(t) - 1
 
+
+def calc_uncertainty(data):
+    if data.shape[0] > 10_000:
+        for point in range(10_000): 
+            print("Uncertainty Calculation Progress: " + str( round(point / 10_000 * 100, 2) ) )
+            start = round( (data.shape[0] / 10_000) * point )
+            end   = round( (data.shape[0] / 10_000) * (point +1 ) )
+            calculation = DPGMM.score_samples( data[start:end, :] )  
+            try: 
+                uncertainty = np.concatenate( (uncertainty, calculation), axis = 0)
+            except NameError: 
+                uncertainty = calculation.copy() 
+    else: 
+        print("Processing Uncertainty Calculation as Single Batch")
+        uncertainty = DPGMM.score_samples( data )  
+    return uncertainty
+
+
+        
+def calc_segmentation(data):
+    if data.shape[0] > 10_000:
+        for point in range(10_000): 
+            print("Segmentation Calculation Progress: " + str( round(point / 10_000 * 100, 2) ) )
+            start = round( (data.shape[0] / 10_000) * point )
+            end   = round( (data.shape[0] / 10_000) * (point +1 ) )
+            calculation = DPGMM.predict( data[start:end, :] )  
+            try: 
+                segmentation = np.concatenate( (segmentation, calculation), axis = 0)
+            except NameError: 
+                segmentation = calculation.copy() 
+    else: 
+        print("Processing Segmentation Calculation as Single Batch")
+        segmentation = DPGMM.predict( data )  
+    return segmentation
+
+
+        
+
 #############################################################################################################
 # Start of program 
 
-generation = 0
-global full_data
-ratio = 2
-color = 'jet_r'
-sns.set(font_scale = 3)
-sns.set_style("white")
-size = 30
-fontsize = 30
-autodidactic_loop = True 
-run = True
+
 
 # The program may be run in one of three modes 
 # mode 1) One-time analysis. Use for a single dataset 
@@ -103,7 +132,7 @@ if (operating_mode == 1) or (operating_mode == 2):
     EM_tolerance = float(input("Enter Expectation Maximization tolerance. Use smaller values for more precise composition estimates at the expense of longer analysis times. Recommend '1e-5'. Do not use quotes "))
     number_of_initializations = int(input("Enter integer number of training initializations. Recommend 5 to 10 "))
     initial_sampling_size = int(input("Enter integer number of initial training datapoints. Recommend 30_000 "))
-    training_set_growth_rate = float(input("Enter training dataset growth rate. Recommend 30_000 "))
+    training_set_growth_rate = float(input("Enter training dataset growth rate. Recommend 10_000 "))
     autodidectic_threshold = float(input("Enter Log Probability threshold for autodidactic loop. Set to -1000 to disable. Recommend -40 "))
     max_autodidectic_iterations = int(input("Enter the maximum integer number of training loops to execute. Recommend 3 "))
     eds_quality_threshold = float(input("Enter EDS quality threshold (e.g. 99 for 99%). This filter is used to remove data artifacts where the sum of elements (at% or wt%) is less than 100%. Set to 0 to disable "))
@@ -178,8 +207,19 @@ elif (operating_mode == 3):
     # Get user to select queuing file 
     queue_filepath = filedialog.askopenfilename( title = "Select .CSV file with queueing information. If no file exists, manually create an empty .CSV file", filetypes=[("CSV files", ".csv")])
         
-        
+run = True
+      
 while run: 
+    
+    generation = 0
+    global full_data
+    ratio = 2
+    color = 'jet_r'
+    sns.set(font_scale = 3)
+    sns.set_style("white")
+    size = 10
+    fontsize = 30
+    autodidactic_loop = True 
     
     # read top entry in queue file if running in continuous mode 
     if (operating_mode == 3):
@@ -364,13 +404,52 @@ while run:
                                                         tol = EM_tolerance, 
                                                         init_params='random', 
                                                         weight_concentration_prior_type='dirichlet_process',
-                                                        weight_concentration_prior = 1/number_of_classes, 
+                                                        weight_concentration_prior = None, 
                                                         verbose = True, 
                                                         warm_start = True)
     
     while autodidactic_loop == True: 
         # Train VB-GMM model on training subset
-        DPGMM.fit(training_data)
+        
+        """
+        new_model = DPGMM
+
+        
+        while True:   
+            
+            new_model.fit(training_data)
+
+            if (min(new_model.weights_) >= 1e-4) and (new_model.n_iter_ >= 2):
+                # Adjust number of components as needed
+                print("Increasing number of classes available")
+                new_model.n_components_ =+ 5
+                continue 
+            elif (new_model.converged_ == True): 
+                # Adjust number of convergence tolerance as needed
+                print("Tightening Convergence Tolerance")
+                new_model.tol = new_model.tol/10.0    
+                
+                covariances = new_model.covariances_
+                means = new_model.means_
+                weights = new_model.weights_
+                precisions_cholesky = np.linalg.cholesky(np.linalg.inv(covariances))
+       
+                continue 
+            elif new_model.converged_ == False: 
+                # Return to previous state if necessary 
+                print("Maximum Tolerance Reached")
+                break 
+            
+        DPGMM = new_model
+        DPGMM.covariances_ = covariances 
+        DPGMM.means_ = means 
+        DPGMM.weights_ = weights 
+        DPGMM.precisions_cholesky_ = precisions_cholesky
+        DPGMM.tol = new_model.tol*100.0
+        DPGMM.converged_ = True 
+        """
+        
+        DPGMM.fit(training_data) 
         
         # Reweight model classes based on entire dataset 
         initial_weights = DPGMM.weights_
@@ -392,25 +471,26 @@ while run:
         np.save(gmm_name + '_means', DPGMM.precisions_cholesky_, allow_pickle=False)
         np.save(gmm_name + '_covariances', DPGMM.covariances_, allow_pickle=False)
         
+        # It is not necessary to re-analyze the entire dataset for every generation, only for the first and last iteration
+        # Intermediate generations only need to have pixels with high uncertainty from the previous generation re-analyzed 
+        # This results in significant time efficiencies  
         try: 
-            uncertainty = DPGMM.score_samples( full_data ) 
-            gc.collect()
-        except MemoryError:
-            mid_point = round(full_data.shape[0] / 3.0)
-            
-            uncertainty = DPGMM.score_samples( full_data[0:mid_point, :] )    
-            uncertainty1 = DPGMM.score_samples( full_data[mid_point: mid_point*2, :] )    
-            uncertainty = np.concatenate( (uncertainty, uncertainty1), axis = 0)
-            del uncertainty1
-            gc.collect()
-            
-            uncertainty1 = DPGMM.score_samples( full_data[mid_point*2: full_data.shape[0], :] )    
-            uncertainty = np.concatenate( (uncertainty, uncertainty1), axis = 0)
-            del uncertainty1
-            gc.collect()
-                
+            uncertainty = uncertainty.flatten()
+            subset = full_data[ uncertainty <= autodidectic_threshold, : ]
+            uncertainty[ uncertainty <= autodidectic_threshold ] = calc_uncertainty(subset)
+            uncertainty = np.asarray(uncertainty).reshape(array.shape[0], array.shape[1])
+        except NameError: 
+            uncertainty = calc_uncertainty(full_data)
+            uncertainty = np.asarray(uncertainty).reshape(array.shape[0], array.shape[1])
+        except ValueError:
+            uncertainty = calc_uncertainty(full_data)
+            uncertainty = np.asarray(uncertainty).reshape(array.shape[0], array.shape[1])
+        except IndexError:
+            uncertainty = calc_uncertainty(full_data)
+            uncertainty = np.asarray(uncertainty).reshape(array.shape[0], array.shape[1])
         
-        uncertainty = np.asarray(uncertainty).reshape(array.shape[0], array.shape[1])
+
+        """
         np.save('Log_Probabilities.npy', uncertainty, allow_pickle=False)
     
         # Create absolute uncertainty intensity map
@@ -426,6 +506,7 @@ while run:
         divider = make_axes_locatable(ax)
         cax = divider.append_axes("right", size="5%", pad=0.1)
         cbar = plt.colorbar(plot, cax=cax)
+        cbar.set_ticks(labelsize=fontsize*(0.7))
         cbar.ax.tick_params(labelsize=fontsize*(0.7))
         plt.title(file)
         plt.xticks([])
@@ -458,8 +539,9 @@ while run:
         plt.savefig("Relative Scaled Log Probabilities" + ".png")
         plt.close(fig)
         gc.collect()
+        """
         
-        fig, ax = plt.subplots(figsize=(size, size), dpi=300)
+        fig, ax = plt.subplots(figsize=(size, size))
         ax = plt.subplot()
         sns.kdeplot( data = uncertainty.flatten() , 
                     lw = 6, 
@@ -484,7 +566,7 @@ while run:
         plt.savefig("Mixture Weights" + ".png", dpi=300)
         plt.close(fig)
         gc.collect()
-    
+        
         # Return up one directory level 
         os.chdir( os.path.dirname(os.getcwd()) )
 
@@ -499,13 +581,17 @@ while run:
             break 
         elif  (np.min(uncertainty) < autodidectic_threshold) and ( (generation + 1) < max_autodidectic_iterations):
             new_data = array[uncertainty <= autodidectic_threshold]
-            new_data = random.sample(list(new_data), int( min(training_set_growth_rate, len(list(new_data))) ) ) 
+            num_uncertainty = new_data.shape[0]
+            
+            # Random.choices samples with replacement - thereby allowing for more generated points than in the original list of candidates 
+            #new_data = random.sample(list(new_data), int( max(training_set_growth_rate, len(list(new_data))) ) ) 
+            new_data = random.choices(list(new_data), k = int( max(training_set_growth_rate, len(list(new_data))) ) ) 
             new_data = np.asarray(new_data)
             
             print("Current number of training points")
             print(str( training_data.shape[0] ))
             print("Number of unidentified points")
-            print(str(new_data.shape[0]))
+            print(str(num_uncertainty) )
             print("Number of points appended")
             print(str(int(training_set_growth_rate ) ))
             training_data = np.append(training_data, new_data, axis = 0) 
@@ -513,66 +599,35 @@ while run:
             print(str( training_data.shape[0] ))
     
             generation += 1 
-            number_of_classes += 5
             np.save('Generation ' + str(generation) + ' Training Data.npy', training_data, allow_pickle=False)
             gc.collect()
             continue
         else: 
             autodidactic_loop = False
+            if generation >= 1:
+                uncertainty = calc_uncertainty(full_data)
             print("Analysis Complete")
             break 
         
     # Create final analysis folder 
     print("Beginning Plotting")
-    os.mkdir("Analysis")
-    os.chdir("Analysis")
-    
+    try:     
+        os.mkdir("Analysis")
+        os.chdir("Analysis")
+    except FileExistsError:    
+        os.chdir("Analysis")
+        
     # Save updated model
     np.save('Final_Model_Weights', DPGMM.weights_, allow_pickle=False)
-    np.save('Final_Model_Means', DPGMM.precisions_cholesky_, allow_pickle=False)
+    np.save('Final_Model_Means', DPGMM.means_, allow_pickle=False)
     np.save('Final_Model_Covariances', DPGMM.covariances_, allow_pickle=False)
     np.save('Log_Probabilities.npy', uncertainty, allow_pickle=False)
-    components = len(DPGMM.weights_)
-    
+    components = len(weights)
+        
     size = 60
     fontsize = 60
-    
-    # Segment montage data       
-    try: 
-        segmentation = DPGMM.predict(full_data)
-        gc.collect()
-        print("Segmentation: 100%")
 
-    except MemoryError:
-        mid_point = round(full_data.shape[0] / 5.0)
-        
-        segmentation = DPGMM.predict( full_data[0:mid_point, :] )    
-        print("Segmentation: 20%")
-        
-        segmentation1 = DPGMM.predict( full_data[mid_point: mid_point*2, :] )    
-        segmentation = np.concatenate( (segmentation, segmentation1), axis = 0)
-        del segmentation1
-        gc.collect()
-        print("Segmentation: 40%")
-
-        segmentation1 = DPGMM.predict( full_data[mid_point*2: mid_point*3, :] )    
-        segmentation = np.concatenate( (segmentation, segmentation1), axis = 0)
-        del segmentation1
-        gc.collect()
-        print("Segmentation: 60%")
-
-        segmentation1 = DPGMM.predict( full_data[mid_point*3: mid_point*4, :] )    
-        segmentation = np.concatenate( (segmentation, segmentation1), axis = 0)
-        del segmentation1
-        gc.collect()
-        print("Segmentation: 80%")
-
-        segmentation1 = DPGMM.predict( full_data[mid_point*4: full_data.shape[0], :] )    
-        segmentation = np.concatenate( (segmentation, segmentation1), axis = 0)
-        del segmentation1
-        gc.collect()
-        print("Segmentation: 100%")
-
+    segmentation = calc_segmentation(full_data)
     segmentation = np.asarray(segmentation).reshape(array.shape[0], array.shape[1])
     np.save('Segmentation', segmentation, allow_pickle=False)
     
@@ -797,6 +852,20 @@ while run:
         # Ignore extraneous classes that are not in the segmentation 
         if ind2 in uniques: 
             
+            class_map = np.ones(shape = image.shape, dtype = np.uint8 )
+            class_map[segmentation != ind2] = 0
+            
+          #  background = cv2.dilate(class_map, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5,5)) , class_map.dtype, iterations=1) 
+            background = cv2.dilate(class_map, np.ones((3, 3), 'uint8'), iterations = 3)
+            np.sum(background)
+            np.sum(class_map)
+            
+            np.unique(background)
+            np.unique(class_map)
+            
+            background = np.ma.masked_where(background == 0, np.ones(segmentation.shape, dtype = np.uint8)) 
+            class_map =  np.ma.masked_where(segmentation != ind2, np.ones(segmentation.shape, dtype = np.uint8))
+
             fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(ratio*size, size), dpi=300)
             stdev = np.sqrt(np.abs(DPGMM.covariances_[ind2]))
             stdev[DPGMM.covariances_[ind2] < 0.0] = -1 * stdev[DPGMM.covariances_[ind2] < 0.0] 
@@ -809,10 +878,11 @@ while run:
             ax2.set_yticklabels( ax2.get_yticklabels(), rotation=0)
             
             for label in (ax2.get_xticklabels() + ax2.get_yticklabels()):
-                label.set_fontsize(60)
-                        
+                label.set_fontsize(50)
+
             plt.sca(ax1)
-            plot = plt.pcolormesh( np.ma.masked_where(segmentation != ind2, np.ones(segmentation.shape, dtype = np.uint8)), cmap = 'brg', alpha = 1)        
+            plot = plt.pcolormesh( background, cmap = 'jet', alpha = 1)        
+            plot = plt.pcolormesh( class_map, cmap = 'brg', alpha = 1)        
             plt.xticks([])
             plt.yticks([])
             divider = make_axes_locatable(ax1)
@@ -821,14 +891,15 @@ while run:
             cb.ax.tick_params(labelsize=60) 
             cb.remove()
             ax1.invert_yaxis()
+            ax1.set_aspect(aspect = shape[0]/shape[1], adjustable = 'box')
             
             try:
                 plt.sca(ax1)
-                plot = plt.pcolormesh(background_image, alpha = 0.2, cmap = 'gray')
+                plot = plt.pcolormesh(background_image, alpha = 0.3, cmap = 'gray')
             except NameError:
                 pass 
             
-            plt.tight_layout()
+            #plt.tight_layout()
             plt.savefig("Class " + str(ind2) + " With Covariance Table.png")
             plt.close(fig)
             gc.collect()
@@ -837,7 +908,8 @@ while run:
             fig, (ax1) = plt.subplots(1, 1, figsize=(size, size), dpi=300)
     
             plt.sca(ax1)
-            plot = plt.pcolormesh( np.ma.masked_where(segmentation != ind2, np.ones(segmentation.shape, dtype = np.uint8)), cmap = 'brg', alpha = 1)
+            plot = plt.pcolormesh( background, cmap = 'jet', alpha = 1)        
+            plot = plt.pcolormesh( class_map, cmap = 'brg', alpha = 1)               
             plt.xticks([])
             plt.yticks([])
             divider = make_axes_locatable(ax1)
@@ -845,10 +917,11 @@ while run:
             cb = plt.colorbar(plot, cax=cax)   
             cb.remove()
             ax1.invert_yaxis()
-            
+            ax1.set_aspect(aspect = shape[0]/shape[1], adjustable = 'box')
+
             try:
                 plt.sca(ax1)
-                plot = plt.pcolormesh(background_image, alpha = 0.2, cmap = 'gray')
+                plot = plt.pcolormesh(background_image, alpha = 0.3, cmap = 'gray')
                 divider = make_axes_locatable(ax1)
                 cax = divider.append_axes("right", size="5%", pad=0.05)
                 cb = plt.colorbar(plot, cax=cax)   
@@ -860,11 +933,6 @@ while run:
             plt.close(fig)
             gc.collect()
             
-            
-            
-            
-            
-    
     print("Number of unique classes: " + str(len(list(np.unique(segmentation)))))
     print(" ")
     print("Plotting Complete")
@@ -918,6 +986,25 @@ DPGMM.precisions_cholesky_ = precisions_cholesky
 
 
 
-
 """
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
