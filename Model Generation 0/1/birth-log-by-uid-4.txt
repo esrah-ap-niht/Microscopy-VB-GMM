@@ -1,4 +1,0 @@
-STATUS uid     4  lap   3.100 lapCeil     4 batchPos   1/10 batchID   9  N_b   148.972 N_ttl  1561.488 BUSY DELETE PROPOSAL
-STATUS uid     4  lap   4.100 lapCeil     5 batchPos   1/10 batchID   9  N_b    20.608 N_ttl    29.220 BUSY DELETE PROPOSAL
-STATUS uid     4  lap   5.100 lapCeil     6 batchPos   1/10 batchID   1  N_b     0.002 N_ttl    19.704 BUSY DELETE PROPOSAL
-STATUS uid     4  lap   6.100 lapCeil     7 batchPos   1/10 batchID   5  N_b     0.012 N_ttl    34.104 BUSY DELETE PROPOSAL
