@@ -1,0 +1,1490 @@
+BIRTH @ lap 1.00: Disabled. Waiting for lap >= 4 (--b_startLap).
+BIRTH @ lap 2.00: Disabled. Waiting for lap >= 4 (--b_startLap).
+BIRTH @ lap 3.00: Disabled. Waiting for lap >= 4 (--b_startLap).
+PLANNING birth at lap 3.100 batch 9
+PLAN at  lap   3.100 lapCeil     4 batchPos   1/10 batchID   9 
+STATUS uid     0  lap   3.100 lapCeil     4 batchPos   1/10 batchID   9  N_b  1923.444 N_ttl 19491.267 BUSY DELETE PROPOSAL
+STATUS uid     1  lap   3.100 lapCeil     4 batchPos   1/10 batchID   9  N_b   838.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     4  lap   3.100 lapCeil     4 batchPos   1/10 batchID   9  N_b   383.882 N_ttl  4169.747 BUSY DELETE PROPOSAL
+STATUS uid     3  lap   3.100 lapCeil     4 batchPos   1/10 batchID   9  N_b   414.325 N_ttl  3728.481 BUSY DELETE PROPOSAL
+STATUS uid     9  lap   3.100 lapCeil     4 batchPos   1/10 batchID   9  N_b   103.743 N_ttl   940.307 BUSY DELETE PROPOSAL
+STATUS uid     2  lap   3.100 lapCeil     4 batchPos   1/10 batchID   9  N_b    73.682 N_ttl   852.620 BUSY DELETE PROPOSAL
+STATUS uid     8  lap   3.100 lapCeil     4 batchPos   1/10 batchID   9  N_b    88.948 N_ttl   819.623 BUSY DELETE PROPOSAL
+STATUS uid     5  lap   3.100 lapCeil     4 batchPos   1/10 batchID   9  N_b    86.633 N_ttl   789.352 BUSY DELETE PROPOSAL
+STATUS uid     7  lap   3.100 lapCeil     4 batchPos   1/10 batchID   9  N_b    67.993 N_ttl   576.967 BUSY DELETE PROPOSAL
+STATUS uid     6  lap   3.100 lapCeil     4 batchPos   1/10 batchID   9  N_b    17.350 N_ttl   162.636 BUSY DELETE PROPOSAL
+0/10 UIDs retained from preexisting proposals.
+10/10 UIDs too busy with other moves (merge/delete).
+0/10 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/10 UIDs disqualified for past failures.
+0/10 UIDs eligible for new proposal
+
+PLANNING birth at lap 3.200 batch 4
+PLAN at  lap   3.200 lapCeil     4 batchPos   2/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 3.300 batch 7
+PLAN at  lap   3.300 lapCeil     4 batchPos   3/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 3.400 batch 6
+PLAN at  lap   3.400 lapCeil     4 batchPos   4/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 3.500 batch 5
+PLAN at  lap   3.500 lapCeil     4 batchPos   5/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 3.600 batch 2
+PLAN at  lap   3.600 lapCeil     4 batchPos   6/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 3.700 batch 0
+PLAN at  lap   3.700 lapCeil     4 batchPos   7/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 3.800 batch 8
+PLAN at  lap   3.800 lapCeil     4 batchPos   8/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 3.900 batch 3
+PLAN at  lap   3.900 lapCeil     4 batchPos   9/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 4.000 batch 1
+PLAN at  lap   4.000 lapCeil     4 batchPos   0/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 4.000 : None attempted. 0 past failures. 0 too small. 10 too busy.
+PLANNING birth at lap 4.100 batch 9
+PLAN at  lap   4.100 lapCeil     5 batchPos   1/10 batchID   9 
+STATUS uid     0  lap   4.100 lapCeil     5 batchPos   1/10 batchID   9  N_b  1865.253 N_ttl 18766.339 BUSY DELETE PROPOSAL
+STATUS uid     1  lap   4.100 lapCeil     5 batchPos   1/10 batchID   9  N_b   838.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap   4.100 lapCeil     5 batchPos   1/10 batchID   9  N_b   478.744 N_ttl  4533.350 BUSY DELETE PROPOSAL
+STATUS uid     4  lap   4.100 lapCeil     5 batchPos   1/10 batchID   9  N_b   383.734 N_ttl  4147.524 BUSY DELETE PROPOSAL
+STATUS uid     9  lap   4.100 lapCeil     5 batchPos   1/10 batchID   9  N_b   121.904 N_ttl  1149.681 BUSY DELETE PROPOSAL
+STATUS uid     8  lap   4.100 lapCeil     5 batchPos   1/10 batchID   9  N_b    90.515 N_ttl   839.050 BUSY DELETE PROPOSAL
+STATUS uid     2  lap   4.100 lapCeil     5 batchPos   1/10 batchID   9  N_b    70.351 N_ttl   774.462 BUSY DELETE PROPOSAL
+STATUS uid     5  lap   4.100 lapCeil     5 batchPos   1/10 batchID   9  N_b    84.434 N_ttl   766.027 BUSY DELETE PROPOSAL
+STATUS uid     7  lap   4.100 lapCeil     5 batchPos   1/10 batchID   9  N_b    48.285 N_ttl   395.774 BUSY DELETE PROPOSAL
+STATUS uid     6  lap   4.100 lapCeil     5 batchPos   1/10 batchID   9  N_b    16.780 N_ttl   158.793 BUSY DELETE PROPOSAL
+0/10 UIDs retained from preexisting proposals.
+10/10 UIDs too busy with other moves (merge/delete).
+0/10 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/10 UIDs disqualified for past failures.
+0/10 UIDs eligible for new proposal
+
+PLANNING birth at lap 4.200 batch 5
+PLAN at  lap   4.200 lapCeil     5 batchPos   2/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 4.300 batch 3
+PLAN at  lap   4.300 lapCeil     5 batchPos   3/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 4.400 batch 2
+PLAN at  lap   4.400 lapCeil     5 batchPos   4/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 4.500 batch 0
+PLAN at  lap   4.500 lapCeil     5 batchPos   5/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 4.600 batch 6
+PLAN at  lap   4.600 lapCeil     5 batchPos   6/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 4.700 batch 1
+PLAN at  lap   4.700 lapCeil     5 batchPos   7/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 4.800 batch 4
+PLAN at  lap   4.800 lapCeil     5 batchPos   8/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 4.900 batch 8
+PLAN at  lap   4.900 lapCeil     5 batchPos   9/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 5.000 batch 7
+PLAN at  lap   5.000 lapCeil     5 batchPos   0/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 5.000 : None attempted. 0 past failures. 0 too small. 10 too busy.
+PLANNING birth at lap 5.100 batch 1
+PLAN at  lap   5.100 lapCeil     6 batchPos   1/10 batchID   1 
+STATUS uid     0  lap   5.100 lapCeil     6 batchPos   1/10 batchID   1  N_b  1773.704 N_ttl 18279.341 BUSY DELETE PROPOSAL
+STATUS uid     1  lap   5.100 lapCeil     6 batchPos   1/10 batchID   1  N_b   884.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap   5.100 lapCeil     6 batchPos   1/10 batchID   1  N_b   555.270 N_ttl  5242.599 BUSY DELETE PROPOSAL
+STATUS uid     4  lap   5.100 lapCeil     6 batchPos   1/10 batchID   1  N_b   398.773 N_ttl  4054.252 BUSY DELETE PROPOSAL
+STATUS uid     9  lap   5.100 lapCeil     6 batchPos   1/10 batchID   1  N_b   149.745 N_ttl  1324.947 BUSY DELETE PROPOSAL
+STATUS uid     8  lap   5.100 lapCeil     6 batchPos   1/10 batchID   1  N_b    79.330 N_ttl   852.953 BUSY DELETE PROPOSAL
+STATUS uid     5  lap   5.100 lapCeil     6 batchPos   1/10 batchID   1  N_b    68.852 N_ttl   750.286 BUSY DELETE PROPOSAL
+STATUS uid     2  lap   5.100 lapCeil     6 batchPos   1/10 batchID   1  N_b    64.763 N_ttl   744.152 BUSY DELETE PROPOSAL
+STATUS uid     7  lap   5.100 lapCeil     6 batchPos   1/10 batchID   1  N_b    24.563 N_ttl   282.469 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 5.200 batch 3
+PLAN at  lap   5.200 lapCeil     6 batchPos   2/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 5.300 batch 5
+PLAN at  lap   5.300 lapCeil     6 batchPos   3/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 5.400 batch 2
+PLAN at  lap   5.400 lapCeil     6 batchPos   4/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 5.500 batch 4
+PLAN at  lap   5.500 lapCeil     6 batchPos   5/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 5.600 batch 0
+PLAN at  lap   5.600 lapCeil     6 batchPos   6/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 5.700 batch 6
+PLAN at  lap   5.700 lapCeil     6 batchPos   7/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 5.800 batch 8
+PLAN at  lap   5.800 lapCeil     6 batchPos   8/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 5.900 batch 7
+PLAN at  lap   5.900 lapCeil     6 batchPos   9/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 6.000 batch 9
+PLAN at  lap   6.000 lapCeil     6 batchPos   0/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 6.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 6.100 batch 5
+PLAN at  lap   6.100 lapCeil     7 batchPos   1/10 batchID   5 
+STATUS uid     0  lap   6.100 lapCeil     7 batchPos   1/10 batchID   5  N_b  1735.515 N_ttl 17937.482 BUSY DELETE PROPOSAL
+STATUS uid     1  lap   6.100 lapCeil     7 batchPos   1/10 batchID   5  N_b   848.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap   6.100 lapCeil     7 batchPos   1/10 batchID   5  N_b   610.999 N_ttl  5638.436 BUSY DELETE PROPOSAL
+STATUS uid     4  lap   6.100 lapCeil     7 batchPos   1/10 batchID   5  N_b   389.386 N_ttl  3937.079 BUSY DELETE PROPOSAL
+STATUS uid     9  lap   6.100 lapCeil     7 batchPos   1/10 batchID   5  N_b   167.187 N_ttl  1443.537 BUSY DELETE PROPOSAL
+STATUS uid     8  lap   6.100 lapCeil     7 batchPos   1/10 batchID   5  N_b    73.919 N_ttl   860.086 BUSY DELETE PROPOSAL
+STATUS uid     5  lap   6.100 lapCeil     7 batchPos   1/10 batchID   5  N_b    62.141 N_ttl   736.066 BUSY DELETE PROPOSAL
+STATUS uid     2  lap   6.100 lapCeil     7 batchPos   1/10 batchID   5  N_b    86.653 N_ttl   726.088 BUSY DELETE PROPOSAL
+STATUS uid     7  lap   6.100 lapCeil     7 batchPos   1/10 batchID   5  N_b    25.200 N_ttl   252.227 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 6.200 batch 3
+PLAN at  lap   6.200 lapCeil     7 batchPos   2/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 6.300 batch 8
+PLAN at  lap   6.300 lapCeil     7 batchPos   3/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 6.400 batch 1
+PLAN at  lap   6.400 lapCeil     7 batchPos   4/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 6.500 batch 9
+PLAN at  lap   6.500 lapCeil     7 batchPos   5/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 6.600 batch 4
+PLAN at  lap   6.600 lapCeil     7 batchPos   6/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 6.700 batch 7
+PLAN at  lap   6.700 lapCeil     7 batchPos   7/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 6.800 batch 6
+PLAN at  lap   6.800 lapCeil     7 batchPos   8/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 6.900 batch 2
+PLAN at  lap   6.900 lapCeil     7 batchPos   9/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 7.000 batch 0
+PLAN at  lap   7.000 lapCeil     7 batchPos   0/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 7.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 7.100 batch 5
+PLAN at  lap   7.100 lapCeil     8 batchPos   1/10 batchID   5 
+STATUS uid     0  lap   7.100 lapCeil     8 batchPos   1/10 batchID   5  N_b  1719.535 N_ttl 17734.374 BUSY DELETE PROPOSAL
+STATUS uid     1  lap   7.100 lapCeil     8 batchPos   1/10 batchID   5  N_b   848.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap   7.100 lapCeil     8 batchPos   1/10 batchID   5  N_b   629.029 N_ttl  5872.897 BUSY DELETE PROPOSAL
+STATUS uid     4  lap   7.100 lapCeil     8 batchPos   1/10 batchID   5  N_b   384.132 N_ttl  3859.060 BUSY DELETE PROPOSAL
+STATUS uid     9  lap   7.100 lapCeil     8 batchPos   1/10 batchID   5  N_b   170.521 N_ttl  1496.123 BUSY DELETE PROPOSAL
+STATUS uid     8  lap   7.100 lapCeil     8 batchPos   1/10 batchID   5  N_b    74.550 N_ttl   866.231 BUSY DELETE PROPOSAL
+STATUS uid     5  lap   7.100 lapCeil     8 batchPos   1/10 batchID   5  N_b    61.087 N_ttl   726.173 BUSY DELETE PROPOSAL
+STATUS uid     2  lap   7.100 lapCeil     8 batchPos   1/10 batchID   5  N_b    86.036 N_ttl   716.629 BUSY DELETE PROPOSAL
+STATUS uid     7  lap   7.100 lapCeil     8 batchPos   1/10 batchID   5  N_b    26.110 N_ttl   259.512 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 7.200 batch 8
+PLAN at  lap   7.200 lapCeil     8 batchPos   2/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 7.300 batch 7
+PLAN at  lap   7.300 lapCeil     8 batchPos   3/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 7.400 batch 2
+PLAN at  lap   7.400 lapCeil     8 batchPos   4/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 7.500 batch 0
+PLAN at  lap   7.500 lapCeil     8 batchPos   5/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 7.600 batch 1
+PLAN at  lap   7.600 lapCeil     8 batchPos   6/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 7.700 batch 4
+PLAN at  lap   7.700 lapCeil     8 batchPos   7/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 7.800 batch 6
+PLAN at  lap   7.800 lapCeil     8 batchPos   8/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 7.900 batch 9
+PLAN at  lap   7.900 lapCeil     8 batchPos   9/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 8.000 batch 3
+PLAN at  lap   8.000 lapCeil     8 batchPos   0/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 8.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 8.100 batch 4
+PLAN at  lap   8.100 lapCeil     9 batchPos   1/10 batchID   4 
+STATUS uid     0  lap   8.100 lapCeil     9 batchPos   1/10 batchID   4  N_b  1729.661 N_ttl 17625.845 BUSY DELETE PROPOSAL
+STATUS uid     1  lap   8.100 lapCeil     9 batchPos   1/10 batchID   4  N_b   851.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap   8.100 lapCeil     9 batchPos   1/10 batchID   4  N_b   629.473 N_ttl  5996.111 BUSY DELETE PROPOSAL
+STATUS uid     4  lap   8.100 lapCeil     9 batchPos   1/10 batchID   4  N_b   379.934 N_ttl  3822.610 BUSY DELETE PROPOSAL
+STATUS uid     9  lap   8.100 lapCeil     9 batchPos   1/10 batchID   4  N_b   154.206 N_ttl  1516.410 BUSY DELETE PROPOSAL
+STATUS uid     8  lap   8.100 lapCeil     9 batchPos   1/10 batchID   4  N_b    90.109 N_ttl   870.581 BUSY DELETE PROPOSAL
+STATUS uid     5  lap   8.100 lapCeil     9 batchPos   1/10 batchID   4  N_b    74.632 N_ttl   719.151 BUSY DELETE PROPOSAL
+STATUS uid     2  lap   8.100 lapCeil     9 batchPos   1/10 batchID   4  N_b    64.942 N_ttl   711.296 BUSY DELETE PROPOSAL
+STATUS uid     7  lap   8.100 lapCeil     9 batchPos   1/10 batchID   4  N_b    25.043 N_ttl   268.996 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 8.200 batch 0
+PLAN at  lap   8.200 lapCeil     9 batchPos   2/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 8.300 batch 3
+PLAN at  lap   8.300 lapCeil     9 batchPos   3/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 8.400 batch 7
+PLAN at  lap   8.400 lapCeil     9 batchPos   4/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 8.500 batch 6
+PLAN at  lap   8.500 lapCeil     9 batchPos   5/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 8.600 batch 2
+PLAN at  lap   8.600 lapCeil     9 batchPos   6/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 8.700 batch 5
+PLAN at  lap   8.700 lapCeil     9 batchPos   7/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 8.800 batch 9
+PLAN at  lap   8.800 lapCeil     9 batchPos   8/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 8.900 batch 1
+PLAN at  lap   8.900 lapCeil     9 batchPos   9/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 9.000 batch 8
+PLAN at  lap   9.000 lapCeil     9 batchPos   0/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 9.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 9.100 batch 7
+PLAN at  lap   9.100 lapCeil    10 batchPos   1/10 batchID   7 
+STATUS uid     0  lap   9.100 lapCeil    10 batchPos   1/10 batchID   7  N_b  1773.313 N_ttl 17555.740 BUSY DELETE PROPOSAL
+STATUS uid     1  lap   9.100 lapCeil    10 batchPos   1/10 batchID   7  N_b   866.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap   9.100 lapCeil    10 batchPos   1/10 batchID   7  N_b   599.390 N_ttl  6071.724 BUSY DELETE PROPOSAL
+STATUS uid     4  lap   9.100 lapCeil    10 batchPos   1/10 batchID   7  N_b   386.142 N_ttl  3803.611 BUSY DELETE PROPOSAL
+STATUS uid     9  lap   9.100 lapCeil    10 batchPos   1/10 batchID   7  N_b   139.841 N_ttl  1526.703 BUSY DELETE PROPOSAL
+STATUS uid     8  lap   9.100 lapCeil    10 batchPos   1/10 batchID   7  N_b    75.252 N_ttl   873.035 BUSY DELETE PROPOSAL
+STATUS uid     5  lap   9.100 lapCeil    10 batchPos   1/10 batchID   7  N_b    75.476 N_ttl   714.468 BUSY DELETE PROPOSAL
+STATUS uid     2  lap   9.100 lapCeil    10 batchPos   1/10 batchID   7  N_b    58.756 N_ttl   707.443 BUSY DELETE PROPOSAL
+STATUS uid     7  lap   9.100 lapCeil    10 batchPos   1/10 batchID   7  N_b    23.829 N_ttl   278.277 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 9.200 batch 0
+PLAN at  lap   9.200 lapCeil    10 batchPos   2/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 9.300 batch 8
+PLAN at  lap   9.300 lapCeil    10 batchPos   3/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 9.400 batch 4
+PLAN at  lap   9.400 lapCeil    10 batchPos   4/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 9.500 batch 9
+PLAN at  lap   9.500 lapCeil    10 batchPos   5/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 9.600 batch 3
+PLAN at  lap   9.600 lapCeil    10 batchPos   6/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 9.700 batch 5
+PLAN at  lap   9.700 lapCeil    10 batchPos   7/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 9.800 batch 2
+PLAN at  lap   9.800 lapCeil    10 batchPos   8/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 9.900 batch 1
+PLAN at  lap   9.900 lapCeil    10 batchPos   9/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 10.000 batch 6
+PLAN at  lap  10.000 lapCeil    10 batchPos   0/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 10.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 10.100 batch 9
+PLAN at  lap  10.100 lapCeil    11 batchPos   1/10 batchID   9 
+STATUS uid     0  lap  10.100 lapCeil    11 batchPos   1/10 batchID   9  N_b  1768.941 N_ttl 17511.963 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  10.100 lapCeil    11 batchPos   1/10 batchID   9  N_b   838.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  10.100 lapCeil    11 batchPos   1/10 batchID   9  N_b   605.756 N_ttl  6118.583 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  10.100 lapCeil    11 batchPos   1/10 batchID   9  N_b   357.851 N_ttl  3794.989 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  10.100 lapCeil    11 batchPos   1/10 batchID   9  N_b   144.649 N_ttl  1531.716 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  10.100 lapCeil    11 batchPos   1/10 batchID   9  N_b    95.614 N_ttl   874.025 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  10.100 lapCeil    11 batchPos   1/10 batchID   9  N_b    74.720 N_ttl   711.618 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  10.100 lapCeil    11 batchPos   1/10 batchID   9  N_b    63.957 N_ttl   703.204 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  10.100 lapCeil    11 batchPos   1/10 batchID   9  N_b    48.512 N_ttl   284.903 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 10.200 batch 1
+PLAN at  lap  10.200 lapCeil    11 batchPos   2/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 10.300 batch 5
+PLAN at  lap  10.300 lapCeil    11 batchPos   3/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 10.400 batch 4
+PLAN at  lap  10.400 lapCeil    11 batchPos   4/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 10.500 batch 3
+PLAN at  lap  10.500 lapCeil    11 batchPos   5/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 10.600 batch 6
+PLAN at  lap  10.600 lapCeil    11 batchPos   6/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 10.700 batch 2
+PLAN at  lap  10.700 lapCeil    11 batchPos   7/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 10.800 batch 7
+PLAN at  lap  10.800 lapCeil    11 batchPos   8/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 10.900 batch 0
+PLAN at  lap  10.900 lapCeil    11 batchPos   9/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 11.000 batch 8
+PLAN at  lap  11.000 lapCeil    11 batchPos   0/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 11.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 11.100 batch 8
+PLAN at  lap  11.100 lapCeil    12 batchPos   1/10 batchID   8 
+STATUS uid     0  lap  11.100 lapCeil    12 batchPos   1/10 batchID   8  N_b  1794.668 N_ttl 17487.349 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  11.100 lapCeil    12 batchPos   1/10 batchID   8  N_b   840.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  11.100 lapCeil    12 batchPos   1/10 batchID   8  N_b   604.053 N_ttl  6144.396 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  11.100 lapCeil    12 batchPos   1/10 batchID   8  N_b   358.850 N_ttl  3790.644 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  11.100 lapCeil    12 batchPos   1/10 batchID   8  N_b   134.518 N_ttl  1534.021 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  11.100 lapCeil    12 batchPos   1/10 batchID   8  N_b    95.203 N_ttl   874.443 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  11.100 lapCeil    12 batchPos   1/10 batchID   8  N_b    66.823 N_ttl   709.196 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  11.100 lapCeil    12 batchPos   1/10 batchID   8  N_b    75.443 N_ttl   700.757 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  11.100 lapCeil    12 batchPos   1/10 batchID   8  N_b    28.442 N_ttl   290.194 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 11.200 batch 4
+PLAN at  lap  11.200 lapCeil    12 batchPos   2/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 11.300 batch 0
+PLAN at  lap  11.300 lapCeil    12 batchPos   3/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 11.400 batch 5
+PLAN at  lap  11.400 lapCeil    12 batchPos   4/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 11.500 batch 9
+PLAN at  lap  11.500 lapCeil    12 batchPos   5/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 11.600 batch 3
+PLAN at  lap  11.600 lapCeil    12 batchPos   6/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 11.700 batch 2
+PLAN at  lap  11.700 lapCeil    12 batchPos   7/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 11.800 batch 7
+PLAN at  lap  11.800 lapCeil    12 batchPos   8/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 11.900 batch 6
+PLAN at  lap  11.900 lapCeil    12 batchPos   9/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 12.000 batch 1
+PLAN at  lap  12.000 lapCeil    12 batchPos   0/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 12.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 12.100 batch 7
+PLAN at  lap  12.100 lapCeil    13 batchPos   1/10 batchID   7 
+STATUS uid     0  lap  12.100 lapCeil    13 batchPos   1/10 batchID   7  N_b  1767.138 N_ttl 17470.230 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  12.100 lapCeil    13 batchPos   1/10 batchID   7  N_b   866.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  12.100 lapCeil    13 batchPos   1/10 batchID   7  N_b   605.758 N_ttl  6162.428 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  12.100 lapCeil    13 batchPos   1/10 batchID   7  N_b   385.239 N_ttl  3788.465 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  12.100 lapCeil    13 batchPos   1/10 batchID   7  N_b   140.385 N_ttl  1535.018 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  12.100 lapCeil    13 batchPos   1/10 batchID   7  N_b    75.420 N_ttl   874.423 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  12.100 lapCeil    13 batchPos   1/10 batchID   7  N_b    75.408 N_ttl   707.073 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  12.100 lapCeil    13 batchPos   1/10 batchID   7  N_b    58.530 N_ttl   698.864 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  12.100 lapCeil    13 batchPos   1/10 batchID   7  N_b    24.123 N_ttl   294.498 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 12.200 batch 2
+PLAN at  lap  12.200 lapCeil    13 batchPos   2/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 12.300 batch 4
+PLAN at  lap  12.300 lapCeil    13 batchPos   3/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 12.400 batch 6
+PLAN at  lap  12.400 lapCeil    13 batchPos   4/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 12.500 batch 9
+PLAN at  lap  12.500 lapCeil    13 batchPos   5/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 12.600 batch 1
+PLAN at  lap  12.600 lapCeil    13 batchPos   6/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 12.700 batch 5
+PLAN at  lap  12.700 lapCeil    13 batchPos   7/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 12.800 batch 3
+PLAN at  lap  12.800 lapCeil    13 batchPos   8/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 12.900 batch 8
+PLAN at  lap  12.900 lapCeil    13 batchPos   9/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 13.000 batch 0
+PLAN at  lap  13.000 lapCeil    13 batchPos   0/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 13.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 13.100 batch 0
+PLAN at  lap  13.100 lapCeil    14 batchPos   1/10 batchID   0 
+STATUS uid     0  lap  13.100 lapCeil    14 batchPos   1/10 batchID   0  N_b  1762.880 N_ttl 17459.508 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  13.100 lapCeil    14 batchPos   1/10 batchID   0  N_b   829.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  13.100 lapCeil    14 batchPos   1/10 batchID   0  N_b   601.011 N_ttl  6173.553 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  13.100 lapCeil    14 batchPos   1/10 batchID   0  N_b   399.963 N_ttl  3789.039 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  13.100 lapCeil    14 batchPos   1/10 batchID   0  N_b   145.658 N_ttl  1535.505 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  13.100 lapCeil    14 batchPos   1/10 batchID   0  N_b    87.506 N_ttl   874.162 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  13.100 lapCeil    14 batchPos   1/10 batchID   0  N_b    70.602 N_ttl   704.756 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  13.100 lapCeil    14 batchPos   1/10 batchID   0  N_b    66.584 N_ttl   697.896 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  13.100 lapCeil    14 batchPos   1/10 batchID   0  N_b    35.797 N_ttl   296.582 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 13.200 batch 2
+PLAN at  lap  13.200 lapCeil    14 batchPos   2/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 13.300 batch 5
+PLAN at  lap  13.300 lapCeil    14 batchPos   3/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 13.400 batch 8
+PLAN at  lap  13.400 lapCeil    14 batchPos   4/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 13.500 batch 3
+PLAN at  lap  13.500 lapCeil    14 batchPos   5/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 13.600 batch 7
+PLAN at  lap  13.600 lapCeil    14 batchPos   6/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 13.700 batch 4
+PLAN at  lap  13.700 lapCeil    14 batchPos   7/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 13.800 batch 1
+PLAN at  lap  13.800 lapCeil    14 batchPos   8/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 13.900 batch 6
+PLAN at  lap  13.900 lapCeil    14 batchPos   9/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 14.000 batch 9
+PLAN at  lap  14.000 lapCeil    14 batchPos   0/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 14.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 14.100 batch 4
+PLAN at  lap  14.100 lapCeil    15 batchPos   1/10 batchID   4 
+STATUS uid     0  lap  14.100 lapCeil    15 batchPos   1/10 batchID   4  N_b  1716.985 N_ttl 17452.128 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  14.100 lapCeil    15 batchPos   1/10 batchID   4  N_b   851.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  14.100 lapCeil    15 batchPos   1/10 batchID   4  N_b   643.257 N_ttl  6181.030 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  14.100 lapCeil    15 batchPos   1/10 batchID   4  N_b   377.266 N_ttl  3789.799 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  14.100 lapCeil    15 batchPos   1/10 batchID   4  N_b   155.757 N_ttl  1535.910 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  14.100 lapCeil    15 batchPos   1/10 batchID   4  N_b    90.489 N_ttl   873.948 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  14.100 lapCeil    15 batchPos   1/10 batchID   4  N_b    72.674 N_ttl   703.401 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  14.100 lapCeil    15 batchPos   1/10 batchID   4  N_b    64.502 N_ttl   697.318 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  14.100 lapCeil    15 batchPos   1/10 batchID   4  N_b    27.071 N_ttl   297.467 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 14.200 batch 2
+PLAN at  lap  14.200 lapCeil    15 batchPos   2/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 14.300 batch 0
+PLAN at  lap  14.300 lapCeil    15 batchPos   3/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 14.400 batch 9
+PLAN at  lap  14.400 lapCeil    15 batchPos   4/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 14.500 batch 3
+PLAN at  lap  14.500 lapCeil    15 batchPos   5/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 14.600 batch 6
+PLAN at  lap  14.600 lapCeil    15 batchPos   6/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 14.700 batch 5
+PLAN at  lap  14.700 lapCeil    15 batchPos   7/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 14.800 batch 8
+PLAN at  lap  14.800 lapCeil    15 batchPos   8/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 14.900 batch 7
+PLAN at  lap  14.900 lapCeil    15 batchPos   9/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 15.000 batch 1
+PLAN at  lap  15.000 lapCeil    15 batchPos   0/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 15.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 15.100 batch 8
+PLAN at  lap  15.100 lapCeil    16 batchPos   1/10 batchID   8 
+STATUS uid     0  lap  15.100 lapCeil    16 batchPos   1/10 batchID   8  N_b  1791.605 N_ttl 17447.194 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  15.100 lapCeil    16 batchPos   1/10 batchID   8  N_b   840.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  15.100 lapCeil    16 batchPos   1/10 batchID   8  N_b   607.003 N_ttl  6185.860 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  15.100 lapCeil    16 batchPos   1/10 batchID   8  N_b   359.004 N_ttl  3790.107 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  15.100 lapCeil    16 batchPos   1/10 batchID   8  N_b   134.687 N_ttl  1536.229 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  15.100 lapCeil    16 batchPos   1/10 batchID   8  N_b    95.130 N_ttl   873.813 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  15.100 lapCeil    16 batchPos   1/10 batchID   8  N_b    66.562 N_ttl   702.625 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  15.100 lapCeil    16 batchPos   1/10 batchID   8  N_b    75.391 N_ttl   696.941 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  15.100 lapCeil    16 batchPos   1/10 batchID   8  N_b    28.618 N_ttl   298.231 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 15.200 batch 9
+PLAN at  lap  15.200 lapCeil    16 batchPos   2/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 15.300 batch 7
+PLAN at  lap  15.300 lapCeil    16 batchPos   3/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 15.400 batch 4
+PLAN at  lap  15.400 lapCeil    16 batchPos   4/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 15.500 batch 0
+PLAN at  lap  15.500 lapCeil    16 batchPos   5/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 15.600 batch 3
+PLAN at  lap  15.600 lapCeil    16 batchPos   6/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 15.700 batch 2
+PLAN at  lap  15.700 lapCeil    16 batchPos   7/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 15.800 batch 6
+PLAN at  lap  15.800 lapCeil    16 batchPos   8/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 15.900 batch 5
+PLAN at  lap  15.900 lapCeil    16 batchPos   9/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 16.000 batch 1
+PLAN at  lap  16.000 lapCeil    16 batchPos   0/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 16.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 16.100 batch 0
+PLAN at  lap  16.100 lapCeil    17 batchPos   1/10 batchID   0 
+STATUS uid     0  lap  16.100 lapCeil    17 batchPos   1/10 batchID   0  N_b  1761.694 N_ttl 17443.907 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  16.100 lapCeil    17 batchPos   1/10 batchID   0  N_b   829.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  16.100 lapCeil    17 batchPos   1/10 batchID   0  N_b   602.192 N_ttl  6189.055 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  16.100 lapCeil    17 batchPos   1/10 batchID   0  N_b   400.104 N_ttl  3790.355 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  16.100 lapCeil    17 batchPos   1/10 batchID   0  N_b   145.774 N_ttl  1536.528 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  16.100 lapCeil    17 batchPos   1/10 batchID   0  N_b    87.449 N_ttl   873.728 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  16.100 lapCeil    17 batchPos   1/10 batchID   0  N_b    70.385 N_ttl   702.037 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  16.100 lapCeil    17 batchPos   1/10 batchID   0  N_b    66.502 N_ttl   696.655 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  16.100 lapCeil    17 batchPos   1/10 batchID   0  N_b    35.900 N_ttl   298.733 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 16.200 batch 6
+PLAN at  lap  16.200 lapCeil    17 batchPos   2/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 16.300 batch 2
+PLAN at  lap  16.300 lapCeil    17 batchPos   3/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 16.400 batch 7
+PLAN at  lap  16.400 lapCeil    17 batchPos   4/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 16.500 batch 5
+PLAN at  lap  16.500 lapCeil    17 batchPos   5/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 16.600 batch 9
+PLAN at  lap  16.600 lapCeil    17 batchPos   6/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 16.700 batch 8
+PLAN at  lap  16.700 lapCeil    17 batchPos   7/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 16.800 batch 3
+PLAN at  lap  16.800 lapCeil    17 batchPos   8/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 16.900 batch 4
+PLAN at  lap  16.900 lapCeil    17 batchPos   9/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 17.000 batch 1
+PLAN at  lap  17.000 lapCeil    17 batchPos   0/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 17.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 17.100 batch 2
+PLAN at  lap  17.100 lapCeil    18 batchPos   1/10 batchID   2 
+STATUS uid     0  lap  17.100 lapCeil    18 batchPos   1/10 batchID   2  N_b  1770.884 N_ttl 17441.888 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  17.100 lapCeil    18 batchPos   1/10 batchID   2  N_b   811.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  17.100 lapCeil    18 batchPos   1/10 batchID   2  N_b   630.077 N_ttl  6191.000 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  17.100 lapCeil    18 batchPos   1/10 batchID   2  N_b   379.226 N_ttl  3790.437 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  17.100 lapCeil    18 batchPos   1/10 batchID   2  N_b   150.802 N_ttl  1536.762 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  17.100 lapCeil    18 batchPos   1/10 batchID   2  N_b    89.253 N_ttl   873.674 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  17.100 lapCeil    18 batchPos   1/10 batchID   2  N_b    62.334 N_ttl   701.730 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  17.100 lapCeil    18 batchPos   1/10 batchID   2  N_b    74.527 N_ttl   696.342 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  17.100 lapCeil    18 batchPos   1/10 batchID   2  N_b    30.898 N_ttl   299.168 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 17.200 batch 7
+PLAN at  lap  17.200 lapCeil    18 batchPos   2/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 17.300 batch 1
+PLAN at  lap  17.300 lapCeil    18 batchPos   3/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 17.400 batch 5
+PLAN at  lap  17.400 lapCeil    18 batchPos   4/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 17.500 batch 6
+PLAN at  lap  17.500 lapCeil    18 batchPos   5/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 17.600 batch 0
+PLAN at  lap  17.600 lapCeil    18 batchPos   6/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 17.700 batch 8
+PLAN at  lap  17.700 lapCeil    18 batchPos   7/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 17.800 batch 3
+PLAN at  lap  17.800 lapCeil    18 batchPos   8/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 17.900 batch 9
+PLAN at  lap  17.900 lapCeil    18 batchPos   9/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 18.000 batch 4
+PLAN at  lap  18.000 lapCeil    18 batchPos   0/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 18.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 18.100 batch 7
+PLAN at  lap  18.100 lapCeil    19 batchPos   1/10 batchID   7 
+STATUS uid     0  lap  18.100 lapCeil    19 batchPos   1/10 batchID   7  N_b  1765.014 N_ttl 17440.570 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  18.100 lapCeil    19 batchPos   1/10 batchID   7  N_b   866.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  18.100 lapCeil    19 batchPos   1/10 batchID   7  N_b   607.828 N_ttl  6192.265 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  18.100 lapCeil    19 batchPos   1/10 batchID   7  N_b   385.369 N_ttl  3790.528 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  18.100 lapCeil    19 batchPos   1/10 batchID   7  N_b   140.561 N_ttl  1536.952 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  18.100 lapCeil    19 batchPos   1/10 batchID   7  N_b    75.320 N_ttl   873.643 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  18.100 lapCeil    19 batchPos   1/10 batchID   7  N_b    75.458 N_ttl   701.517 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  18.100 lapCeil    19 batchPos   1/10 batchID   7  N_b    58.433 N_ttl   696.191 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  18.100 lapCeil    19 batchPos   1/10 batchID   7  N_b    24.016 N_ttl   299.334 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 18.200 batch 8
+PLAN at  lap  18.200 lapCeil    19 batchPos   2/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 18.300 batch 6
+PLAN at  lap  18.300 lapCeil    19 batchPos   3/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 18.400 batch 0
+PLAN at  lap  18.400 lapCeil    19 batchPos   4/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 18.500 batch 3
+PLAN at  lap  18.500 lapCeil    19 batchPos   5/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 18.600 batch 2
+PLAN at  lap  18.600 lapCeil    19 batchPos   6/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 18.700 batch 1
+PLAN at  lap  18.700 lapCeil    19 batchPos   7/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 18.800 batch 9
+PLAN at  lap  18.800 lapCeil    19 batchPos   8/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 18.900 batch 4
+PLAN at  lap  18.900 lapCeil    19 batchPos   9/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 19.000 batch 5
+PLAN at  lap  19.000 lapCeil    19 batchPos   0/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 19.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 19.100 batch 8
+PLAN at  lap  19.100 lapCeil    20 batchPos   1/10 batchID   8 
+STATUS uid     0  lap  19.100 lapCeil    20 batchPos   1/10 batchID   8  N_b  1791.034 N_ttl 17439.704 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  19.100 lapCeil    20 batchPos   1/10 batchID   8  N_b   840.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  19.100 lapCeil    20 batchPos   1/10 batchID   8  N_b   607.516 N_ttl  6193.066 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  19.100 lapCeil    20 batchPos   1/10 batchID   8  N_b   359.025 N_ttl  3790.585 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  19.100 lapCeil    20 batchPos   1/10 batchID   8  N_b   134.760 N_ttl  1537.102 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  19.100 lapCeil    20 batchPos   1/10 batchID   8  N_b    95.124 N_ttl   873.607 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  19.100 lapCeil    20 batchPos   1/10 batchID   8  N_b    66.531 N_ttl   701.358 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  19.100 lapCeil    20 batchPos   1/10 batchID   8  N_b    75.376 N_ttl   696.017 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  19.100 lapCeil    20 batchPos   1/10 batchID   8  N_b    28.633 N_ttl   299.562 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 19.200 batch 7
+PLAN at  lap  19.200 lapCeil    20 batchPos   2/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 19.300 batch 1
+PLAN at  lap  19.300 lapCeil    20 batchPos   3/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 19.400 batch 5
+PLAN at  lap  19.400 lapCeil    20 batchPos   4/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 19.500 batch 6
+PLAN at  lap  19.500 lapCeil    20 batchPos   5/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 19.600 batch 0
+PLAN at  lap  19.600 lapCeil    20 batchPos   6/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 19.700 batch 3
+PLAN at  lap  19.700 lapCeil    20 batchPos   7/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 19.800 batch 4
+PLAN at  lap  19.800 lapCeil    20 batchPos   8/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 19.900 batch 9
+PLAN at  lap  19.900 lapCeil    20 batchPos   9/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 20.000 batch 2
+PLAN at  lap  20.000 lapCeil    20 batchPos   0/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 20.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 20.100 batch 0
+PLAN at  lap  20.100 lapCeil    21 batchPos   1/10 batchID   0 
+STATUS uid     0  lap  20.100 lapCeil    21 batchPos   1/10 batchID   0  N_b  1761.333 N_ttl 17439.180 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  20.100 lapCeil    21 batchPos   1/10 batchID   0  N_b   829.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  20.100 lapCeil    21 batchPos   1/10 batchID   0  N_b   602.535 N_ttl  6193.567 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  20.100 lapCeil    21 batchPos   1/10 batchID   0  N_b   400.157 N_ttl  3790.630 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  20.100 lapCeil    21 batchPos   1/10 batchID   0  N_b   145.844 N_ttl  1537.220 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  20.100 lapCeil    21 batchPos   1/10 batchID   0  N_b    87.393 N_ttl   873.539 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  20.100 lapCeil    21 batchPos   1/10 batchID   0  N_b    70.328 N_ttl   701.254 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  20.100 lapCeil    21 batchPos   1/10 batchID   0  N_b    66.453 N_ttl   695.827 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  20.100 lapCeil    21 batchPos   1/10 batchID   0  N_b    35.958 N_ttl   299.783 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 20.200 batch 8
+PLAN at  lap  20.200 lapCeil    21 batchPos   2/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 20.300 batch 2
+PLAN at  lap  20.300 lapCeil    21 batchPos   3/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 20.400 batch 7
+PLAN at  lap  20.400 lapCeil    21 batchPos   4/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 20.500 batch 4
+PLAN at  lap  20.500 lapCeil    21 batchPos   5/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 20.600 batch 9
+PLAN at  lap  20.600 lapCeil    21 batchPos   6/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 20.700 batch 6
+PLAN at  lap  20.700 lapCeil    21 batchPos   7/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 20.800 batch 3
+PLAN at  lap  20.800 lapCeil    21 batchPos   8/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 20.900 batch 1
+PLAN at  lap  20.900 lapCeil    21 batchPos   9/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 21.000 batch 5
+PLAN at  lap  21.000 lapCeil    21 batchPos   0/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 21.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 21.100 batch 6
+PLAN at  lap  21.100 lapCeil    22 batchPos   1/10 batchID   6 
+STATUS uid     0  lap  21.100 lapCeil    22 batchPos   1/10 batchID   6  N_b  1707.520 N_ttl 17438.839 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  21.100 lapCeil    22 batchPos   1/10 batchID   6  N_b   851.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  21.100 lapCeil    22 batchPos   1/10 batchID   6  N_b   612.247 N_ttl  6193.886 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  21.100 lapCeil    22 batchPos   1/10 batchID   6  N_b   399.994 N_ttl  3790.669 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  21.100 lapCeil    22 batchPos   1/10 batchID   6  N_b   165.289 N_ttl  1537.309 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  21.100 lapCeil    22 batchPos   1/10 batchID   6  N_b    87.618 N_ttl   873.487 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  21.100 lapCeil    22 batchPos   1/10 batchID   6  N_b    79.982 N_ttl   701.192 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  21.100 lapCeil    22 batchPos   1/10 batchID   6  N_b    74.966 N_ttl   695.633 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  21.100 lapCeil    22 batchPos   1/10 batchID   6  N_b    20.385 N_ttl   299.984 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 21.200 batch 2
+PLAN at  lap  21.200 lapCeil    22 batchPos   2/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 21.300 batch 4
+PLAN at  lap  21.300 lapCeil    22 batchPos   3/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 21.400 batch 1
+PLAN at  lap  21.400 lapCeil    22 batchPos   4/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 21.500 batch 0
+PLAN at  lap  21.500 lapCeil    22 batchPos   5/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 21.600 batch 3
+PLAN at  lap  21.600 lapCeil    22 batchPos   6/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 21.700 batch 8
+PLAN at  lap  21.700 lapCeil    22 batchPos   7/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 21.800 batch 7
+PLAN at  lap  21.800 lapCeil    22 batchPos   8/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 21.900 batch 9
+PLAN at  lap  21.900 lapCeil    22 batchPos   9/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 22.000 batch 5
+PLAN at  lap  22.000 lapCeil    22 batchPos   0/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 22.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 22.100 batch 1
+PLAN at  lap  22.100 lapCeil    23 batchPos   1/10 batchID   1 
+STATUS uid     0  lap  22.100 lapCeil    23 batchPos   1/10 batchID   1  N_b  1709.762 N_ttl 17438.594 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  22.100 lapCeil    23 batchPos   1/10 batchID   1  N_b   884.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  22.100 lapCeil    23 batchPos   1/10 batchID   1  N_b   628.290 N_ttl  6194.085 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  22.100 lapCeil    23 batchPos   1/10 batchID   1  N_b   379.714 N_ttl  3790.751 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  22.100 lapCeil    23 batchPos   1/10 batchID   1  N_b   159.509 N_ttl  1537.384 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  22.100 lapCeil    23 batchPos   1/10 batchID   1  N_b    81.218 N_ttl   873.369 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  22.100 lapCeil    23 batchPos   1/10 batchID   1  N_b    65.612 N_ttl   701.141 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  22.100 lapCeil    23 batchPos   1/10 batchID   1  N_b    61.232 N_ttl   695.354 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  22.100 lapCeil    23 batchPos   1/10 batchID   1  N_b    29.662 N_ttl   300.323 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 22.200 batch 4
+PLAN at  lap  22.200 lapCeil    23 batchPos   2/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 22.300 batch 5
+PLAN at  lap  22.300 lapCeil    23 batchPos   3/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 22.400 batch 6
+PLAN at  lap  22.400 lapCeil    23 batchPos   4/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 22.500 batch 8
+PLAN at  lap  22.500 lapCeil    23 batchPos   5/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 22.600 batch 2
+PLAN at  lap  22.600 lapCeil    23 batchPos   6/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 22.700 batch 7
+PLAN at  lap  22.700 lapCeil    23 batchPos   7/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 22.800 batch 3
+PLAN at  lap  22.800 lapCeil    23 batchPos   8/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 22.900 batch 0
+PLAN at  lap  22.900 lapCeil    23 batchPos   9/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 23.000 batch 9
+PLAN at  lap  23.000 lapCeil    23 batchPos   0/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 23.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 23.100 batch 8
+PLAN at  lap  23.100 lapCeil    24 batchPos   1/10 batchID   8 
+STATUS uid     0  lap  23.100 lapCeil    24 batchPos   1/10 batchID   8  N_b  1790.913 N_ttl 17438.443 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  23.100 lapCeil    24 batchPos   1/10 batchID   8  N_b   840.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  23.100 lapCeil    24 batchPos   1/10 batchID   8  N_b   607.593 N_ttl  6194.198 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  23.100 lapCeil    24 batchPos   1/10 batchID   8  N_b   359.051 N_ttl  3790.854 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  23.100 lapCeil    24 batchPos   1/10 batchID   8  N_b   134.797 N_ttl  1537.446 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  23.100 lapCeil    24 batchPos   1/10 batchID   8  N_b    95.129 N_ttl   873.112 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  23.100 lapCeil    24 batchPos   1/10 batchID   8  N_b    66.517 N_ttl   701.102 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  23.100 lapCeil    24 batchPos   1/10 batchID   8  N_b    75.393 N_ttl   695.002 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  23.100 lapCeil    24 batchPos   1/10 batchID   8  N_b    28.606 N_ttl   300.844 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 23.200 batch 3
+PLAN at  lap  23.200 lapCeil    24 batchPos   2/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 23.300 batch 1
+PLAN at  lap  23.300 lapCeil    24 batchPos   3/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 23.400 batch 9
+PLAN at  lap  23.400 lapCeil    24 batchPos   4/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 23.500 batch 6
+PLAN at  lap  23.500 lapCeil    24 batchPos   5/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 23.600 batch 0
+PLAN at  lap  23.600 lapCeil    24 batchPos   6/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 23.700 batch 2
+PLAN at  lap  23.700 lapCeil    24 batchPos   7/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 23.800 batch 7
+PLAN at  lap  23.800 lapCeil    24 batchPos   8/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 23.900 batch 4
+PLAN at  lap  23.900 lapCeil    24 batchPos   9/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 24.000 batch 5
+PLAN at  lap  24.000 lapCeil    24 batchPos   0/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 24.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 24.100 batch 7
+PLAN at  lap  24.100 lapCeil    25 batchPos   1/10 batchID   7 
+STATUS uid     0  lap  24.100 lapCeil    25 batchPos   1/10 batchID   7  N_b  1764.774 N_ttl 17438.225 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  24.100 lapCeil    25 batchPos   1/10 batchID   7  N_b   866.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  24.100 lapCeil    25 batchPos   1/10 batchID   7  N_b   607.973 N_ttl  6194.210 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  24.100 lapCeil    25 batchPos   1/10 batchID   7  N_b   385.443 N_ttl  3791.078 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  24.100 lapCeil    25 batchPos   1/10 batchID   7  N_b   140.605 N_ttl  1537.497 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  24.100 lapCeil    25 batchPos   1/10 batchID   7  N_b    75.292 N_ttl   872.595 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  24.100 lapCeil    25 batchPos   1/10 batchID   7  N_b    75.483 N_ttl   701.081 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  24.100 lapCeil    25 batchPos   1/10 batchID   7  N_b    58.490 N_ttl   693.856 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  24.100 lapCeil    25 batchPos   1/10 batchID   7  N_b    23.941 N_ttl   302.458 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 24.200 batch 4
+PLAN at  lap  24.200 lapCeil    25 batchPos   2/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 24.300 batch 6
+PLAN at  lap  24.300 lapCeil    25 batchPos   3/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 24.400 batch 9
+PLAN at  lap  24.400 lapCeil    25 batchPos   4/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 24.500 batch 0
+PLAN at  lap  24.500 lapCeil    25 batchPos   5/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 24.600 batch 3
+PLAN at  lap  24.600 lapCeil    25 batchPos   6/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 24.700 batch 1
+PLAN at  lap  24.700 lapCeil    25 batchPos   7/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 24.800 batch 2
+PLAN at  lap  24.800 lapCeil    25 batchPos   8/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 24.900 batch 5
+PLAN at  lap  24.900 lapCeil    25 batchPos   9/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 25.000 batch 8
+PLAN at  lap  25.000 lapCeil    25 batchPos   0/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 25.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 25.100 batch 1
+PLAN at  lap  25.100 lapCeil    26 batchPos   1/10 batchID   1 
+STATUS uid     0  lap  25.100 lapCeil    26 batchPos   1/10 batchID   1  N_b  1709.582 N_ttl 17437.803 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  25.100 lapCeil    26 batchPos   1/10 batchID   1  N_b   884.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  25.100 lapCeil    26 batchPos   1/10 batchID   1  N_b   628.309 N_ttl  6194.140 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  25.100 lapCeil    26 batchPos   1/10 batchID   1  N_b   379.795 N_ttl  3791.472 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  25.100 lapCeil    26 batchPos   1/10 batchID   1  N_b   159.515 N_ttl  1537.542 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  25.100 lapCeil    26 batchPos   1/10 batchID   1  N_b    81.202 N_ttl   872.175 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  25.100 lapCeil    26 batchPos   1/10 batchID   1  N_b    65.606 N_ttl   700.962 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  25.100 lapCeil    26 batchPos   1/10 batchID   1  N_b    60.510 N_ttl   691.815 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  25.100 lapCeil    26 batchPos   1/10 batchID   1  N_b    30.482 N_ttl   305.091 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 25.200 batch 5
+PLAN at  lap  25.200 lapCeil    26 batchPos   2/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 25.300 batch 3
+PLAN at  lap  25.300 lapCeil    26 batchPos   3/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 25.400 batch 9
+PLAN at  lap  25.400 lapCeil    26 batchPos   4/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 25.500 batch 6
+PLAN at  lap  25.500 lapCeil    26 batchPos   5/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 25.600 batch 4
+PLAN at  lap  25.600 lapCeil    26 batchPos   6/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 25.700 batch 0
+PLAN at  lap  25.700 lapCeil    26 batchPos   7/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 25.800 batch 2
+PLAN at  lap  25.800 lapCeil    26 batchPos   8/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 25.900 batch 8
+PLAN at  lap  25.900 lapCeil    26 batchPos   9/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 26.000 batch 7
+PLAN at  lap  26.000 lapCeil    26 batchPos   0/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 26.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 26.100 batch 3
+PLAN at  lap  26.100 lapCeil    27 batchPos   1/10 batchID   3 
+STATUS uid     0  lap  26.100 lapCeil    27 batchPos   1/10 batchID   3  N_b  1758.208 N_ttl 17437.578 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  26.100 lapCeil    27 batchPos   1/10 batchID   3  N_b   838.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  26.100 lapCeil    27 batchPos   1/10 batchID   3  N_b   594.797 N_ttl  6194.123 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  26.100 lapCeil    27 batchPos   1/10 batchID   3  N_b   372.653 N_ttl  3792.050 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  26.100 lapCeil    27 batchPos   1/10 batchID   3  N_b   166.489 N_ttl  1537.596 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  26.100 lapCeil    27 batchPos   1/10 batchID   3  N_b    96.587 N_ttl   872.151 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  26.100 lapCeil    27 batchPos   1/10 batchID   3  N_b    73.858 N_ttl   700.848 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  26.100 lapCeil    27 batchPos   1/10 batchID   3  N_b    72.743 N_ttl   691.347 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  26.100 lapCeil    27 batchPos   1/10 batchID   3  N_b    25.665 N_ttl   305.307 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 26.200 batch 0
+PLAN at  lap  26.200 lapCeil    27 batchPos   2/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 26.300 batch 4
+PLAN at  lap  26.300 lapCeil    27 batchPos   3/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 26.400 batch 1
+PLAN at  lap  26.400 lapCeil    27 batchPos   4/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 26.500 batch 2
+PLAN at  lap  26.500 lapCeil    27 batchPos   5/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 26.600 batch 9
+PLAN at  lap  26.600 lapCeil    27 batchPos   6/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 26.700 batch 6
+PLAN at  lap  26.700 lapCeil    27 batchPos   7/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 26.800 batch 8
+PLAN at  lap  26.800 lapCeil    27 batchPos   8/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 26.900 batch 5
+PLAN at  lap  26.900 lapCeil    27 batchPos   9/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 27.000 batch 7
+PLAN at  lap  27.000 lapCeil    27 batchPos   0/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 27.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 27.100 batch 4
+PLAN at  lap  27.100 lapCeil    28 batchPos   1/10 batchID   4 
+STATUS uid     0  lap  27.100 lapCeil    28 batchPos   1/10 batchID   4  N_b  1715.821 N_ttl 17437.550 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  27.100 lapCeil    28 batchPos   1/10 batchID   4  N_b   851.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  27.100 lapCeil    28 batchPos   1/10 batchID   4  N_b   644.329 N_ttl  6194.052 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  27.100 lapCeil    28 batchPos   1/10 batchID   4  N_b   377.724 N_ttl  3792.272 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  27.100 lapCeil    28 batchPos   1/10 batchID   4  N_b   155.925 N_ttl  1537.606 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  27.100 lapCeil    28 batchPos   1/10 batchID   4  N_b    90.569 N_ttl   872.175 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  27.100 lapCeil    28 batchPos   1/10 batchID   4  N_b    72.297 N_ttl   700.820 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  27.100 lapCeil    28 batchPos   1/10 batchID   4  N_b    64.522 N_ttl   691.301 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  27.100 lapCeil    28 batchPos   1/10 batchID   4  N_b    26.814 N_ttl   305.224 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 27.200 batch 2
+PLAN at  lap  27.200 lapCeil    28 batchPos   2/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 27.300 batch 0
+PLAN at  lap  27.300 lapCeil    28 batchPos   3/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 27.400 batch 5
+PLAN at  lap  27.400 lapCeil    28 batchPos   4/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 27.500 batch 3
+PLAN at  lap  27.500 lapCeil    28 batchPos   5/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 27.600 batch 1
+PLAN at  lap  27.600 lapCeil    28 batchPos   6/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 27.700 batch 7
+PLAN at  lap  27.700 lapCeil    28 batchPos   7/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 27.800 batch 8
+PLAN at  lap  27.800 lapCeil    28 batchPos   8/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 27.900 batch 6
+PLAN at  lap  27.900 lapCeil    28 batchPos   9/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 28.000 batch 9
+PLAN at  lap  28.000 lapCeil    28 batchPos   0/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 28.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 28.100 batch 9
+PLAN at  lap  28.100 lapCeil    29 batchPos   1/10 batchID   9 
+STATUS uid     0  lap  28.100 lapCeil    29 batchPos   1/10 batchID   9  N_b  1763.687 N_ttl 17437.451 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  28.100 lapCeil    29 batchPos   1/10 batchID   9  N_b   838.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  28.100 lapCeil    29 batchPos   1/10 batchID   9  N_b   611.293 N_ttl  6194.035 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  28.100 lapCeil    29 batchPos   1/10 batchID   9  N_b   358.602 N_ttl  3792.363 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  28.100 lapCeil    29 batchPos   1/10 batchID   9  N_b   144.933 N_ttl  1537.614 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  28.100 lapCeil    29 batchPos   1/10 batchID   9  N_b    95.482 N_ttl   872.181 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  28.100 lapCeil    29 batchPos   1/10 batchID   9  N_b    74.139 N_ttl   700.788 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  28.100 lapCeil    29 batchPos   1/10 batchID   9  N_b    63.259 N_ttl   691.338 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  28.100 lapCeil    29 batchPos   1/10 batchID   9  N_b    48.606 N_ttl   305.232 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 28.200 batch 8
+PLAN at  lap  28.200 lapCeil    29 batchPos   2/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 28.300 batch 2
+PLAN at  lap  28.300 lapCeil    29 batchPos   3/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 28.400 batch 0
+PLAN at  lap  28.400 lapCeil    29 batchPos   4/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 28.500 batch 4
+PLAN at  lap  28.500 lapCeil    29 batchPos   5/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 28.600 batch 1
+PLAN at  lap  28.600 lapCeil    29 batchPos   6/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 28.700 batch 7
+PLAN at  lap  28.700 lapCeil    29 batchPos   7/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 28.800 batch 5
+PLAN at  lap  28.800 lapCeil    29 batchPos   8/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 28.900 batch 3
+PLAN at  lap  28.900 lapCeil    29 batchPos   9/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 29.000 batch 6
+PLAN at  lap  29.000 lapCeil    29 batchPos   0/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 29.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 29.100 batch 2
+PLAN at  lap  29.100 lapCeil    30 batchPos   1/10 batchID   2 
+STATUS uid     0  lap  29.100 lapCeil    30 batchPos   1/10 batchID   2  N_b  1770.641 N_ttl 17437.369 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  29.100 lapCeil    30 batchPos   1/10 batchID   2  N_b   811.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  29.100 lapCeil    30 batchPos   1/10 batchID   2  N_b   630.302 N_ttl  6194.049 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  29.100 lapCeil    30 batchPos   1/10 batchID   2  N_b   379.298 N_ttl  3792.389 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  29.100 lapCeil    30 batchPos   1/10 batchID   2  N_b   150.884 N_ttl  1537.621 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  29.100 lapCeil    30 batchPos   1/10 batchID   2  N_b    88.697 N_ttl   872.182 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  29.100 lapCeil    30 batchPos   1/10 batchID   2  N_b    62.311 N_ttl   700.769 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  29.100 lapCeil    30 batchPos   1/10 batchID   2  N_b    71.927 N_ttl   691.358 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  29.100 lapCeil    30 batchPos   1/10 batchID   2  N_b    33.941 N_ttl   305.263 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 29.200 batch 7
+PLAN at  lap  29.200 lapCeil    30 batchPos   2/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 29.300 batch 3
+PLAN at  lap  29.300 lapCeil    30 batchPos   3/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 29.400 batch 6
+PLAN at  lap  29.400 lapCeil    30 batchPos   4/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 29.500 batch 0
+PLAN at  lap  29.500 lapCeil    30 batchPos   5/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 29.600 batch 9
+PLAN at  lap  29.600 lapCeil    30 batchPos   6/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 29.700 batch 5
+PLAN at  lap  29.700 lapCeil    30 batchPos   7/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 29.800 batch 4
+PLAN at  lap  29.800 lapCeil    30 batchPos   8/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 29.900 batch 1
+PLAN at  lap  29.900 lapCeil    30 batchPos   9/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 30.000 batch 8
+PLAN at  lap  30.000 lapCeil    30 batchPos   0/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 30.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 30.100 batch 6
+PLAN at  lap  30.100 lapCeil    31 batchPos   1/10 batchID   6 
+STATUS uid     0  lap  30.100 lapCeil    31 batchPos   1/10 batchID   6  N_b  1707.434 N_ttl 17437.289 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  30.100 lapCeil    31 batchPos   1/10 batchID   6  N_b   851.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  30.100 lapCeil    31 batchPos   1/10 batchID   6  N_b   612.330 N_ttl  6194.070 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  30.100 lapCeil    31 batchPos   1/10 batchID   6  N_b   400.020 N_ttl  3792.397 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  30.100 lapCeil    31 batchPos   1/10 batchID   6  N_b   165.316 N_ttl  1537.624 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  30.100 lapCeil    31 batchPos   1/10 batchID   6  N_b    87.599 N_ttl   872.178 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  30.100 lapCeil    31 batchPos   1/10 batchID   6  N_b    80.009 N_ttl   700.756 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  30.100 lapCeil    31 batchPos   1/10 batchID   6  N_b    74.979 N_ttl   691.414 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  30.100 lapCeil    31 batchPos   1/10 batchID   6  N_b    20.314 N_ttl   305.273 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 30.200 batch 0
+PLAN at  lap  30.200 lapCeil    31 batchPos   2/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 30.300 batch 3
+PLAN at  lap  30.300 lapCeil    31 batchPos   3/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 30.400 batch 2
+PLAN at  lap  30.400 lapCeil    31 batchPos   4/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 30.500 batch 7
+PLAN at  lap  30.500 lapCeil    31 batchPos   5/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 30.600 batch 5
+PLAN at  lap  30.600 lapCeil    31 batchPos   6/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 30.700 batch 8
+PLAN at  lap  30.700 lapCeil    31 batchPos   7/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 30.800 batch 1
+PLAN at  lap  30.800 lapCeil    31 batchPos   8/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 30.900 batch 4
+PLAN at  lap  30.900 lapCeil    31 batchPos   9/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 31.000 batch 9
+PLAN at  lap  31.000 lapCeil    31 batchPos   0/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 31.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 31.100 batch 9
+PLAN at  lap  31.100 lapCeil    32 batchPos   1/10 batchID   9 
+STATUS uid     0  lap  31.100 lapCeil    32 batchPos   1/10 batchID   9  N_b  1763.667 N_ttl 17437.208 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  31.100 lapCeil    32 batchPos   1/10 batchID   9  N_b   838.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  31.100 lapCeil    32 batchPos   1/10 batchID   9  N_b   611.307 N_ttl  6194.093 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  31.100 lapCeil    32 batchPos   1/10 batchID   9  N_b   358.605 N_ttl  3792.395 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  31.100 lapCeil    32 batchPos   1/10 batchID   9  N_b   144.935 N_ttl  1537.626 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  31.100 lapCeil    32 batchPos   1/10 batchID   9  N_b    95.480 N_ttl   872.175 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  31.100 lapCeil    32 batchPos   1/10 batchID   9  N_b    74.134 N_ttl   700.746 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  31.100 lapCeil    32 batchPos   1/10 batchID   9  N_b    63.259 N_ttl   691.461 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  31.100 lapCeil    32 batchPos   1/10 batchID   9  N_b    48.613 N_ttl   305.295 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 31.200 batch 0
+PLAN at  lap  31.200 lapCeil    32 batchPos   2/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 31.300 batch 1
+PLAN at  lap  31.300 lapCeil    32 batchPos   3/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 31.400 batch 4
+PLAN at  lap  31.400 lapCeil    32 batchPos   4/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 31.500 batch 2
+PLAN at  lap  31.500 lapCeil    32 batchPos   5/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 31.600 batch 3
+PLAN at  lap  31.600 lapCeil    32 batchPos   6/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 31.700 batch 8
+PLAN at  lap  31.700 lapCeil    32 batchPos   7/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 31.800 batch 6
+PLAN at  lap  31.800 lapCeil    32 batchPos   8/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 31.900 batch 5
+PLAN at  lap  31.900 lapCeil    32 batchPos   9/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 32.000 batch 7
+PLAN at  lap  32.000 lapCeil    32 batchPos   0/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 32.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 32.100 batch 1
+PLAN at  lap  32.100 lapCeil    33 batchPos   1/10 batchID   1 
+STATUS uid     0  lap  32.100 lapCeil    33 batchPos   1/10 batchID   1  N_b  1709.509 N_ttl 17437.142 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  32.100 lapCeil    33 batchPos   1/10 batchID   1  N_b   884.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  32.100 lapCeil    33 batchPos   1/10 batchID   1  N_b   628.323 N_ttl  6194.114 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  32.100 lapCeil    33 batchPos   1/10 batchID   1  N_b   379.821 N_ttl  3792.389 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  32.100 lapCeil    33 batchPos   1/10 batchID   1  N_b   159.504 N_ttl  1537.626 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  32.100 lapCeil    33 batchPos   1/10 batchID   1  N_b    81.200 N_ttl   872.173 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  32.100 lapCeil    33 batchPos   1/10 batchID   1  N_b    65.590 N_ttl   700.741 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  32.100 lapCeil    33 batchPos   1/10 batchID   1  N_b    60.478 N_ttl   691.502 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  32.100 lapCeil    33 batchPos   1/10 batchID   1  N_b    30.576 N_ttl   305.313 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 32.200 batch 5
+PLAN at  lap  32.200 lapCeil    33 batchPos   2/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 32.300 batch 4
+PLAN at  lap  32.300 lapCeil    33 batchPos   3/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 32.400 batch 7
+PLAN at  lap  32.400 lapCeil    33 batchPos   4/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 32.500 batch 9
+PLAN at  lap  32.500 lapCeil    33 batchPos   5/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 32.600 batch 6
+PLAN at  lap  32.600 lapCeil    33 batchPos   6/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 32.700 batch 2
+PLAN at  lap  32.700 lapCeil    33 batchPos   7/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 32.800 batch 8
+PLAN at  lap  32.800 lapCeil    33 batchPos   8/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 32.900 batch 3
+PLAN at  lap  32.900 lapCeil    33 batchPos   9/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 33.000 batch 0
+PLAN at  lap  33.000 lapCeil    33 batchPos   0/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 33.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 33.100 batch 8
+PLAN at  lap  33.100 lapCeil    34 batchPos   1/10 batchID   8 
+STATUS uid     0  lap  33.100 lapCeil    34 batchPos   1/10 batchID   8  N_b  1790.616 N_ttl 17437.082 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  33.100 lapCeil    34 batchPos   1/10 batchID   8  N_b   840.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  33.100 lapCeil    34 batchPos   1/10 batchID   8  N_b   607.588 N_ttl  6194.135 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  33.100 lapCeil    34 batchPos   1/10 batchID   8  N_b   359.145 N_ttl  3792.383 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  33.100 lapCeil    34 batchPos   1/10 batchID   8  N_b   134.843 N_ttl  1537.626 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  33.100 lapCeil    34 batchPos   1/10 batchID   8  N_b    95.147 N_ttl   872.171 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  33.100 lapCeil    34 batchPos   1/10 batchID   8  N_b    66.462 N_ttl   700.737 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  33.100 lapCeil    34 batchPos   1/10 batchID   8  N_b    75.689 N_ttl   691.540 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  33.100 lapCeil    34 batchPos   1/10 batchID   8  N_b    28.510 N_ttl   305.326 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 33.200 batch 4
+PLAN at  lap  33.200 lapCeil    34 batchPos   2/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 33.300 batch 0
+PLAN at  lap  33.300 lapCeil    34 batchPos   3/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 33.400 batch 5
+PLAN at  lap  33.400 lapCeil    34 batchPos   4/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 33.500 batch 6
+PLAN at  lap  33.500 lapCeil    34 batchPos   5/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 33.600 batch 9
+PLAN at  lap  33.600 lapCeil    34 batchPos   6/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 33.700 batch 1
+PLAN at  lap  33.700 lapCeil    34 batchPos   7/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 33.800 batch 3
+PLAN at  lap  33.800 lapCeil    34 batchPos   8/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 33.900 batch 7
+PLAN at  lap  33.900 lapCeil    34 batchPos   9/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 34.000 batch 2
+PLAN at  lap  34.000 lapCeil    34 batchPos   0/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 34.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 34.100 batch 2
+PLAN at  lap  34.100 lapCeil    35 batchPos   1/10 batchID   2 
+STATUS uid     0  lap  34.100 lapCeil    35 batchPos   1/10 batchID   2  N_b  1770.617 N_ttl 17437.038 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  34.100 lapCeil    35 batchPos   1/10 batchID   2  N_b   811.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  34.100 lapCeil    35 batchPos   1/10 batchID   2  N_b   630.322 N_ttl  6194.151 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  34.100 lapCeil    35 batchPos   1/10 batchID   2  N_b   379.293 N_ttl  3792.376 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  34.100 lapCeil    35 batchPos   1/10 batchID   2  N_b   150.885 N_ttl  1537.624 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  34.100 lapCeil    35 batchPos   1/10 batchID   2  N_b    88.695 N_ttl   872.170 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  34.100 lapCeil    35 batchPos   1/10 batchID   2  N_b    62.311 N_ttl   700.735 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  34.100 lapCeil    35 batchPos   1/10 batchID   2  N_b    71.902 N_ttl   691.563 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  34.100 lapCeil    35 batchPos   1/10 batchID   2  N_b    33.977 N_ttl   305.343 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 34.200 batch 6
+PLAN at  lap  34.200 lapCeil    35 batchPos   2/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 34.300 batch 1
+PLAN at  lap  34.300 lapCeil    35 batchPos   3/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 34.400 batch 0
+PLAN at  lap  34.400 lapCeil    35 batchPos   4/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 34.500 batch 3
+PLAN at  lap  34.500 lapCeil    35 batchPos   5/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 34.600 batch 5
+PLAN at  lap  34.600 lapCeil    35 batchPos   6/10 batchID   5 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 34.700 batch 7
+PLAN at  lap  34.700 lapCeil    35 batchPos   7/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 34.800 batch 9
+PLAN at  lap  34.800 lapCeil    35 batchPos   8/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 34.900 batch 4
+PLAN at  lap  34.900 lapCeil    35 batchPos   9/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 35.000 batch 8
+PLAN at  lap  35.000 lapCeil    35 batchPos   0/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 35.000 : None attempted. 0 past failures. 0 too small. 9 too busy.
+PLANNING birth at lap 35.100 batch 5
+PLAN at  lap  35.100 lapCeil    36 batchPos   1/10 batchID   5 
+STATUS uid     0  lap  35.100 lapCeil    36 batchPos   1/10 batchID   5  N_b  1695.315 N_ttl 17437.005 BUSY DELETE PROPOSAL
+STATUS uid     1  lap  35.100 lapCeil    36 batchPos   1/10 batchID   5  N_b   848.000 N_ttl  8456.000 BUSY DELETE PROPOSAL
+STATUS uid     3  lap  35.100 lapCeil    36 batchPos   1/10 batchID   5  N_b   654.589 N_ttl  6194.157 BUSY DELETE PROPOSAL
+STATUS uid     4  lap  35.100 lapCeil    36 batchPos   1/10 batchID   5  N_b   379.063 N_ttl  3792.370 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  35.100 lapCeil    36 batchPos   1/10 batchID   5  N_b   173.215 N_ttl  1537.623 BUSY DELETE PROPOSAL
+STATUS uid     8  lap  35.100 lapCeil    36 batchPos   1/10 batchID   5  N_b    75.106 N_ttl   872.169 BUSY DELETE PROPOSAL
+STATUS uid     5  lap  35.100 lapCeil    36 batchPos   1/10 batchID   5  N_b    60.342 N_ttl   700.733 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  35.100 lapCeil    36 batchPos   1/10 batchID   5  N_b    82.927 N_ttl   691.589 BUSY DELETE PROPOSAL
+STATUS uid     7  lap  35.100 lapCeil    36 batchPos   1/10 batchID   5  N_b    30.442 N_ttl   305.352 BUSY DELETE PROPOSAL
+0/9 UIDs retained from preexisting proposals.
+9/9 UIDs too busy with other moves (merge/delete).
+0/9 UIDs too small (too few atoms in current batch). Required size >= 2 (--b_minNumAtomsForTargetComp)
+0/9 UIDs disqualified for past failures.
+0/9 UIDs eligible for new proposal
+
+PLANNING birth at lap 35.200 batch 7
+PLAN at  lap  35.200 lapCeil    36 batchPos   2/10 batchID   7 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 35.300 batch 2
+PLAN at  lap  35.300 lapCeil    36 batchPos   3/10 batchID   2 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 35.400 batch 4
+PLAN at  lap  35.400 lapCeil    36 batchPos   4/10 batchID   4 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 35.500 batch 6
+PLAN at  lap  35.500 lapCeil    36 batchPos   5/10 batchID   6 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 35.600 batch 8
+PLAN at  lap  35.600 lapCeil    36 batchPos   6/10 batchID   8 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 35.700 batch 0
+PLAN at  lap  35.700 lapCeil    36 batchPos   7/10 batchID   0 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 35.800 batch 3
+PLAN at  lap  35.800 lapCeil    36 batchPos   8/10 batchID   3 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 35.900 batch 1
+PLAN at  lap  35.900 lapCeil    36 batchPos   9/10 batchID   1 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+PLANNING birth at lap 36.000 batch 9
+PLAN at  lap  36.000 lapCeil    36 batchPos   0/10 batchID   9 
+0 UIDs retained from proposals earlier this lap. No new proposals at this batch.
+BIRTH @ lap 36.000 : None attempted. 0 past failures. 0 too small. 9 too busy.

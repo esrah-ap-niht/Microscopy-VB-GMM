@@ -1212,7 +1212,7 @@ def convert_oxford_RPL_to_H5(montage, metadata, file_list, output_src):
                 pass 
             
             try: 
-                save_file['EDS'].create_dataset('Xray Spectrum', shape = (y_range, x_range, block.shape[2] ), chunks=True, dtype = 'int16')
+                save_file['EDS'].create_dataset('Xray Spectrum', shape = (y_range, x_range, block.shape[2] ), chunks=( 1000, 1000, 1), dtype = 'int16')
             except: 
                 pass 
             

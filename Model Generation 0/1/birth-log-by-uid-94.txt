@@ -1,0 +1,12 @@
+STATUS uid    94  lap  17.100 lapCeil    18 batchPos   1/10 batchID   2  N_b     0.000 N_ttl     1.000 BUSY DELETE PROPOSAL
+STATUS uid    94  lap  18.100 lapCeil    19 batchPos   1/10 batchID   7  N_b     0.000 N_ttl     1.000 BUSY DELETE PROPOSAL
+STATUS uid    94  lap  19.100 lapCeil    20 batchPos   1/10 batchID   8  N_b     0.000 N_ttl     1.000 BUSY DELETE PROPOSAL
+STATUS uid    94  lap  20.100 lapCeil    21 batchPos   1/10 batchID   0  N_b     1.000 N_ttl     1.000 BUSY DELETE PROPOSAL
+STATUS uid    94  lap  21.100 lapCeil    22 batchPos   1/10 batchID   6  N_b     0.000 N_ttl     1.000 BUSY DELETE PROPOSAL
+STATUS uid    94  lap  22.100 lapCeil    23 batchPos   1/10 batchID   1  N_b     0.000 N_ttl     1.000 BUSY DELETE PROPOSAL
+STATUS uid    94  lap  23.100 lapCeil    24 batchPos   1/10 batchID   8  N_b     0.000 N_ttl     1.000 BUSY DELETE PROPOSAL
+STATUS uid    94  lap  24.100 lapCeil    25 batchPos   1/10 batchID   7  N_b     0.000 N_ttl     1.000 BUSY DELETE PROPOSAL
+STATUS uid    94  lap  25.100 lapCeil    26 batchPos   1/10 batchID   1  N_b     0.000 N_ttl     1.000 BUSY DELETE PROPOSAL
+STATUS uid    94  lap  26.100 lapCeil    27 batchPos   1/10 batchID   3  N_b     0.000 N_ttl     1.000 BUSY DELETE PROPOSAL
+STATUS uid    94  lap  27.100 lapCeil    28 batchPos   1/10 batchID   4  N_b     0.000 N_ttl     1.000 BUSY DELETE PROPOSAL
+STATUS uid    94  lap  28.100 lapCeil    29 batchPos   1/10 batchID   9  N_b     0.000 N_ttl     1.000 BUSY DELETE PROPOSAL

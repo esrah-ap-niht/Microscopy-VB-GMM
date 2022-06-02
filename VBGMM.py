@@ -716,7 +716,10 @@ def main():
         segmentation = np.asarray(segmentation).reshape(x, y)
         save_h5(analysis_file, 'Montages/' + str(montage), ['array', 'Segmentation'], segmentation )
 
-
+    save_h5(analysis_file, 'GMM Parameters', ['array', 'Means'], means )
+    save_h5(analysis_file, 'GMM Parameters', ['array', 'Weights'], weights )
+    save_h5(analysis_file, 'GMM Parameters', ['array', 'Covariance'], covar )
+    save_h5(analysis_file, 'GMM Parameters', ['array', 'Loss'], loss )
 
 
 

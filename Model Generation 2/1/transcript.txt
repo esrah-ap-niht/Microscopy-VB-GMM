@@ -1,0 +1,123 @@
+Dataset Summary:
+X Data
+  total size: 49987 units
+  batch size: 4999 units
+  num. batches: 10
+Allocation Model:  DP mixture with K=0. Concentration gamma0= 3.00
+Obs. Data  Model:  Gaussian with full covariance.
+Obs. Data  Prior:  Gauss-Wishart on mean and covar of each cluster
+  E[  mean[k] ] = 
+   [0. 0.]  ...
+  E[ covar[k] ] = 
+  [[1. 0.]
+   [0. 1.]] ...
+Initialization:
+  initname = bregmankmeans
+  K = 10 (number of clusters)
+  seed = 1607680
+  elapsed_time: 0.6 sec
+Learn Alg: memoVB | task  1/1 | alg. seed: 1607680 | data order seed: 8541952
+task_output_path: Model Generation 2\1
+    0.100/200 after      0 sec. |   5437.8 MiB | K   10 | loss  2.627817569e-01 |  
+    0.200/200 after      0 sec. |   5437.8 MiB | K   10 | loss  1.728822963e-01 |  
+    0.300/200 after      0 sec. |   5437.8 MiB | K   10 | loss  1.280141510e-01 |  
+    1.000/200 after      1 sec. |   5437.8 MiB | K   10 | loss -4.678731870e-03 |  
+    2.000/200 after      3 sec. |   5437.9 MiB | K   10 | loss -3.576394560e-02 | Ndiff  658.712 
+    3.000/200 after      4 sec. |   5437.9 MiB | K   10 | loss -3.859840868e-02 | Ndiff   36.592 
+    4.000/200 after     12 sec. |   5438.8 MiB | K   10 | loss -3.995663884e-02 | Ndiff   51.093 
+    5.000/200 after     19 sec. |   5438.8 MiB | K   10 | loss -4.085400585e-02 | Ndiff   77.590 
+    6.000/200 after     26 sec. |   5438.8 MiB | K   10 | loss -4.159198681e-02 | Ndiff   82.050 
+    7.000/200 after     34 sec. |   5438.8 MiB | K   10 | loss -4.211597705e-02 | Ndiff   44.111 
+    8.000/200 after     42 sec. |   5438.8 MiB | K   10 | loss -4.249404577e-02 | Ndiff   50.470 
+    9.000/200 after     48 sec. |   5438.8 MiB | K   10 | loss -4.285408635e-02 | Ndiff  137.231 
+   10.000/200 after     56 sec. |   5438.8 MiB | K   10 | loss -4.320360921e-02 | Ndiff   44.103 
+   11.000/200 after     63 sec. |   5438.8 MiB | K   10 | loss -4.351194752e-02 | Ndiff   73.351 
+   12.000/200 after     71 sec. |   5438.8 MiB | K   10 | loss -4.372391455e-02 | Ndiff   37.500 
+   13.000/200 after     78 sec. |   5438.8 MiB | K   10 | loss -4.385407153e-02 | Ndiff  243.291 
+   14.000/200 after     86 sec. |   5438.8 MiB | K   10 | loss -4.394913032e-02 | Ndiff   30.148 
+   15.000/200 after     93 sec. |   5438.8 MiB | K   10 | loss -4.403521046e-02 | Ndiff   53.344 
+   16.000/200 after    101 sec. |   5438.6 MiB | K   10 | loss -4.411165803e-02 | Ndiff   24.187 
+   17.000/200 after    108 sec. |   5438.6 MiB | K   10 | loss -4.417631806e-02 | Ndiff   24.375 
+   18.000/200 after    115 sec. |   5438.6 MiB | K   10 | loss -4.423095395e-02 | Ndiff   21.906 
+   19.000/200 after    122 sec. |   5438.6 MiB | K   10 | loss -4.428600724e-02 | Ndiff   23.962 
+   20.000/200 after    130 sec. |   5438.6 MiB | K   10 | loss -4.435541250e-02 | Ndiff   23.147 
+   21.000/200 after    138 sec. |   5438.6 MiB | K   10 | loss -4.450273566e-02 | Ndiff   22.966 
+   22.000/200 after    145 sec. |   5438.6 MiB | K   10 | loss -4.465040750e-02 | Ndiff   22.506 
+   23.000/200 after    152 sec. |   5438.6 MiB | K   10 | loss -4.473486354e-02 | Ndiff   21.456 
+   24.000/200 after    159 sec. |   5438.6 MiB | K   10 | loss -4.492622497e-02 | Ndiff   29.044 
+   25.000/200 after    166 sec. |   5438.6 MiB | K   10 | loss -4.520708050e-02 | Ndiff   40.475 
+   26.000/200 after    173 sec. |   5438.6 MiB | K   10 | loss -4.540568070e-02 | Ndiff   37.742 
+   27.000/200 after    181 sec. |   5438.6 MiB | K   10 | loss -4.554359008e-02 | Ndiff   34.655 
+   28.000/200 after    187 sec. |   5438.6 MiB | K   10 | loss -4.565323275e-02 | Ndiff   85.178 
+   29.000/200 after    195 sec. |   5438.6 MiB | K   10 | loss -4.572596656e-02 | Ndiff   25.575 
+   30.000/200 after    202 sec. |   5438.6 MiB | K   10 | loss -4.579569540e-02 | Ndiff   30.701 
+   31.000/200 after    209 sec. |   5438.6 MiB | K   10 | loss -4.588651917e-02 | Ndiff   23.238 
+   32.000/200 after    217 sec. |   5438.6 MiB | K   10 | loss -4.596324137e-02 | Ndiff   23.863 
+   33.000/200 after    224 sec. |   5438.6 MiB | K   10 | loss -4.601232677e-02 | Ndiff   21.415 
+   34.000/200 after    231 sec. |   5438.6 MiB | K   10 | loss -4.603987827e-02 | Ndiff   15.359 
+   35.000/200 after    237 sec. |   5438.6 MiB | K   10 | loss -4.605723396e-02 | Ndiff   15.145 
+   36.000/200 after    244 sec. |   5438.6 MiB | K   10 | loss -4.607072261e-02 | Ndiff   44.127 
+   37.000/200 after    252 sec. |   5438.6 MiB | K   10 | loss -4.608256239e-02 | Ndiff    9.892 
+   38.000/200 after    259 sec. |   5438.6 MiB | K   10 | loss -4.609382698e-02 | Ndiff    9.363 
+   39.000/200 after    266 sec. |   5438.6 MiB | K   10 | loss -4.610525912e-02 | Ndiff    8.746 
+   40.000/200 after    274 sec. |   5438.6 MiB | K   10 | loss -4.612079978e-02 | Ndiff   11.692 
+   41.000/200 after    282 sec. |   5438.6 MiB | K   10 | loss -4.614668429e-02 | Ndiff    9.180 
+   42.000/200 after    288 sec. |   5438.6 MiB | K   10 | loss -4.620699523e-02 | Ndiff   12.685 
+   43.000/200 after    295 sec. |   5438.6 MiB | K   10 | loss -4.633398247e-02 | Ndiff   14.457 
+   44.000/200 after    302 sec. |   5438.6 MiB | K   10 | loss -4.644846347e-02 | Ndiff    7.755 
+   45.000/200 after    309 sec. |   5438.6 MiB | K   10 | loss -4.650448476e-02 | Ndiff    4.378 
+   46.000/200 after    317 sec. |   5438.6 MiB | K   10 | loss -4.653124911e-02 | Ndiff    4.291 
+   47.000/200 after    324 sec. |   5438.6 MiB | K   10 | loss -4.655032279e-02 | Ndiff    3.546 
+   48.000/200 after    331 sec. |   5438.6 MiB | K   10 | loss -4.656843161e-02 | Ndiff    4.005 
+   49.000/200 after    338 sec. |   5438.6 MiB | K   10 | loss -4.659391889e-02 | Ndiff    6.202 
+   50.000/200 after    346 sec. |   5438.6 MiB | K   10 | loss -4.663764625e-02 | Ndiff    6.894 
+   51.000/200 after    352 sec. |   5438.6 MiB | K   10 | loss -4.670329649e-02 | Ndiff    7.078 
+   52.000/200 after    360 sec. |   5438.6 MiB | K   10 | loss -4.674070913e-02 | Ndiff    3.363 
+   53.000/200 after    367 sec. |   5438.6 MiB | K   10 | loss -4.675240644e-02 | Ndiff    2.681 
+   54.000/200 after    374 sec. |   5438.6 MiB | K   10 | loss -4.675828232e-02 | Ndiff    3.356 
+   55.000/200 after    380 sec. |   5438.6 MiB | K   10 | loss -4.676351687e-02 | Ndiff    2.939 
+   56.000/200 after    388 sec. |   5438.6 MiB | K   10 | loss -4.676841682e-02 | Ndiff    2.351 
+   57.000/200 after    395 sec. |   5438.6 MiB | K   10 | loss -4.677242524e-02 | Ndiff    1.545 
+   58.000/200 after    403 sec. |   5438.6 MiB | K   10 | loss -4.677562613e-02 | Ndiff    1.224 
+   59.000/200 after    410 sec. |   5438.6 MiB | K   10 | loss -4.677833979e-02 | Ndiff    1.006 
+   60.000/200 after    416 sec. |   5438.6 MiB | K   10 | loss -4.678140461e-02 | Ndiff    0.852 
+   61.000/200 after    422 sec. |   5438.7 MiB | K   10 | loss -4.678464959e-02 | Ndiff    1.037 
+   62.000/200 after    429 sec. |   5438.7 MiB | K   10 | loss -4.678805164e-02 | Ndiff    1.310 
+   63.000/200 after    437 sec. |   5438.7 MiB | K   10 | loss -4.679087804e-02 | Ndiff    1.058 
+   64.000/200 after    445 sec. |   5438.7 MiB | K   10 | loss -4.679313460e-02 | Ndiff    0.948 
+   65.000/200 after    451 sec. |   5438.7 MiB | K   10 | loss -4.679494844e-02 | Ndiff    1.021 
+   66.000/200 after    458 sec. |   5438.7 MiB | K   10 | loss -4.679667915e-02 | Ndiff    1.027 
+   67.000/200 after    465 sec. |   5438.7 MiB | K   10 | loss -4.679848043e-02 | Ndiff    0.964 
+   68.000/200 after    471 sec. |   5438.7 MiB | K   10 | loss -4.680051858e-02 | Ndiff    1.018 
+   69.000/200 after    480 sec. |   5438.7 MiB | K   10 | loss -4.680328115e-02 | Ndiff    1.140 
+   70.000/200 after    487 sec. |   5438.7 MiB | K   10 | loss -4.680761804e-02 | Ndiff    1.098 
+   71.000/200 after    496 sec. |   5438.7 MiB | K   10 | loss -4.681720878e-02 | Ndiff    2.287 
+   72.000/200 after    503 sec. |   5438.7 MiB | K   10 | loss -4.684375285e-02 | Ndiff    4.187 
+   73.000/200 after    509 sec. |   5438.7 MiB | K   10 | loss -4.690767220e-02 | Ndiff    7.669 
+   74.000/200 after    517 sec. |   5438.7 MiB | K   10 | loss -4.700278115e-02 | Ndiff   12.077 
+   75.000/200 after    524 sec. |   5438.7 MiB | K   10 | loss -4.715594688e-02 | Ndiff   12.791 
+   76.000/200 after    531 sec. |   5438.7 MiB | K   10 | loss -4.733612584e-02 | Ndiff   47.794 
+   77.000/200 after    537 sec. |   5438.7 MiB | K   10 | loss -4.778156935e-02 | Ndiff   25.184 
+   78.000/200 after    544 sec. |   5438.7 MiB | K   10 | loss -4.867963025e-02 | Ndiff   26.222 
+   79.000/200 after    552 sec. |   5438.7 MiB | K   10 | loss -4.879969578e-02 | Ndiff    5.330 
+   80.000/200 after    559 sec. |   5438.7 MiB | K   10 | loss -4.882204108e-02 | Ndiff    4.382 
+   81.000/200 after    566 sec. |   5438.7 MiB | K   10 | loss -4.883090051e-02 | Ndiff    3.537 
+   82.000/200 after    573 sec. |   5438.7 MiB | K   10 | loss -4.883427378e-02 | Ndiff    2.432 
+   83.000/200 after    581 sec. |   5438.7 MiB | K   10 | loss -4.883586390e-02 | Ndiff    1.638 
+   84.000/200 after    587 sec. |   5438.7 MiB | K   10 | loss -4.883672079e-02 | Ndiff    1.283 
+   85.000/200 after    593 sec. |   5438.7 MiB | K   10 | loss -4.883712964e-02 | Ndiff    0.691 
+   86.000/200 after    600 sec. |   5438.7 MiB | K   10 | loss -4.883731916e-02 | Ndiff    0.452 
+   87.000/200 after    606 sec. |   5438.7 MiB | K   10 | loss -4.883741593e-02 | Ndiff    0.302 
+   88.000/200 after    613 sec. |   5438.7 MiB | K   10 | loss -4.883746035e-02 | Ndiff    0.333 
+   89.000/200 after    620 sec. |   5438.7 MiB | K   10 | loss -4.883748525e-02 | Ndiff    0.164 
+   90.000/200 after    626 sec. |   5438.7 MiB | K   10 | loss -4.883749876e-02 | Ndiff    0.108 
+   91.000/200 after    633 sec. |   5438.7 MiB | K   10 | loss -4.883750596e-02 | Ndiff    0.121 
+   92.000/200 after    640 sec. |   5438.7 MiB | K   10 | loss -4.883751003e-02 | Ndiff    0.055 
+   93.000/200 after    647 sec. |   5438.7 MiB | K   10 | loss -4.883751219e-02 | Ndiff    0.040 
+   94.000/200 after    653 sec. |   5438.7 MiB | K   10 | loss -4.883751349e-02 | Ndiff    0.033 
+   95.000/200 after    660 sec. |   5438.7 MiB | K   10 | loss -4.883751422e-02 | Ndiff    0.024 
+   96.000/200 after    667 sec. |   5438.7 MiB | K   10 | loss -4.883751463e-02 | Ndiff    0.016 
+   97.000/200 after    674 sec. |   5438.7 MiB | K   10 | loss -4.883751487e-02 | Ndiff    0.015 
+   98.000/200 after    681 sec. |   5438.7 MiB | K   10 | loss -4.883751501e-02 | Ndiff    0.009 
+   99.000/200 after    687 sec. |   5438.7 MiB | K   10 | loss -4.883751510e-02 | Ndiff    0.008 
+... done. converged.

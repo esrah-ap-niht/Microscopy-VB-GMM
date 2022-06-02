@@ -1,0 +1,29 @@
+DELETE @ lap 1.00: Disabled. Cannot delete before first complete lap, because SS that represents whole dataset is required.
+DELETE @ lap 2.00: Disabled. Waiting for lap >= 4 (--d_startLap).
+DELETE @ lap 3.00: Disabled. Waiting for lap >= 4 (--d_startLap).
+DELETE @ lap 4.00: 1/1 accepted. Ndiff 8456.00.
+DELETE @ lap 5.00: 1/1 accepted. Ndiff 12332.28.
+DELETE @ lap 6.00: 0/1 accepted. Ndiff 0.00.
+DELETE @ lap 7.00: 0/1 accepted. Ndiff 0.00.
+DELETE @ lap 8.00: 0/1 accepted. Ndiff 0.00.
+DELETE @ lap 9.00: 0/1 accepted. Ndiff 0.00.
+DELETE @ lap 10.00: 0/1 accepted. Ndiff 0.00.
+DELETE @ lap 11.00: Empty plan. 0 UIDs eligible as delete target. 0 too busy with other moves. 0 too big. 5 have past failures.
+DELETE @ lap 12.00: 0/1 accepted. Ndiff 0.00.
+DELETE @ lap 13.00: 0/1 accepted. Ndiff 0.00.
+DELETE @ lap 14.00: 0/1 accepted. Ndiff 0.00.
+DELETE @ lap 15.00: 0/1 accepted. Ndiff 0.00.
+DELETE @ lap 16.00: 0/1 accepted. Ndiff 0.00.
+DELETE @ lap 17.00: Empty plan. 0 UIDs eligible as delete target. 0 too busy with other moves. 0 too big. 5 have past failures.
+DELETE @ lap 18.00: 0/1 accepted. Ndiff 0.00.
+DELETE @ lap 19.00: 0/1 accepted. Ndiff 0.00.
+DELETE @ lap 20.00: 0/1 accepted. Ndiff 0.00.
+DELETE @ lap 21.00: 0/1 accepted. Ndiff 0.00.
+DELETE @ lap 22.00: 0/1 accepted. Ndiff 0.00.
+DELETE @ lap 23.00: 0/1 accepted. Ndiff 0.00.
+DELETE @ lap 24.00: 0/1 accepted. Ndiff 0.00.
+DELETE @ lap 25.00: 0/1 accepted. Ndiff 0.00.
+DELETE @ lap 26.00: 0/1 accepted. Ndiff 0.00.
+DELETE @ lap 27.00: 0/1 accepted. Ndiff 0.00.
+DELETE @ lap 28.00: 0/1 accepted. Ndiff 0.00.
+DELETE @ lap 29.00: 0/1 accepted. Ndiff 0.00.

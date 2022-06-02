@@ -1,0 +1,36 @@
+MERGE @ lap 1.00: Disabled. Cannot plan merge on first lap. Need valid SS that represent whole dataset.
+MERGE @ lap 2.00: Disabled. Waiting for lap >= 4 (--m_startLap).
+MERGE @ lap 3.00: Disabled. Waiting for lap >= 4 (--m_startLap).
+MERGE @ lap 4.00 : 0/21 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 5.00 : 1/18 accepted. Ndiff 152.13. 2 skipped.
+MERGE @ lap 6.00 : 0/17 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 7.00 : 0/11 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 8.00 : 0/19 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 9.00 : 0/13 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 10.00 : 0/8 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 11.00 : 0/12 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 12.00 : 0/3 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 13.00 : 0/13 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 14.00 : 0/8 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 15.00 : 0/6 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 16.00 : 0/2 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 17.00 : 0/7 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 18.00: No promising candidates, so no attempts.
+MERGE @ lap 19.00 : 0/13 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 20.00 : 0/8 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 21.00 : 0/6 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 22.00 : 0/2 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 23.00 : 0/7 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 24.00: No promising candidates, so no attempts.
+MERGE @ lap 25.00 : 0/13 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 26.00 : 0/10 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 27.00 : 0/4 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 28.00 : 0/2 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 29.00 : 0/7 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 30.00: No promising candidates, so no attempts.
+MERGE @ lap 31.00 : 0/13 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 32.00 : 0/10 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 33.00 : 0/4 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 34.00 : 0/2 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 35.00 : 0/7 accepted. Ndiff 0.00. 0 skipped.
+MERGE @ lap 36.00: No promising candidates, so no attempts.

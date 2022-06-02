@@ -1,0 +1,510 @@
+STATUS uid     2  lap   3.100 lapCeil     4 batchPos   1/10 batchID   9  N_b   705.768 N_ttl  7040.820 BUSY DELETE PROPOSAL
+STATUS uid     2  lap   4.100 lapCeil     5 batchPos   1/10 batchID   9  N_b   738.287 N_ttl  7618.845 BUSY DELETE PROPOSAL
+STATUS uid     2  lap   5.100 lapCeil     6 batchPos   1/10 batchID   1  N_b  2006.909 N_ttl 19924.931 BUSY DELETE PROPOSAL
+STATUS uid     2  lap   6.100 lapCeil     7 batchPos   1/10 batchID   5  N_b  2031.945 N_ttl 19970.622 BUSY DELETE PROPOSAL
+STATUS uid     2  lap   7.100 lapCeil     8 batchPos   1/10 batchID   5  N_b  2031.769 N_ttl 20001.492 BUSY DELETE PROPOSAL
+STATUS uid     2  lap   8.100 lapCeil     9 batchPos   1/10 batchID   4  N_b  2003.633 N_ttl 20000.564 BUSY DELETE PROPOSAL
+STATUS uid     2  lap   9.100 lapCeil    10 batchPos   1/10 batchID   7  N_b  1963.927 N_ttl 20000.198 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  10.100 lapCeil    11 batchPos   1/10 batchID   9  N_b  2018.623 N_ttl 20000.029 ELIGIBLE 
+Creating proposal for targetUID 2 at lap 10.10 batchID 9
+Preparing target dataset for Bregman k-means analysis...
+  Targeted comp has 2018.62 atoms assigned out of 2998.
+  Filtering to find atoms with resp > 0.10
+  Found 2020 atoms meeting this requirement.
+Running Bregman k-means with K=5 for 1 iters
+iter 0: Lscore 6.323e+04
+  384.82  393.85  426.73  739.76   73.40
+Bregman k-means DONE. Delivered 5 non-empty clusters
+     10   11   12   13   14
+   739. 426. 393. 384. 73.3
+ Running 5 refinement iterations (--b_nRefineSteps)
+ target prob redistributed by policy uniform (--b_method_xPi)
+ pi[ktarget] before 0.6669  after 0.0133.
+ pi[new comps]: 0.1307 0.1307 0.1307 0.1307 0.1307
+     10   11   12   13   14
+   697. 436. 407. 400. 75.9
+   644. 450. 427. 417. 79.0
+   603. 458. 444. 431. 80.3
+   575. 463. 455. 442. 80.8
+   575. 463. 536. 442. m 12
+   575. 906. 536. m 11     
+   1112 906. m 10          
+   1086 932.               
+Proposal build phase DONE. Created 2 candidate clusters.
+
+Eval     targetUID 2 at lap 10.100 lapCeil 11 | REJECT change_loss  1.145e-02
+   gainL  1.145e-02
+    curL -6.140e-01
+   propL -6.025e-01
+   gain_  Lalloc -1.104e-02
+   gain_   Ldata -1.262e-03
+   gain_Lentropy  8.461e-04
+   Rejected. Remain at loss -6.140e-01
+   Retained. Trying proposal across whole dataset.
+
+Extending previous birth for targetUID 2 at lap 10.20 batch 1
+  Using previous proposal with 2 clusters (--b_Kfresh=5).
+  Initial uid/counts from previous proposal:
+     10   11
+   1086 932.
+  Running 5 refinement iterations (--b_nRefineSteps)
+   2002 5.84
+   2002 5.69
+   2002 5.94
+   2001 6.85
+   2000 7.87
+Proposal extension DONE. 2 candidate clusters.
+
+Eval     targetUID 2 at lap 10.200 lapCeil 11 | REJECT change_loss  1.731e-02
+   gainL  1.731e-02
+    curL -6.140e-01
+   propL -5.967e-01
+   gain_  Lalloc -1.701e-02
+   gain_   Ldata -1.145e-03
+   gain_Lentropy  8.468e-04
+   Rejected. Remain at loss -6.140e-01
+   Retained. Trying proposal across whole dataset.
+
+Extending previous birth for targetUID 2 at lap 10.30 batch 5
+  Using previous proposal with 2 clusters (--b_Kfresh=5).
+  Initial uid/counts from previous proposal:
+     10   11
+   3086 940.
+  Running 5 refinement iterations (--b_nRefineSteps)
+   2005 25.8
+   1995 35.9
+   1998 33.1
+   1999 31.8
+   1998 32.6
+Proposal extension DONE. 2 candidate clusters.
+
+Eval     targetUID 2 at lap 10.300 lapCeil 11 | REJECT change_loss  2.117e-02
+   gainL  2.117e-02
+    curL -6.140e-01
+   propL -5.928e-01
+   gain_  Lalloc -2.077e-02
+   gain_   Ldata -1.255e-03
+   gain_Lentropy  8.512e-04
+   Rejected. Remain at loss -6.140e-01
+   Retained. Trying proposal across whole dataset.
+
+Extending previous birth for targetUID 2 at lap 10.40 batch 4
+  Using previous proposal with 2 clusters (--b_Kfresh=5).
+  Initial uid/counts from previous proposal:
+     10   11
+   5085 973.
+  Running 5 refinement iterations (--b_nRefineSteps)
+   1963 40.3
+   1960 43.2
+   1964 39.4
+   1953 50.5
+   1959 44.4
+Proposal extension DONE. 2 candidate clusters.
+
+Eval     targetUID 2 at lap 10.400 lapCeil 11 | REJECT change_loss  2.343e-02
+   gainL  2.343e-02
+    curL -6.140e-01
+   propL -5.906e-01
+   gain_  Lalloc -2.300e-02
+   gain_   Ldata -1.289e-03
+   gain_Lentropy  8.626e-04
+   Rejected. Remain at loss -6.140e-01
+   Retained. Trying proposal across whole dataset.
+
+Extending previous birth for targetUID 2 at lap 10.50 batch 3
+  Using previous proposal with 2 clusters (--b_Kfresh=5).
+  Initial uid/counts from previous proposal:
+     10   11
+   7044 1017
+  Running 5 refinement iterations (--b_nRefineSteps)
+   1932 62.9
+   1937 57.7
+   1939 56.6
+   1939 56.0
+   1939 56.0
+Proposal extension DONE. 2 candidate clusters.
+
+Eval     targetUID 2 at lap 10.500 lapCeil 11 | REJECT change_loss  2.439e-02
+   gainL  2.439e-02
+    curL -6.140e-01
+   propL -5.896e-01
+   gain_  Lalloc -2.403e-02
+   gain_   Ldata -1.247e-03
+   gain_Lentropy  8.824e-04
+   Rejected. Remain at loss -6.140e-01
+   Retained. Trying proposal across whole dataset.
+
+Extending previous birth for targetUID 2 at lap 10.60 batch 6
+  Using previous proposal with 2 clusters (--b_Kfresh=5).
+  Initial uid/counts from previous proposal:
+     10   11
+   8984 1073
+  Running 5 refinement iterations (--b_nRefineSteps)
+   1947 45.7
+   1939 54.2
+   1938 55.0
+   1944 48.7
+   1944 48.7
+Proposal extension DONE. 2 candidate clusters.
+
+Eval     targetUID 2 at lap 10.600 lapCeil 11 | REJECT change_loss  2.415e-02
+   gainL  2.415e-02
+    curL -6.140e-01
+   propL -5.898e-01
+   gain_  Lalloc -2.388e-02
+   gain_   Ldata -1.171e-03
+   gain_Lentropy  8.979e-04
+   Rejected. Remain at loss -6.140e-01
+   Retained. Trying proposal across whole dataset.
+
+Extending previous birth for targetUID 2 at lap 10.70 batch 2
+  Using previous proposal with 2 clusters (--b_Kfresh=5).
+  Initial uid/counts from previous proposal:
+     10   11
+    10k 1122
+  Running 5 refinement iterations (--b_nRefineSteps)
+   1937 42.6
+   1938 41.2
+   1938 41.5
+   1938 41.5
+   1938 41.5
+Proposal extension DONE. 2 candidate clusters.
+
+Eval     targetUID 2 at lap 10.700 lapCeil 11 | REJECT change_loss  2.268e-02
+   gainL  2.268e-02
+    curL -6.140e-01
+   propL -5.913e-01
+   gain_  Lalloc -2.253e-02
+   gain_   Ldata -1.055e-03
+   gain_Lentropy  9.104e-04
+   Rejected. Remain at loss -6.140e-01
+   Retained. Trying proposal across whole dataset.
+
+Extending previous birth for targetUID 2 at lap 10.80 batch 7
+  Using previous proposal with 2 clusters (--b_Kfresh=5).
+  Initial uid/counts from previous proposal:
+     10   11
+    12k 1163
+  Running 5 refinement iterations (--b_nRefineSteps)
+   1932 31.7
+   1929 33.9
+   1929 34.3
+   1929 34.3
+   1929 34.3
+Proposal extension DONE. 2 candidate clusters.
+
+Eval     targetUID 2 at lap 10.800 lapCeil 11 | REJECT change_loss  1.983e-02
+   gainL  1.983e-02
+    curL -6.140e-01
+   propL -5.942e-01
+   gain_  Lalloc -1.985e-02
+   gain_   Ldata -8.972e-04
+   gain_Lentropy  9.173e-04
+   Rejected. Remain at loss -6.140e-01
+   Retained. Trying proposal across whole dataset.
+
+Extending previous birth for targetUID 2 at lap 10.90 batch 0
+  Using previous proposal with 2 clusters (--b_Kfresh=5).
+  Initial uid/counts from previous proposal:
+     10   11
+    14k 1198
+  Running 5 refinement iterations (--b_nRefineSteps)
+   1936 27.8
+   1940 24.6
+   1940 24.6
+   1940 24.6
+   1940 24.6
+Proposal extension DONE. 2 candidate clusters.
+
+Eval     targetUID 2 at lap 10.900 lapCeil 11 | REJECT change_loss  1.517e-02
+   gainL  1.517e-02
+    curL -6.140e-01
+   propL -5.988e-01
+   gain_  Lalloc -1.538e-02
+   gain_   Ldata -7.024e-04
+   gain_Lentropy  9.201e-04
+   Rejected. Remain at loss -6.140e-01
+   Retained. Trying proposal across whole dataset.
+
+Extending previous birth for targetUID 2 at lap 11.00 batch 8
+  Using previous proposal with 2 clusters (--b_Kfresh=5).
+  Initial uid/counts from previous proposal:
+     10   11
+    16k 1222
+  Running 5 refinement iterations (--b_nRefineSteps)
+   1998 41.3
+   1990 49.7
+   1989 50.3
+   1990 49.2
+   1990 49.2
+Proposal extension DONE. 2 candidate clusters.
+
+Eval     targetUID 2 at lap 11.000 lapCeil 11 | REJECT change_loss  4.932e-03
+   gainL  4.932e-03
+    curL -6.140e-01
+   propL -6.091e-01
+   gain_  Lalloc -6.611e-03
+   gain_   Ldata  7.440e-04
+   gain_Lentropy  9.351e-04
+   Rejected. Remain at loss -6.140e-01
+
+STATUS uid     2  lap  11.100 lapCeil    12 batchPos   1/10 batchID   8  N_b  2039.826 N_ttl 19999.963 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  12.100 lapCeil    13 batchPos   1/10 batchID   7  N_b  1963.920 N_ttl 19999.942 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  13.100 lapCeil    14 batchPos   1/10 batchID   0  N_b  1964.779 N_ttl 19999.924 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  14.100 lapCeil    15 batchPos   1/10 batchID   4  N_b  2003.581 N_ttl 19999.933 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  15.100 lapCeil    16 batchPos   1/10 batchID   8  N_b  2039.846 N_ttl 19999.918 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  16.100 lapCeil    17 batchPos   1/10 batchID   0  N_b  1964.751 N_ttl 19999.911 ELIGIBLE 
+Creating proposal for targetUID 2 at lap 16.10 batchID 0
+Preparing target dataset for Bregman k-means analysis...
+  Targeted comp has 1964.75 atoms assigned out of 2999.
+  Filtering to find atoms with resp > 0.10
+  Found 1967 atoms meeting this requirement.
+Running Bregman k-means with K=5 for 1 iters
+iter 0: Lscore 9.768e+04
+  295.64  643.62  647.36  174.86  203.28
+Bregman k-means DONE. Delivered 5 non-empty clusters
+     80   81   82   83   84
+   647. 643. 295. 203. 174.
+ Running 5 refinement iterations (--b_nRefineSteps)
+ target prob redistributed by policy uniform (--b_method_xPi)
+ pi[ktarget] before 0.6669  after 0.0133.
+ pi[new comps]: 0.1307 0.1307 0.1307 0.1307 0.1307
+     80   81   82   83   84
+   623. 620. 313. 214. 192.
+   586. 590. 336. 229. 221.
+   552. 563. 355. 243. 250.
+   526. 541. 368. 254. 274.
+   526. 541. 623. m 82 274.
+   526. 815. 623.      m 81
+   1149 815. m 80          
+   1098 866.               
+Proposal build phase DONE. Created 2 candidate clusters.
+
+Eval     targetUID 2 at lap 16.100 lapCeil 17 | REJECT change_loss  1.127e-02
+   gainL  1.127e-02
+    curL -6.140e-01
+   propL -6.027e-01
+   gain_  Lalloc -1.081e-02
+   gain_   Ldata -1.282e-03
+   gain_Lentropy  8.232e-04
+   Rejected. Remain at loss -6.140e-01
+   Retained. Trying proposal across whole dataset.
+
+Extending previous birth for targetUID 2 at lap 16.20 batch 6
+  Using previous proposal with 2 clusters (--b_Kfresh=5).
+  Initial uid/counts from previous proposal:
+     80   81
+   1098 866.
+  Running 5 refinement iterations (--b_nRefineSteps)
+   575. 1418
+   95.4 1897
+   59.2 1933
+   51.3 1941
+   54.2 1939
+Proposal extension DONE. 2 candidate clusters.
+
+Eval     targetUID 2 at lap 16.200 lapCeil 17 | REJECT change_loss  1.823e-02
+   gainL  1.823e-02
+    curL -6.140e-01
+   propL -5.958e-01
+   gain_  Lalloc -1.716e-02
+   gain_   Ldata -1.918e-03
+   gain_Lentropy  8.498e-04
+   Rejected. Remain at loss -6.140e-01
+   Retained. Trying proposal across whole dataset.
+
+Extending previous birth for targetUID 2 at lap 16.30 batch 2
+  Using previous proposal with 2 clusters (--b_Kfresh=5).
+  Initial uid/counts from previous proposal:
+     80   81
+   1152 2805
+  Running 5 refinement iterations (--b_nRefineSteps)
+   41.4 1938
+   42.5 1937
+   51.4 1928
+   50.6 1929
+   53.7 1926
+Proposal extension DONE. 2 candidate clusters.
+
+Eval     targetUID 2 at lap 16.300 lapCeil 17 | REJECT change_loss  2.216e-02
+   gainL  2.216e-02
+    curL -6.140e-01
+   propL -5.918e-01
+   gain_  Lalloc -2.108e-02
+   gain_   Ldata -1.952e-03
+   gain_Lentropy  8.723e-04
+   Rejected. Remain at loss -6.140e-01
+   Retained. Trying proposal across whole dataset.
+
+Extending previous birth for targetUID 2 at lap 16.40 batch 7
+  Using previous proposal with 2 clusters (--b_Kfresh=5).
+  Initial uid/counts from previous proposal:
+     80   81
+   1206 4731
+  Running 5 refinement iterations (--b_nRefineSteps)
+   45.1 1918
+   54.4 1909
+   56.1 1907
+   53.0 1910
+   53.7 1910
+Proposal extension DONE. 2 candidate clusters.
+
+Eval     targetUID 2 at lap 16.400 lapCeil 17 | REJECT change_loss  2.454e-02
+   gainL  2.454e-02
+    curL -6.140e-01
+   propL -5.894e-01
+   gain_  Lalloc -2.348e-02
+   gain_   Ldata -1.944e-03
+   gain_Lentropy  8.890e-04
+   Rejected. Remain at loss -6.140e-01
+   Retained. Trying proposal across whole dataset.
+
+Extending previous birth for targetUID 2 at lap 16.50 batch 5
+  Using previous proposal with 2 clusters (--b_Kfresh=5).
+  Initial uid/counts from previous proposal:
+     80   81
+   1260 6641
+  Running 5 refinement iterations (--b_nRefineSteps)
+   34.0 1997
+   33.2 1998
+   43.5 1988
+   43.2 1988
+   43.2 1988
+Proposal extension DONE. 2 candidate clusters.
+
+Eval     targetUID 2 at lap 16.500 lapCeil 17 | REJECT change_loss  2.564e-02
+   gainL  2.564e-02
+    curL -6.140e-01
+   propL -5.883e-01
+   gain_  Lalloc -2.465e-02
+   gain_   Ldata -1.898e-03
+   gain_Lentropy  9.023e-04
+   Rejected. Remain at loss -6.140e-01
+   Retained. Trying proposal across whole dataset.
+
+Extending previous birth for targetUID 2 at lap 16.60 batch 9
+  Using previous proposal with 2 clusters (--b_Kfresh=5).
+  Initial uid/counts from previous proposal:
+     80   81
+   1303 8630
+  Running 5 refinement iterations (--b_nRefineSteps)
+   47.0 1971
+   60.5 1958
+   57.1 1961
+   50.8 1967
+   53.0 1965
+Proposal extension DONE. 2 candidate clusters.
+
+Eval     targetUID 2 at lap 16.600 lapCeil 17 | REJECT change_loss  2.551e-02
+   gainL  2.551e-02
+    curL -6.140e-01
+   propL -5.885e-01
+   gain_  Lalloc -2.463e-02
+   gain_   Ldata -1.810e-03
+   gain_Lentropy  9.273e-04
+   Rejected. Remain at loss -6.140e-01
+   Retained. Trying proposal across whole dataset.
+
+Extending previous birth for targetUID 2 at lap 16.70 batch 8
+  Using previous proposal with 2 clusters (--b_Kfresh=5).
+  Initial uid/counts from previous proposal:
+     80   81
+   1356  10k
+  Running 5 refinement iterations (--b_nRefineSteps)
+   34.4 2005
+   32.1 2007
+   40.3 1999
+   47.2 1992
+   40.4 1999
+Proposal extension DONE. 2 candidate clusters.
+
+Eval     targetUID 2 at lap 16.700 lapCeil 17 | REJECT change_loss  2.403e-02
+   gainL  2.403e-02
+    curL -6.140e-01
+   propL -5.900e-01
+   gain_  Lalloc -2.332e-02
+   gain_   Ldata -1.650e-03
+   gain_Lentropy  9.394e-04
+   Rejected. Remain at loss -6.140e-01
+   Retained. Trying proposal across whole dataset.
+
+Extending previous birth for targetUID 2 at lap 16.80 batch 3
+  Using previous proposal with 2 clusters (--b_Kfresh=5).
+  Initial uid/counts from previous proposal:
+     80   81
+   1396  12k
+  Running 5 refinement iterations (--b_nRefineSteps)
+   46.3 1949
+   43.4 1952
+   42.6 1953
+   47.9 1947
+   47.3 1948
+Proposal extension DONE. 2 candidate clusters.
+
+Eval     targetUID 2 at lap 16.800 lapCeil 17 | REJECT change_loss  2.117e-02
+   gainL  2.117e-02
+    curL -6.140e-01
+   propL -5.928e-01
+   gain_  Lalloc -2.069e-02
+   gain_   Ldata -1.430e-03
+   gain_Lentropy  9.554e-04
+   Rejected. Remain at loss -6.140e-01
+   Retained. Trying proposal across whole dataset.
+
+Extending previous birth for targetUID 2 at lap 16.90 batch 4
+  Using previous proposal with 2 clusters (--b_Kfresh=5).
+  Initial uid/counts from previous proposal:
+     80   81
+   1444  14k
+  Running 5 refinement iterations (--b_nRefineSteps)
+   52.7 1950
+   52.6 1950
+   49.9 1953
+   50.6 1952
+   49.8 1953
+Proposal extension DONE. 2 candidate clusters.
+
+Eval     targetUID 2 at lap 16.900 lapCeil 17 | REJECT change_loss  1.621e-02
+   gainL  1.621e-02
+    curL -6.140e-01
+   propL -5.978e-01
+   gain_  Lalloc -1.624e-02
+   gain_   Ldata -9.521e-04
+   gain_Lentropy  9.794e-04
+   Rejected. Remain at loss -6.140e-01
+   Retained. Trying proposal across whole dataset.
+
+Extending previous birth for targetUID 2 at lap 17.00 batch 1
+  Using previous proposal with 2 clusters (--b_Kfresh=5).
+  Initial uid/counts from previous proposal:
+     80   81
+   1494  16k
+  Running 5 refinement iterations (--b_nRefineSteps)
+   2003 4.96
+   2001 6.94
+   2001 6.94
+   2001 6.94
+   2001 6.94
+Proposal extension DONE. 2 candidate clusters.
+
+Eval     targetUID 2 at lap 17.000 lapCeil 17 | REJECT change_loss  1.272e-02
+   gainL  1.272e-02
+    curL -6.140e-01
+   propL -6.013e-01
+   gain_  Lalloc -1.291e-02
+   gain_   Ldata -7.893e-04
+   gain_Lentropy  9.797e-04
+   Rejected. Remain at loss -6.140e-01
+
+STATUS uid     2  lap  17.100 lapCeil    18 batchPos   1/10 batchID   2  N_b  1980.148 N_ttl 19999.922 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  18.100 lapCeil    19 batchPos   1/10 batchID   7  N_b  1963.877 N_ttl 19999.786 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  19.100 lapCeil    20 batchPos   1/10 batchID   8  N_b  2039.832 N_ttl 19999.795 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  20.100 lapCeil    21 batchPos   1/10 batchID   0  N_b  1964.748 N_ttl 19999.801 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  21.100 lapCeil    22 batchPos   1/10 batchID   6  N_b  1993.237 N_ttl 19999.801 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  22.100 lapCeil    23 batchPos   1/10 batchID   1  N_b  2008.332 N_ttl 19999.801 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  23.100 lapCeil    24 batchPos   1/10 batchID   8  N_b  2039.832 N_ttl 19999.801 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  24.100 lapCeil    25 batchPos   1/10 batchID   7  N_b  1963.876 N_ttl 19999.801 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  25.100 lapCeil    26 batchPos   1/10 batchID   1  N_b  2008.332 N_ttl 19999.801 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  26.100 lapCeil    27 batchPos   1/10 batchID   3  N_b  1995.746 N_ttl 19999.801 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  27.100 lapCeil    28 batchPos   1/10 batchID   4  N_b  2003.591 N_ttl 19999.801 BUSY DELETE PROPOSAL
+STATUS uid     2  lap  28.100 lapCeil    29 batchPos   1/10 batchID   9  N_b  2018.635 N_ttl 19999.801 BUSY DELETE PROPOSAL

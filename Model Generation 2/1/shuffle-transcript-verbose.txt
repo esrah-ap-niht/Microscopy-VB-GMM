@@ -1,0 +1,17 @@
+SHUFFLED at lap 1.000. diff -8.2145e-07   prev_loss -4.6779e-03   new_loss -4.6787e-03
+SHUFFLED at lap 2.000. diff -1.3128e-07   prev_loss -3.5764e-02   new_loss -3.5764e-02
+SHUFFLED at lap 4.000. diff -1.1044e-08   prev_loss -3.9957e-02   new_loss -3.9957e-02
+SHUFFLED at lap 5.000. diff -1.9949e-08   prev_loss -4.0854e-02   new_loss -4.0854e-02
+SHUFFLED at lap 6.000. diff -5.3839e-09   prev_loss -4.1592e-02   new_loss -4.1592e-02
+SHUFFLED at lap 8.000. diff -1.2638e-09   prev_loss -4.2494e-02   new_loss -4.2494e-02
+SHUFFLED at lap 9.000. diff -8.3036e-09   prev_loss -4.2854e-02   new_loss -4.2854e-02
+SHUFFLED at lap 11.000. diff -4.4436e-09   prev_loss -4.3512e-02   new_loss -4.3512e-02
+SHUFFLED at lap 13.000. diff -1.2299e-08   prev_loss -4.3854e-02   new_loss -4.3854e-02
+SHUFFLED at lap 15.000. diff -8.3425e-09   prev_loss -4.4035e-02   new_loss -4.4035e-02
+SHUFFLED at lap 21.000. diff -5.4115e-09   prev_loss -4.4503e-02   new_loss -4.4503e-02
+SHUFFLED at lap 23.000. diff -1.7397e-09   prev_loss -4.4735e-02   new_loss -4.4735e-02
+SHUFFLED at lap 28.000. diff -9.2235e-09   prev_loss -4.5653e-02   new_loss -4.5653e-02
+SHUFFLED at lap 36.000. diff -1.6226e-09   prev_loss -4.6071e-02   new_loss -4.6071e-02
+SHUFFLED at lap 59.000. diff -1.2624e-10   prev_loss -4.6778e-02   new_loss -4.6778e-02
+SHUFFLED at lap 76.000. diff -7.9615e-09   prev_loss -4.7336e-02   new_loss -4.7336e-02
+SHUFFLED at lap 77.000. diff -1.0336e-09   prev_loss -4.7782e-02   new_loss -4.7782e-02

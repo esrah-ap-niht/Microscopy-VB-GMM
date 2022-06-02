@@ -1,0 +1,1 @@
+STATUS uid     0  lap   3.100 lapCeil     4 batchPos   1/10 batchID   9  N_b   814.000 N_ttl  8456.000 BUSY DELETE PROPOSAL

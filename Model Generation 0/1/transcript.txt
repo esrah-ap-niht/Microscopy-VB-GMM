@@ -1,0 +1,53 @@
+Dataset Summary:
+X Data
+  total size: 29987 units
+  batch size: 2999 units
+  num. batches: 10
+Allocation Model:  DP mixture with K=0. Concentration gamma0= 3.00
+Obs. Data  Model:  Gaussian with full covariance.
+Obs. Data  Prior:  Gauss-Wishart on mean and covar of each cluster
+  E[  mean[k] ] = 
+   [0. 0.]  ...
+  E[ covar[k] ] = 
+  [[1. 0.]
+   [0. 1.]] ...
+Initialization:
+  initname = bregmankmeans
+  K = 10 (number of clusters)
+  seed = 1607680
+  elapsed_time: 0.8 sec
+Learn Alg: memoVB | task  1/1 | alg. seed: 1607680 | data order seed: 8541952
+task_output_path: Model Generation 0\1
+    0.100/200 after      0 sec. |    749.6 MiB | K   10 | loss -2.291067141e-01 |  
+    0.200/200 after      0 sec. |    749.6 MiB | K   10 | loss -3.545552626e-01 |  
+    0.300/200 after      1 sec. |    749.6 MiB | K   10 | loss -4.057651276e-01 |  
+    1.000/200 after      1 sec. |    749.7 MiB | K   10 | loss -5.944459240e-01 |  
+    2.000/200 after      2 sec. |    749.8 MiB | K   10 | loss -6.085862133e-01 | Ndiff  259.302 
+    3.000/200 after      4 sec. |    749.9 MiB | K   10 | loss -6.098818415e-01 | Ndiff   35.204 
+    4.000/200 after     11 sec. |    750.2 MiB | K    9 | loss -6.115548939e-01 | Ndiff   30.740 
+    5.000/200 after     15 sec. |    750.5 MiB | K    8 | loss -6.127680597e-01 | Ndiff   48.711 
+    6.000/200 after     19 sec. |    750.5 MiB | K    6 | loss -6.134952945e-01 | Ndiff   48.711 
+    7.000/200 after     21 sec. |    750.6 MiB | K    5 | loss -6.139801649e-01 | Ndiff   10.171 
+    8.000/200 after     24 sec. |    750.6 MiB | K    5 | loss -6.139861482e-01 | Ndiff    0.818 
+    9.000/200 after     25 sec. |    750.6 MiB | K    5 | loss -6.139871542e-01 | Ndiff    0.229 
+   10.000/200 after     27 sec. |    750.7 MiB | K    5 | loss -6.139872463e-01 | Ndiff    0.095 
+   11.000/200 after     48 sec. |    751.6 MiB | K    5 | loss -6.139873121e-01 | Ndiff    0.098 
+   12.000/200 after     50 sec. |    751.6 MiB | K    5 | loss -6.139874046e-01 | Ndiff    0.121 
+   13.000/200 after     52 sec. |    751.6 MiB | K    5 | loss -6.139875482e-01 | Ndiff    0.148 
+   14.000/200 after     54 sec. |    751.6 MiB | K    5 | loss -6.139877193e-01 | Ndiff    0.158 
+   15.000/200 after     55 sec. |    751.6 MiB | K    5 | loss -6.139878215e-01 | Ndiff    0.108 
+   16.000/200 after     57 sec. |    751.6 MiB | K    5 | loss -6.139878465e-01 | Ndiff    0.046 
+   17.000/200 after     80 sec. |    751.7 MiB | K    7 | loss -6.140457457e-01 | Ndiff    0.014 
+   18.000/200 after     83 sec. |    751.7 MiB | K    6 | loss -6.140460270e-01 | Ndiff    0.169 
+   19.000/200 after     85 sec. |    751.7 MiB | K    6 | loss -6.140460599e-01 | Ndiff    0.054 
+   20.000/200 after     87 sec. |    751.7 MiB | K    6 | loss -6.140460704e-01 | Ndiff    0.037 
+   21.000/200 after     89 sec. |    751.7 MiB | K    6 | loss -6.140460745e-01 | Ndiff    0.029 
+   22.000/200 after     91 sec. |    751.7 MiB | K    6 | loss -6.140460762e-01 | Ndiff    0.018 
+   23.000/200 after     93 sec. |    751.7 MiB | K    6 | loss -6.140460768e-01 | Ndiff    0.010 
+   24.000/200 after     96 sec. |    751.7 MiB | K    6 | loss -6.140460771e-01 | Ndiff    0.008 
+   25.000/200 after     98 sec. |    751.7 MiB | K    6 | loss -6.140460772e-01 | Ndiff    0.005 
+   26.000/200 after    101 sec. |    751.7 MiB | K    6 | loss -6.140460773e-01 | Ndiff    0.003 
+   27.000/200 after    104 sec. |    751.7 MiB | K    6 | loss -6.140460773e-01 | Ndiff    0.002 
+   28.000/200 after    106 sec. |    751.7 MiB | K    6 | loss -6.140460773e-01 | Ndiff    0.001 
+   29.000/200 after    108 sec. |    751.7 MiB | K    6 | loss -6.140460773e-01 | Ndiff    0.001 
+... done. converged.

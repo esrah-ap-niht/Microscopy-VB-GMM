@@ -1,0 +1,74 @@
+STATUS uid     9  lap   3.100 lapCeil     4 batchPos   1/10 batchID   9  N_b    55.874 N_ttl   496.189 BUSY DELETE PROPOSAL
+STATUS uid     9  lap   4.100 lapCeil     5 batchPos   1/10 batchID   9  N_b    60.496 N_ttl   516.755 BUSY DELETE PROPOSAL
+STATUS uid     9  lap   5.100 lapCeil     6 batchPos   1/10 batchID   1  N_b    49.533 N_ttl   528.820 BUSY DELETE PROPOSAL
+STATUS uid     9  lap   6.100 lapCeil     7 batchPos   1/10 batchID   5  N_b    53.627 N_ttl   528.383 BUSY DELETE PROPOSAL
+STATUS uid     9  lap   7.100 lapCeil     8 batchPos   1/10 batchID   5  N_b    53.609 N_ttl   527.597 BUSY DELETE PROPOSAL
+STATUS uid     9  lap   8.100 lapCeil     9 batchPos   1/10 batchID   4  N_b    58.967 N_ttl   526.551 BUSY DELETE PROPOSAL
+STATUS uid     9  lap   9.100 lapCeil    10 batchPos   1/10 batchID   7  N_b    54.431 N_ttl   526.139 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  10.100 lapCeil    11 batchPos   1/10 batchID   9  N_b    61.627 N_ttl   526.067 ELIGIBLE 
+Creating proposal for targetUID 9 at lap 10.10 batchID 9
+Preparing target dataset for Bregman k-means analysis...
+  Targeted comp has 61.63 atoms assigned out of 2998.
+  Filtering to find atoms with resp > 0.10
+  Found 62 atoms meeting this requirement.
+Running Bregman k-means with K=5 for 1 iters
+iter 0: Lscore 5.584e+03
+   24.00    4.00   13.00    7.63   13.00
+Bregman k-means DONE. Delivered 5 non-empty clusters
+     25   26   27   28   29
+   23.9 12.9 12.9 7.62 3.99
+ Running 5 refinement iterations (--b_nRefineSteps)
+ target prob redistributed by policy uniform (--b_method_xPi)
+ pi[ktarget] before 0.0175  after 0.0004.
+ pi[new comps]: 0.0034 0.0034 0.0034 0.0034 0.0034
+     25   26   27   28   29
+   24.0 12.9 12.9 7.63 3.99
+   36.9 m 25 12.9 7.63 3.99
+   49.9      m 25 7.63 3.99
+   57.6           m 25 3.99
+   61.6                m 25
+   61.6                    
+Proposal build phase FAILED. Could not create at least two comps with mass >= 1.0 (--b_minNumAtomsForNewComp)
+
+STATUS uid     9  lap  11.100 lapCeil    12 batchPos   1/10 batchID   8  N_b    47.955 N_ttl   526.071 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  12.100 lapCeil    13 batchPos   1/10 batchID   7  N_b    54.431 N_ttl   526.079 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  13.100 lapCeil    14 batchPos   1/10 batchID   0  N_b    55.018 N_ttl   526.078 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  14.100 lapCeil    15 batchPos   1/10 batchID   4  N_b    58.978 N_ttl   526.072 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  15.100 lapCeil    16 batchPos   1/10 batchID   8  N_b    47.950 N_ttl   526.063 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  16.100 lapCeil    17 batchPos   1/10 batchID   0  N_b    55.015 N_ttl   526.059 ELIGIBLE 
+Creating proposal for targetUID 9 at lap 16.10 batchID 0
+Preparing target dataset for Bregman k-means analysis...
+  Targeted comp has 55.02 atoms assigned out of 2999.
+  Filtering to find atoms with resp > 0.10
+  Found 56 atoms meeting this requirement.
+Running Bregman k-means with K=5 for 1 iters
+iter 0: Lscore 5.981e+03
+   18.00    2.00   15.00   16.00    4.00
+Bregman k-means DONE. Delivered 5 non-empty clusters
+     95   96   97   98   99
+   17.9 15.9 14.9 3.99  2.0
+ Running 5 refinement iterations (--b_nRefineSteps)
+ target prob redistributed by policy uniform (--b_method_xPi)
+ pi[ktarget] before 0.0175  after 0.0004.
+ pi[new comps]: 0.0034 0.0034 0.0034 0.0034 0.0034
+     95   96   97   98   99
+   17.9 16.1 15.0 3.91  2.0
+   34.1 m 95 15.0 3.91  2.0
+   49.1      m 95 3.91  2.0
+   53.0           m 95  2.0
+   55.0                m 95
+   55.0                    
+Proposal build phase FAILED. Could not create at least two comps with mass >= 1.0 (--b_minNumAtomsForNewComp)
+
+STATUS uid     9  lap  17.100 lapCeil    18 batchPos   1/10 batchID   2  N_b    49.733 N_ttl   526.003 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  18.100 lapCeil    19 batchPos   1/10 batchID   7  N_b    54.334 N_ttl   525.668 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  19.100 lapCeil    20 batchPos   1/10 batchID   8  N_b    47.864 N_ttl   525.492 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  20.100 lapCeil    21 batchPos   1/10 batchID   0  N_b    54.925 N_ttl   525.359 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  21.100 lapCeil    22 batchPos   1/10 batchID   6  N_b    48.004 N_ttl   525.287 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  22.100 lapCeil    23 batchPos   1/10 batchID   1  N_b    47.900 N_ttl   525.237 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  23.100 lapCeil    24 batchPos   1/10 batchID   8  N_b    47.855 N_ttl   525.202 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  24.100 lapCeil    25 batchPos   1/10 batchID   7  N_b    54.278 N_ttl   525.182 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  25.100 lapCeil    26 batchPos   1/10 batchID   1  N_b    47.899 N_ttl   525.171 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  26.100 lapCeil    27 batchPos   1/10 batchID   3  N_b    48.558 N_ttl   525.161 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  27.100 lapCeil    28 batchPos   1/10 batchID   4  N_b    58.926 N_ttl   525.157 BUSY DELETE PROPOSAL
+STATUS uid     9  lap  28.100 lapCeil    29 batchPos   1/10 batchID   9  N_b    61.620 N_ttl   525.154 BUSY DELETE PROPOSAL
