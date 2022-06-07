@@ -685,7 +685,7 @@ else:
 def main():
     
     size = 40
-    graphing_dpi = 100
+    graphing_dpi = 400
     color = 'seismic_r'
     fontsize = 60
     ratio = 2 
@@ -752,12 +752,16 @@ def main():
                     with h5py.File(montage_path, 'r+') as file: 
                         for folder in ['Electron Image', 'EDS', 'EBSD']: 
                             
-                            keys = list( file[str(folder)].keys() )
-                            for background in keys: 
+                            try: 
                                 
-                                if (background != 'Xray Spectrum') and ((background in available_backgrounds) == False) and ( len(file[str(folder)][background].shape) == 2):
-                                    available_backgrounds.append(background) 
-            
+                                keys = list( file[str(folder)].keys() )
+                                for background in keys: 
+                                    
+                                    if (background != 'Xray Spectrum') and ((background in available_backgrounds) == False) and ( len(file[str(folder)][background].shape) == 2):
+                                        available_backgrounds.append(background) 
+                            except: 
+                                pass 
+                            
         print("The following background channels are available to be overlaid on AI outputs")
         print("For each background, indicate with 'y' or 'n' whether the background should be used in graphing:")
         print("")
@@ -810,229 +814,208 @@ def main():
                                     raise Exception("Error: Segmentation not found for montage: " + str(montage) )
                                 for folder in ['Electron Image', 'EDS', 'EBSD']: 
                                     
-                                    keys = list( montage_file[str(folder)].keys() )
-                                    for key in keys: 
+                                    try: 
+                                            
+                                        keys = list( montage_file[str(folder)].keys() )
+                                        for key in keys: 
+                                            
+                                            if (bk_grd == key): 
+                                                background = montage_file[folder][key][...]
+                                                background = np.array(background, dtype = np.float32 )
+                                                with h5py.File(analysis_file, 'r+') as file: 
+                                                    Means = file['GMM Parameters']['Means'][...]
+                                                    Covariance = file['GMM Parameters']['Covariance'][...]
+                                                    Weights = file['GMM Parameters']['Weights'][...]
+                                                components = len(Weights)
+        
+                                                
+                                                # Create absolute uncertainty intensity map
+                                                fig, ax = plt.subplots(figsize=(size, size), dpi=graphing_dpi)
+                                                try:
+                                                    plt.imshow(background)
+                                                    plot = plt.imshow(uncertainty, cmap = color, vmin = -20, vmax = 0, alpha = 0.7 )
+                                                except NameError:
+                                                    plot = plt.imshow(uncertainty, cmap = color, vmin = -20, vmax = 0 )
+                                                    pass 
+                                                plt.xticks([])
+                                                plt.yticks([])
+                                                plt.title(str(montage) + " Fixed Scale Log Liklihoods", fontsize = fontsize)
+                                                divider = make_axes_locatable(ax)
+                                                cax = divider.append_axes("right", size="5%", pad=0.1)
+                                                cbar = plt.colorbar(plot, cax=cax)
+                                                cbar.ax.tick_params(labelsize=fontsize*(0.7))
+                                                plt.xticks([])
+                                                plt.yticks([])
+                                                plt.tight_layout()
+                                                plt.savefig(str(montage) + " Fixed Scale Log Liklihoods " + str(bk_grd) + ".png")
+                                                plt.close(fig)
+                                                gc.collect()
+                                                
+                                                
+                                                # Create absolute uncertainty intensity map
+                                                fig, ax = plt.subplots(figsize=(size, size), dpi=graphing_dpi)
+                                                try:
+                                                    plt.imshow(background)
+                                                    plot = plt.imshow(uncertainty, cmap = color, vmin = -20, vmax = 0, alpha = 0.7 )
+                                                except NameError:
+                                                    plot = plt.imshow(uncertainty, cmap = color, vmin = -20, vmax = 0 )
+                                                    pass 
+                                                plt.xticks([])
+                                                plt.yticks([])
+                                                plt.xticks([])
+                                                plt.yticks([])
+                                                plt.tight_layout()
+                                                plt.savefig(str(montage) + " Fixed Scale Log Liklihoods Without Colorbar" + str(bk_grd) + ".png")
+                                                plt.close(fig)
+                                                gc.collect()
+                                                
+                                                
+                                                # Create relative uncertainty intensity map
+                                                fig, ax = plt.subplots(figsize=(size, size), dpi=graphing_dpi)
+                                                try:
+                                                    plt.imshow(background)
+                                                    plot = plt.imshow(uncertainty, cmap = color, alpha = 0.7 )
+                                                except NameError:
+                                                    plot = plt.imshow(uncertainty, cmap = color )
+                                                    pass 
+                                                plt.xticks([])
+                                                plt.yticks([])
+                                                plt.title(str(montage) + " Floating Scale Log Liklihoods", fontsize = fontsize)
+                                                divider = make_axes_locatable(ax)
+                                                cax = divider.append_axes("right", size="5%", pad=0.1)
+                                                cbar = plt.colorbar(plot, cax=cax)
+                                                cbar.ax.tick_params(labelsize=fontsize*(0.7))
+                                                #plt.title(file)
+                                                plt.xticks([])
+                                                plt.yticks([])
+                                                plt.tight_layout()
+                                                plt.savefig(str(montage) + " Floating Scale Log Liklihoods with Colorbar" + str(bk_grd) + ".png")
+                                                plt.close(fig)
+                                                gc.collect()
+                                                
+                                                
+                                                # Create relative uncertainty intensity map
+                                                fig, ax = plt.subplots(figsize=(size, size), dpi=graphing_dpi)
+                                                try:
+                                                    plt.imshow(background)
+                                                    plot = plt.imshow(uncertainty, cmap = color, alpha = 0.7 )
+                                                except NameError:
+                                                    plot = plt.imshow(uncertainty, cmap = color )
+                                                    pass 
+                                                plt.xticks([])
+                                                plt.yticks([])
+                                                plt.xticks([])
+                                                plt.yticks([])
+                                                plt.tight_layout()
+                                                plt.savefig(str(montage) + " Floating Scale Log Liklihoods Without Colorbar" + str(bk_grd) + ".png")
+                                                plt.close(fig)
+                                                gc.collect()
+                                                        
+                                                # Save semantic segmentation map 
+                                                fig, ax = plt.subplots(figsize = (size, size)) 
+                                                ax = plt.subplot()
+                                                cmap = plt.get_cmap('gist_ncar', np.max(segmentation)-np.min(segmentation)+1)
+                                                plt.gca().invert_yaxis()
+                                                try:
+                                                    plt.imshow(background)
+                                                    plot = plt.imshow(segmentation, cmap=cmap, alpha = 0.7, vmin = np.min(segmentation)-.5, vmax = np.max(segmentation)+.5)
+                                                except NameError:
+                                                    plot = plt.imshow(segmentation, cmap=cmap, alpha = 1, vmin = np.min(segmentation)-.5, vmax = np.max(segmentation)+.5)
+                                                    pass 
+                                                plt.xticks([])
+                                                plt.yticks([])
+                                                plt.title(str(montage) + " Class Segmentation", fontsize = fontsize*(0.7))
+                                                plt.grid(False)
+                                                divider = make_axes_locatable(ax)
+                                                cax = divider.append_axes("right", size="5%", pad=0.05)
+                                                cbar = plt.colorbar(plot, cax=cax, ticks=np.arange(np.min(segmentation),np.max(segmentation)+1))
+                                                cbar.ax.tick_params(labelsize=25) 
+                                                plt.tight_layout()
+                                                plt.savefig(str(montage) + " Class Segmentation with Colorbar "  + str(bk_grd) + ".png", dpi=graphing_dpi)
+                                                plt.close(fig)
+                                                gc.collect()
+                                                
+                                                # Save semantic segmentation map 
+                                                fig, ax = plt.subplots(figsize = (size, size)) 
+                                                ax = plt.subplot()
+                                                cmap = plt.get_cmap('gist_ncar', np.max(segmentation)-np.min(segmentation)+1)
+                                                plt.gca().invert_yaxis()
+                                                try:
+                                                    plt.imshow(background)
+                                                    plot = plt.imshow(segmentation, cmap=cmap, alpha = 0.7, vmin = np.min(segmentation)-.5, vmax = np.max(segmentation)+.5)
+                                                except NameError:
+                                                    plot = plt.imshow(segmentation, cmap=cmap, alpha = 1, vmin = np.min(segmentation)-.5, vmax = np.max(segmentation)+.5)
+                                                    pass 
+                                                plt.xticks([])
+                                                plt.yticks([])
+                                                plt.grid(False)
+                                                plt.tight_layout()
+                                                plt.savefig(str(montage) + " Class Segmentation Without Colorbar "  + str(bk_grd) + ".png", dpi=graphing_dpi)
+                                                plt.close(fig)
+                                                gc.collect()
+                                                
+                                                
+                                                
+                                                # Create agglomerative hierarchial model and save results 
+                                                fig, ax = plt.subplots(figsize=(size, size))
+                                                heir = sklearn.cluster.AgglomerativeClustering(distance_threshold=0, n_clusters=None, linkage = 'single')
+                                                clustering = heir.fit(Means)  
+                                                linkage_matrix = plot_dendrogram(clustering, truncate_mode='level', p=100)
+                                                ax = plt.gca()
+                                                ax.tick_params(axis='x', which='major', labelsize=fontsize)
+                                                ax.tick_params(axis='y', which='major', labelsize=fontsize)
+                                                plt.tight_layout()
+                                                plt.savefig(str(montage) + " Consolidation Dendrogram" + ".png")
+                                                plt.close(fig)
+                                                gc.collect()
+                                                
+                                                # Prepare HAM linkage matrix for exporting 
+                                                # Remove all non-first-level linkages 
+                                                
+                                                linkage_matrix = np.delete(linkage_matrix,3,1)
+                                                
+                                                # Reformat to three columns 
+                                                linkage_matrix = np.concatenate( (np.delete(linkage_matrix, 1, 1), np.delete(linkage_matrix, 0, 1) ), axis = 0)
+                                                
+                                                index_to_delete = []
+                                                uniques = np.unique(segmentation)
+                                                for i, row in enumerate(linkage_matrix[:,0]):
+                                                    if (row in uniques) == False:
+                                                        index_to_delete.append(i)
+                                                        
+                                                linkage_matrix = np.delete(linkage_matrix, np.array(index_to_delete, dtype = np.int16), 0)
+                                                
+                                                linkage_matrix = pd.DataFrame( data = linkage_matrix, columns = ["Class ID", "Dissimilarity Scale"])
+                                                
+                                                index_to_delete = []
+                                                for row in range(len(Weights)):
+                                                    if (row in uniques) == False:
+                                                        index_to_delete.append(row)
+                                                        
+                                                weights = np.delete(Weights, np.array(index_to_delete, dtype = np.int16), 0)
+                                            
+                                                linkage_matrix = linkage_matrix.sort_values(by=['Class ID'])
+                                                linkage_matrix['Area Percent'] = Weights * 100.0
                                         
-                                        if (bk_grd == key): 
-                                            background = montage_file[folder][key][...]
-                                            background = np.array(background, dtype = np.float32 )
-
-                                            with h5py.File(analysis_file, 'r+') as file: 
-                                                Means = file['GMM Parameters']['Means'][...]
-                                                Covariance = file['GMM Parameters']['Covariance'][...]
-                                                Weights = file['GMM Parameters']['Weights'][...]
-                                            components = len(Weights)
+                                                linkage_matrix.to_excel(str(montage) + " Class Data.xlsx", index = False)
+                                                
     
-                                            
-                                            # Create absolute uncertainty intensity map
-                                            fig, ax = plt.subplots(figsize=(size, size), dpi=graphing_dpi)
-                                            try:
-                                                plt.imshow(background)
-                                                plot = plt.imshow(uncertainty, cmap = color, vmin = -20, vmax = 0, alpha = 0.7 )
-                                            except NameError:
-                                                plot = plt.imshow(uncertainty, cmap = color, vmin = -20, vmax = 0 )
-                                                pass 
-                                            plt.xticks([])
-                                            plt.yticks([])
-                                            plt.title(str(montage) + " Fixed Scale Log Liklihoods", fontsize = fontsize)
-                                            divider = make_axes_locatable(ax)
-                                            cax = divider.append_axes("right", size="5%", pad=0.1)
-                                            cbar = plt.colorbar(plot, cax=cax)
-                                            cbar.ax.tick_params(labelsize=fontsize*(0.7))
-                                            plt.xticks([])
-                                            plt.yticks([])
-                                            plt.tight_layout()
-                                            plt.savefig(str(montage) + " Fixed Scale Log Liklihoods " + str(bk_grd) + ".png")
-                                            plt.close(fig)
-                                            gc.collect()
-                                            
-                                            
-                                            fig, ax = plt.subplots(figsize=(size, size), dpi=graphing_dpi)
-                                            try:
-                                                plt.imshow(background)
-                                                plot = plt.imshow(uncertainty, cmap = color, vmin = -20, vmax = 0, alpha = 0.7 )
-                                            except NameError:
-                                                plot = plt.imshow(uncertainty, cmap = color, vmin = -20, vmax = 0 )
-                                                pass 
-                                            plt.xticks([])
-                                            plt.yticks([])
-                                            plt.title(str(montage) + " Fixed Scale Log Liklihoods", fontsize = fontsize)
-                                            divider = make_axes_locatable(ax)
-                                            cax = divider.append_axes("right", size="5%", pad=0.1)
-                                            cbar = plt.colorbar(plot, cax=cax)
-                                            cbar.ax.tick_params(labelsize=fontsize*(0.7))
-                                            plt.xticks([])
-                                            plt.yticks([])
-                                            plt.tight_layout()
-                                            plt.savefig(str(montage) + " Fixed Scale Log Liklihoods" + str(bk_grd) + ".png")
-                                            plt.close(fig)
-                                            gc.collect()
-                                                    
-                                                    
-                                                    
-                                            
-                                            # Create absolute uncertainty intensity map
-                                            fig, ax = plt.subplots(figsize=(size, size), dpi=graphing_dpi)
-                                            try:
-                                                plt.imshow(background)
-                                                plot = plt.imshow(uncertainty, cmap = color, vmin = -20, vmax = 0, alpha = 0.7 )
-                                            except NameError:
-                                                plot = plt.imshow(uncertainty, cmap = color, vmin = -20, vmax = 0 )
-                                                pass 
-                                            plt.xticks([])
-                                            plt.yticks([])
-                                            plt.xticks([])
-                                            plt.yticks([])
-                                            plt.tight_layout()
-                                            plt.savefig(str(montage) + " Fixed Scale Log Liklihoods Without Colorbar" + str(bk_grd) + ".png")
-                                            plt.close(fig)
-                                            gc.collect()
-                                            
-                                            
-                                            # Create relative uncertainty intensity map
-                                            fig, ax = plt.subplots(figsize=(size, size), dpi=graphing_dpi)
-                                            try:
-                                                plt.imshow(background)
-                                                plot = plt.imshow(uncertainty, cmap = color, alpha = 0.7 )
-                                            except NameError:
-                                                plot = plt.imshow(uncertainty, cmap = color )
-                                                pass 
-                                            plt.xticks([])
-                                            plt.yticks([])
-                                            plt.title(str(montage) + " Floating Scale Log Liklihoods", fontsize = fontsize)
-                                            divider = make_axes_locatable(ax)
-                                            cax = divider.append_axes("right", size="5%", pad=0.1)
-                                            cbar = plt.colorbar(plot, cax=cax)
-                                            cbar.ax.tick_params(labelsize=fontsize*(0.7))
-                                            #plt.title(file)
-                                            plt.xticks([])
-                                            plt.yticks([])
-                                            plt.tight_layout()
-                                            plt.savefig(str(montage) + " Floating Scale Log Liklihoods with Colorbar" + str(bk_grd) + ".png")
-                                            plt.close(fig)
-                                            gc.collect()
-                                            
-                                            
-                                            # Create relative uncertainty intensity map
-                                            fig, ax = plt.subplots(figsize=(size, size), dpi=graphing_dpi)
-                                            try:
-                                                plt.imshow(background)
-                                                plot = plt.imshow(uncertainty, cmap = color, alpha = 0.7 )
-                                            except NameError:
-                                                plot = plt.imshow(uncertainty, cmap = color )
-                                                pass 
-                                            plt.xticks([])
-                                            plt.yticks([])
-                                            plt.xticks([])
-                                            plt.yticks([])
-                                            plt.tight_layout()
-                                            plt.savefig(str(montage) + " Floating Scale Log Liklihoods Without Colorbar" + str(bk_grd) + ".png")
-                                            plt.close(fig)
-                                            gc.collect()
-                                                    
-                                            # Save semantic segmentation map 
-                                            fig, ax = plt.subplots(figsize = (size, size)) 
-                                            ax = plt.subplot()
-                                            cmap = plt.get_cmap('gist_ncar', np.max(segmentation)-np.min(segmentation)+1)
-                                            plt.gca().invert_yaxis()
-                                            try:
-                                                plt.imshow(background)
-                                                plot = plt.imshow(segmentation, cmap=cmap, alpha = 0.7, vmin = np.min(segmentation)-.5, vmax = np.max(segmentation)+.5)
-                                            except NameError:
-                                                plot = plt.imshow(segmentation, cmap=cmap, alpha = 1, vmin = np.min(segmentation)-.5, vmax = np.max(segmentation)+.5)
-                                                pass 
-                                            plt.xticks([])
-                                            plt.yticks([])
-                                            plt.title(str(montage) + " Class Segmentation", fontsize = fontsize*(0.7))
-                                            plt.grid(False)
-                                            divider = make_axes_locatable(ax)
-                                            cax = divider.append_axes("right", size="5%", pad=0.05)
-                                            cbar = plt.colorbar(plot, cax=cax, ticks=np.arange(np.min(segmentation),np.max(segmentation)+1))
-                                            cbar.ax.tick_params(labelsize=25) 
-                                            plt.tight_layout()
-                                            plt.savefig(str(montage) + " Class Segmentation with Colorbar "  + str(bk_grd) + ".png", dpi=graphing_dpi)
-                                            plt.close(fig)
-                                            gc.collect()
-                                            
-                                            # Save semantic segmentation map 
-                                            fig, ax = plt.subplots(figsize = (size, size)) 
-                                            ax = plt.subplot()
-                                            cmap = plt.get_cmap('gist_ncar', np.max(segmentation)-np.min(segmentation)+1)
-                                            plt.gca().invert_yaxis()
-                                            try:
-                                                plt.imshow(background)
-                                                plot = plt.imshow(segmentation, cmap=cmap, alpha = 0.7, vmin = np.min(segmentation)-.5, vmax = np.max(segmentation)+.5)
-                                            except NameError:
-                                                plot = plt.imshow(segmentation, cmap=cmap, alpha = 1, vmin = np.min(segmentation)-.5, vmax = np.max(segmentation)+.5)
-                                                pass 
-                                            plt.xticks([])
-                                            plt.yticks([])
-                                            plt.grid(False)
-                                            plt.tight_layout()
-                                            plt.savefig(str(montage) + " Class Segmentation Without Colorbar "  + str(bk_grd) + ".png", dpi=graphing_dpi)
-                                            plt.close(fig)
-                                            gc.collect()
-                                            
-                                            
-                                            
-                                            # Create agglomerative hierarchial model and save results 
-                                            fig, ax = plt.subplots(figsize=(size, size))
-                                            heir = sklearn.cluster.AgglomerativeClustering(distance_threshold=0, n_clusters=None, linkage = 'single')
-                                            clustering = heir.fit(Means)  
-                                            linkage_matrix = plot_dendrogram(clustering, truncate_mode='level', p=100)
-                                            ax = plt.gca()
-                                            ax.tick_params(axis='x', which='major', labelsize=fontsize)
-                                            ax.tick_params(axis='y', which='major', labelsize=fontsize)
-                                            plt.tight_layout()
-                                            plt.savefig(str(montage) + " Consolidation Dendrogram" + ".png")
-                                            plt.close(fig)
-                                            gc.collect()
-                                            
-                                            # Prepare HAM linkage matrix for exporting 
-                                            # Remove all non-first-level linkages 
-                                            
-                                            linkage_matrix = np.delete(linkage_matrix,3,1)
-                                            
-                                            # Reformat to three columns 
-                                            linkage_matrix = np.concatenate( (np.delete(linkage_matrix, 1, 1), np.delete(linkage_matrix, 0, 1) ), axis = 0)
-                                            
-                                            index_to_delete = []
-                                            uniques = np.unique(segmentation)
-                                            for i, row in enumerate(linkage_matrix[:,0]):
-                                                if (row in uniques) == False:
-                                                    index_to_delete.append(i)
-                                                    
-                                            linkage_matrix = np.delete(linkage_matrix, np.array(index_to_delete, dtype = np.int16), 0)
-                                            
-                                            linkage_matrix = pd.DataFrame( data = linkage_matrix, columns = ["Class ID", "Dissimilarity Scale"])
-                                            
-                                            index_to_delete = []
-                                            for row in range(len(Weights)):
-                                                if (row in uniques) == False:
-                                                    index_to_delete.append(row)
-                                                    
-                                            weights = np.delete(Weights, np.array(index_to_delete, dtype = np.int16), 0)
+                                                # Save cluster weight graph
+                                                fig, ax = plt.subplots(figsize=(size, size))
+                                                plot_w = np.arange(components) + 1
+                                                ax.bar(plot_w - 0.5, np.sort(Weights)[::-1], width=1., lw=0);
+                                                ax.set_xlim(0.5, components);
+                                                ax.set_xlabel('Dirichlet Process Components');
+                                                ax.set_ylabel('Posterior expected mixture weight');
+                                                fig.suptitle("Mixture Weight per Class" ,fontsize=20 )
+                                                plt.tight_layout()
+                                                plt.savefig("Mixture Weights" + ".png", dpi=graphing_dpi)
+                                                plt.close(fig)
+                                                gc.collect()
                                         
-                                            linkage_matrix = linkage_matrix.sort_values(by=['Class ID'])
-                                            linkage_matrix['Area Percent'] = Weights * 100.0
-                                    
-                                            linkage_matrix.to_excel(str(montage) + " Class Data.xlsx", index = False)
-                                            
-
-                                            # Save cluster weight graph
-                                            fig, ax = plt.subplots(figsize=(size, size))
-                                            plot_w = np.arange(components) + 1
-                                            ax.bar(plot_w - 0.5, np.sort(Weights)[::-1], width=1., lw=0);
-                                            ax.set_xlim(0.5, components);
-                                            ax.set_xlabel('Dirichlet Process Components');
-                                            ax.set_ylabel('Posterior expected mixture weight');
-                                            fig.suptitle("Mixture Weight per Class" ,fontsize=20 )
-                                            plt.tight_layout()
-                                            plt.savefig("Mixture Weights" + ".png", dpi=graphing_dpi)
-                                            plt.close(fig)
-                                            gc.collect()
-                                            
-                                            
+                                    except:
+                                        pass 
+                                                
                                             
                                             
                                             

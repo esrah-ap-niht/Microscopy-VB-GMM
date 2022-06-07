@@ -486,6 +486,7 @@ def main():
                 except: 
                     break 
             
+        analysis_kev = np.asarray(analysis_kev)
         # Save detected KeV peaks from all montages 
         with h5py.File(analysis_file, 'r+') as file: 
             try:
@@ -498,13 +499,16 @@ def main():
         # for analysis 
         for z, montage in enumerate(unique_montages):
            
-            print("Loading peaks for " + str(montage) )
+            print("Preprocessing data for " + str(montage) )
             montage_file = os.path.abspath( file_list[z] )
             channel_offset = np.mean( np.asarray( load_h5(montage_file, 'Metadata/EDS Starting Bin Voltage (eV)'), dtype = float))
             channel_width =  np.mean( np.asarray( load_h5(montage_file, 'Metadata/EDS Voltage Bin Width (eV)'), dtype = float))
-            montage_peaks = np.asarray( load_h5(montage_file, 'EDS/Autodetected Peak Bins')) 
+            #montage_peaks = np.asarray( load_h5(montage_file, 'EDS/Autodetected Peak Bins')) 
+            montage_peaks =  (analysis_kev*1000 - channel_offset) / channel_width 
+            montage_peaks = np.array(montage_peaks, dtype = np.uint16)
 
-            search_width = 0.150 # KeV 
+            """
+            search_width = 0 # KeV 
             i = 0 
             while True:          
                 
@@ -522,7 +526,7 @@ def main():
                             
                 except: 
                     break 
-                
+            """    
             # Save the bins for each montage and construct the channel array 
             with h5py.File(analysis_file, 'r+') as file: 
                 try:
@@ -543,7 +547,7 @@ def main():
             #data = np.zeros( shape = (x_range, y_range, z_range), dtype = np.float16 )
             with h5py.File(analysis_file, 'r+') as file: 
                 try:
-                    file.create_dataset( 'Montages/' + str(montage) + '/Channels', shape = (x_range, y_range, z_range) )
+                    file.create_dataset( 'Montages/' + str(montage) + '/Channels', shape = (x_range, y_range, z_range), chunks=True )
                     
                 except ValueError:
                     pass
@@ -595,7 +599,8 @@ def main():
 
     # It is desirable to trace where training data came from
     # The initial training data is randomly selected from all montages
-    for i, montage in enumerate( unique_montages ):        
+    for i, montage in enumerate( unique_montages ):    
+        print("Getting initial training data from: " + str(montage) )
         save_file = h5py.File(analysis_file, 'r+') 
         x_range = save_file['Montages'][str(montage)]['Channels'].shape[0]
         y_range = save_file['Montages'][str(montage)]['Channels'].shape[1]
@@ -613,15 +618,19 @@ def main():
         
         data = load_h5(analysis_file, 'Montages/' + str(montage) + '/Channels')
         data = data[training_mask == 0, :]
-    
+        
     
         for point in range(data.shape[0]): 
         
-            training_data.append( data[point,:] ) 
+            training_data.append( list(data[point,:]) ) 
+    
+    training_data = np.asarray(training_data) 
+    
 
-        len(training_data)
-
-    training_data = np.asarray( training_data )
+    #training_data = np.array( training_data, shape = (num_training_points_per_montage*len(unique_montages), data.shape[1]) )
+    
+    #test = test.reshape(num_training_points_per_montage*len(unique_montages), data.shape[1])
+    
     ########
     
     while autodidactic_loop == True: 
