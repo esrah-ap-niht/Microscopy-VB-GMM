@@ -64,7 +64,7 @@ def load_data( file_list, filter_mode, filter_size ):
         if i == 0: 
             if file.endswith('.tif') or file.endswith('.tiff'):
                 image = io.imread(file)
-            elif file.endswith('.jpg') or file.endswith('.png'):
+            elif file.endswith('.jpg') or file.endswith('.png') or file.endswith('.bmp'):
                 image = cv2.imread(file, cv2.IMREAD_GRAYSCALE)
             elif file.endswith('.csv'):
                 image = pd.read_csv(file, sep=',',header=None)
@@ -86,7 +86,7 @@ def load_data( file_list, filter_mode, filter_size ):
             image = io.imread(file)
             if len(image.shape) == 3: 
                 image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        elif file.endswith('.jpg') or file.endswith('.png'):
+        elif file.endswith('.jpg') or file.endswith('.png') or file.endswith('.bmp'):
             image = cv2.imread(file, cv2.IMREAD_GRAYSCALE)
         elif file.endswith('.csv'):
             image = pd.read_csv(file, sep=',',header=None)
@@ -415,7 +415,7 @@ def main():
         
         for i, src in enumerate( input_src ): 
             montage = os.path.split( os.path.dirname(file) )[1]
-            print("Enter the um/pixel resolution for: " + str(montage) + "if available. Otherwise leave blank and press 'enter' ")
+            print("Enter the um/pixel resolution for: " + str(montage) + " if available. Otherwise leave blank and press 'enter' ")
             print("")
             resolution = input("")
             if resolution == '': 
@@ -432,7 +432,7 @@ def main():
             file_list = []
 
             for file in glob.glob(src + '/**/*', recursive=True):
-                if Path(file).suffix in ['.png', '.jpg', '.tif', '.tiff']:
+                if Path(file).suffix in ['.png', '.jpg', '.tif', '.tiff', '.bmp']:
                     file_list.append(file)        
                     
             data = load_data( file_list, filter_mode, filter_size )
@@ -442,7 +442,7 @@ def main():
     ########
     elif analysis_type == 2: 
         # Get user to select input files  
-        file_list = filedialog.askopenfilenames ( title = "Select input directory(s). Files will be copied to the output directory. Press 'cancel' to stop adding folders")
+        file_list = filedialog.askopenfilenames ( title = "Select input montage files(s)")
 
         # Get user to select output directory 
         #output_src = filedialog.askdirectory( title = "Select output directory")
@@ -596,6 +596,7 @@ def main():
     generation = 0
     training_data = [] 
     num_training_points_per_montage = int( round( initial_sampling_size / len(unique_montages), 0 ) )
+    os.chdir(os.path.join(output_src))
 
     # It is desirable to trace where training data came from
     # The initial training data is randomly selected from all montages
@@ -656,7 +657,7 @@ def main():
                 
             save_h5(analysis_file, 'Montages/' + str(montage), ['array', gmm_name + ' Uncertainty'], uncertainty )
 
-        if (generation + 1) < max_autodidectic_iterations: 
+        if ((generation + 1) < max_autodidectic_iterations) and (all(identified) == False): 
             
             # Once the model tuning is complete, append new training data if necessary
             counter = 0 
@@ -712,6 +713,7 @@ def main():
                     continue
                 
         else: 
+            generation += 1
             autodidactic_loop = False
             print("Training Complete")
             break 
