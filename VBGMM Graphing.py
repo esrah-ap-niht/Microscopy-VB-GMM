@@ -926,9 +926,10 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
         size = 10
         fontsize = 30
         fig = plt.figure(constrained_layout=False, figsize=(ratio*size, size), dpi=graphing_dpi)
-        gs = fig.add_gridspec( ncols = 6, nrows = 3)
+        #gs = fig.add_gridspec( ncols = 6, nrows = 3)
         
-        ax1 = fig.add_subplot(gs[0:3, 0:3])
+        #ax1 = fig.add_subplot(gs[0:3, 0:3])
+        ax1 = fig.add_subplot()
         ax1.set_title('Class Map', fontsize = 15)
         
         plt.sca(ax1)
@@ -974,6 +975,7 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
         except NameError:
             pass 
         
+        """
         
         ax2 = fig.add_subplot(gs[0, 3:5])
         ax2.set_title('Correlation Matrix', fontsize = 15)
@@ -1006,12 +1008,12 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
         ax2.figure.axes[-1].xaxis.label.set_size(10)    # colorbar label size 
         plt.xlabel("Electron Shell", fontsize = 12)
         plt.ylabel("Electron Shell", fontsize = 12)
-
+        """
                 
         plt.tight_layout()
        
         
-        plt.savefig(str(montage) + " Class " + str(ind2) + " With Correlation.png")
+        plt.savefig(str(montage) + " Class " + str(ind2) + ".png")
         gc.collect()
 
 

@@ -30,14 +30,6 @@ import glob
 from tqdm import tqdm
 import collections 
 
-# BNPY is not available via pip or conda, therefore users must place it in the C drive for consistency 
-try: 
-    import bnpy
-except ModuleNotFoundError:
-    import sys
-    sys.path.append(str(os.path.join('C:', os.sep, 'Program Files', 'bnpy' )) )
-    import bnpy
-
 ##############################################################################################################
 # plotting, garbage collection, and tkinter settings 
 ##############################################################################################################
@@ -49,6 +41,25 @@ root.attributes('-topmost',1)
 #sns.set(font_scale = 3)
 #sns.set_style("white")
 
+# BNPY is not available via pip or conda, therefore users must place it in the C drive for consistency 
+try: 
+    import bnpy
+except ModuleNotFoundError:
+    
+    try:
+        import sys
+        sys.path.append(str(os.path.join('C:', os.sep, 'Program Files', 'bnpy' )) )
+        import bnpy
+    except:
+        print("")
+        print("The BNPY folder was not automatically located")
+        print("Please select the BNPY folder with the popup")
+        print("")
+        import sys
+        bnpy_src = filedialog.askdirectory( title = "Select BNPY directory")
+        sys.path.append(str(os.path.join(bnpy_src)))
+        import bnpy
+        
 ##############################################################################################################
 # Define functions needed later 
 ##############################################################################################################

@@ -1303,7 +1303,7 @@ def oxford_parse():
     # Get user to select input directory(s)
     input_src = []
     while True: 
-        get_path = filedialog.askdirectory( title = "Select input directory(s). Files will be copied to the output directory. Press 'cancel' to stop adding folders")
+        get_path = filedialog.askdirectory( title = "Select input directory(s) for H5OINA, RPL, and RAW files. Press 'cancel' to stop adding folders")
         if get_path != '':
             input_src.append(get_path)
         else:
@@ -1588,6 +1588,11 @@ def bruker_montage(montage_file, montage, metadata, file_list):
                             y_location = int(y_location)
                         
                         block = data.data
+                        temp_block = np.empty( shape = block.shape )
+                        for i in range(block.shape[2]):
+                            temp_block[:,:, i ] = np.flip( block[:,:,i], 1)
+                        block = temp_block.copy()
+                        del temp_block
                         
                     except: 
                         pass 
@@ -2393,9 +2398,18 @@ if __name__ == "__main__":
     print("")
     print("This software parses proprietry electron microscope files into a common format for VBGMM analysis")
     print("Select a supported input format from the following options: ")
+    print("")
     print("1 for Oxford SEM-EDS & SEM-EBSD")
+    print("   Multiple montages from the same Oxford OIP file may be parsed in the same batch")
+    print("   Montages from different OIP files must be parsed as seperate batches")
+    print("   The Oxford parser inputs H5OINA, RPL, and RAW files")
+    print("")
     print("2 for Bruker SEM-EDS")
+    print("   The parser inputs BCF files from a single Bruker montage")
+    print("   Multiple different montages must each be parsed seperately")
+    print("")
     print("3 for Bruker STEM-EDS")
+    print("   Each individual tile image is parsed seperately")
     print("")
     print("Press 'enter' to execute")
     # get analysis type input 
