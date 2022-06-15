@@ -19,6 +19,7 @@ import scipy
 import seaborn as sns
 from scipy.cluster.hierarchy import dendrogram
 import math
+import cv2
 
 from pathlib import Path
 import h5py
@@ -678,26 +679,72 @@ else:
     
 """
 
-def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, bk_grd, montage_path): 
+
+def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, bk_grd, montage_path, metadata, analysis_file): 
     size = 40
     graphing_dpi = 400
     color = 'seismic_r'
     fontsize = 60
     ratio = 2 
     background = np.array(background, dtype = np.float32)
+    uniques = range(len(Weights))
+    analysis = Path(analysis_file).stem
+    
     try: 
         montage = Path(montage_path).stem.replace("Montage ", "")
     except NameError:
         montage = "Unlabeled"
         
         
+    # Create agglomerative hierarchial model and save results 
+    fig, ax = plt.subplots(figsize=(size, size))
+    heir = sklearn.cluster.AgglomerativeClustering(distance_threshold=0, n_clusters=None, linkage = 'single')
+    clustering = heir.fit(Means)  
+    linkage_matrix = plot_dendrogram(clustering, truncate_mode='level', p=100)
+    ax = plt.gca()
+    ax.tick_params(axis='x', which='major', labelsize=fontsize)
+    ax.tick_params(axis='y', which='major', labelsize=fontsize)
+    plt.tight_layout()
+    plt.savefig(str(analysis) + " Consolidation Dendrogram" + ".png")
+    plt.close(fig)
+    gc.collect()
+    
+    # Prepare HAM linkage matrix for exporting 
+    # Remove all non-first-level linkages 
+    linkage_matrix = np.delete(linkage_matrix,3,1)
+    
+    # Reformat to three columns 
+    linkage_matrix = np.concatenate( (np.delete(linkage_matrix, 1, 1), np.delete(linkage_matrix, 0, 1) ), axis = 0)
+    
+    index_to_delete = []
+    for i, row in enumerate(linkage_matrix[:,0]):
+        if (row in uniques) == False:
+            index_to_delete.append(i)
+    
+    linkage_matrix = np.delete(linkage_matrix, np.array(index_to_delete, dtype = np.int16), 0)
+    linkage_matrix = pd.DataFrame( data = linkage_matrix, columns = ["Class ID", "Dissimilarity Scale"])
+    linkage_matrix = linkage_matrix.sort_values(by=['Class ID'])
+    linkage_matrix['Class Weights'] = Weights * 100.0
+    
+    area = []
+    for row in uniques:        
+        area.append( np.sum(segmentation == row) / segmentation.size * 100 )
+    
+    linkage_matrix['Area Fraction'] = area 
+    linkage_matrix['Training/Testing Ratio'] = linkage_matrix['Class Weights'] / linkage_matrix['Area Fraction']
+    
+    for i in range( Means.shape[1] ):
+        linkage_matrix['Energy Bin ' + str( i ) ] = Means[:,i]
+    linkage_matrix.to_excel(str(montage) + " Class Data.xlsx", index = False)
+
+    
     # Create absolute uncertainty intensity map
     fig, ax = plt.subplots(figsize=(size, size), dpi=graphing_dpi)
     try:
         plt.imshow(background)
-        plot = plt.imshow(uncertainty, cmap = color, vmin = -20, vmax = 0, alpha = 0.7 )
+        plot = plt.imshow(uncertainty, cmap = color, vmin = -40, vmax = 0, alpha = 0.7 )
     except NameError:
-        plot = plt.imshow(uncertainty, cmap = color, vmin = -20, vmax = 0 )
+        plot = plt.imshow(uncertainty, cmap = color, vmin = -40, vmax = 0 )
         pass 
     plt.xticks([])
     plt.yticks([])
@@ -718,9 +765,9 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
     fig, ax = plt.subplots(figsize=(size, size), dpi=graphing_dpi)
     try:
         plt.imshow(background)
-        plot = plt.imshow(uncertainty, cmap = color, vmin = -20, vmax = 0, alpha = 0.7 )
+        plot = plt.imshow(uncertainty, cmap = color, vmin = -40, vmax = 0, alpha = 0.7 )
     except NameError:
-        plot = plt.imshow(uncertainty, cmap = color, vmin = -20, vmax = 0 )
+        plot = plt.imshow(uncertainty, cmap = color, vmin = -40, vmax = 0 )
         pass 
     plt.xticks([])
     plt.yticks([])
@@ -736,9 +783,9 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
     fig, ax = plt.subplots(figsize=(size, size), dpi=graphing_dpi)
     try:
         plt.imshow(background)
-        plot = plt.imshow(uncertainty, cmap = color, alpha = 0.7 )
+        plot = plt.imshow(uncertainty, cmap = color, vmax = 0 , alpha = 0.7 )
     except NameError:
-        plot = plt.imshow(uncertainty, cmap = color )
+        plot = plt.imshow(uncertainty, cmap = color ,vmax = 0 )
         pass 
     plt.xticks([])
     plt.yticks([])
@@ -760,9 +807,9 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
     fig, ax = plt.subplots(figsize=(size, size), dpi=graphing_dpi)
     try:
         plt.imshow(background)
-        plot = plt.imshow(uncertainty, cmap = color, alpha = 0.7 )
+        plot = plt.imshow(uncertainty, cmap = color, vmax = 0 , alpha = 0.7 )
     except NameError:
-        plot = plt.imshow(uncertainty, cmap = color )
+        plot = plt.imshow(uncertainty, cmap = color, vmax = 0 )
         pass 
     plt.xticks([])
     plt.yticks([])
@@ -1013,9 +1060,58 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
         plt.tight_layout()
        
         
-        plt.savefig(str(montage) + " Class " + str(ind2) + ".png")
+        plt.savefig(str(montage) + " Class " + str(ind2) + " " + str(bk_grd) + ".png")
         gc.collect()
 
+    try: 
+        # Create gridview to indicate where each tile comes from 
+        fig, ax = plt.subplots(figsize=(size, size), dpi=graphing_dpi)
+        
+        
+        blank = background.copy()
+        try: 
+            blank = cv2.cvtColor(np.array(blank, dtype = np.uint8),cv2.COLOR_GRAY2RGB)
+        except:
+            pass 
+        
+        start_x = []
+        for value in metadata['EDS Stage X Position (mm)']:
+            start_x.append(value.decode('utf-8'))
+        start_x = np.min( np.array( start_x , dtype = float) )
+        
+        start_y = []
+        for value in metadata['EDS Stage Y Position (mm)']:
+            start_y.append(value.decode('utf-8'))
+        start_y = np.min( np.array( start_y , dtype = float) )
+        
+        
+        for index, row in metadata.iterrows():
+            #print(index)
+            x = int( (float( row['EDS Stage X Position (mm)'].decode('utf-8') ) - start_x) * 1_000/ float(row['EDS X Step Size (um)'].decode('utf-8') ) )
+            y = int( (float( row['EDS Stage Y Position (mm)'].decode('utf-8') ) - start_y) * 1_000/ float(row['EDS Y Step Size (um)'].decode('utf-8') ) )
+            x_range = int( row['EDS Number of X Cells'].decode('utf-8') )
+            y_range = int( row['EDS Number of Y Cells'].decode('utf-8') )
+            cmp = (random.randint(50, 255), random.randint(50, 255), random.randint(50, 255)) 
+            title = str( row['EDS Field'].decode('utf-8') )
+            
+            cv2.rectangle(blank, (x,y), (x+x_range, y+y_range) , cmp, 10 )
+            cv2.putText(blank, title, (x + int(x_range/10), y + int(y_range/2) ), cv2.FONT_HERSHEY_TRIPLEX, 3, cmp, 10)
+        
+        plt.imshow(blank)
+       
+        plt.xticks([])
+        plt.yticks([])
+        
+        plt.title(str(montage) + " Gridview", fontsize = fontsize)
+        
+        plt.tight_layout()
+        plt.savefig(str(montage) + " Gridview " + str(bk_grd) + ".png")
+        plt.close(fig)
+        gc.collect()
+
+    except: 
+        print("Gridview Error")
+        pass 
 
 
 
@@ -1023,7 +1119,7 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
 
 
 
-def plot_model(Means, Covariance, Weights, uniques, analysis_file): 
+def plot_model(Means, Covariance, Weights, uniques, analysis_file, segmentation): 
     size = 40
     graphing_dpi = 400
     color = 'seismic_r'
@@ -1033,46 +1129,6 @@ def plot_model(Means, Covariance, Weights, uniques, analysis_file):
     analysis = Path(analysis_file).stem
     components = len(Weights)
 
-    # Create agglomerative hierarchial model and save results 
-    fig, ax = plt.subplots(figsize=(size, size))
-    heir = sklearn.cluster.AgglomerativeClustering(distance_threshold=0, n_clusters=None, linkage = 'single')
-    clustering = heir.fit(Means)  
-    linkage_matrix = plot_dendrogram(clustering, truncate_mode='level', p=100)
-    ax = plt.gca()
-    ax.tick_params(axis='x', which='major', labelsize=fontsize)
-    ax.tick_params(axis='y', which='major', labelsize=fontsize)
-    plt.tight_layout()
-    plt.savefig(str(analysis) + " Consolidation Dendrogram" + ".png")
-    plt.close(fig)
-    gc.collect()
-    
-    # Prepare HAM linkage matrix for exporting 
-    # Remove all non-first-level linkages 
-    linkage_matrix = np.delete(linkage_matrix,3,1)
-    
-    # Reformat to three columns 
-    linkage_matrix = np.concatenate( (np.delete(linkage_matrix, 1, 1), np.delete(linkage_matrix, 0, 1) ), axis = 0)
-    
-    index_to_delete = []
-    for i, row in enumerate(linkage_matrix[:,0]):
-        if (row in uniques) == False:
-            index_to_delete.append(i)
-    
-    linkage_matrix = np.delete(linkage_matrix, np.array(index_to_delete, dtype = np.int16), 0)
-    
-    linkage_matrix = pd.DataFrame( data = linkage_matrix, columns = ["Class ID", "Dissimilarity Scale"])
-    """
-    index_to_delete = []
-    for row in range(len(Weights)):
-        if (row in uniques) == False:
-            index_to_delete.append(row)
-            
-    weights = np.delete(Weights, np.array(index_to_delete, dtype = np.int16), 0)
-    """
-    linkage_matrix = linkage_matrix.sort_values(by=['Class ID'])
-    linkage_matrix['Area Percent'] = Weights * 100.0
-    linkage_matrix.to_excel(str(analysis) + " Class Data.xlsx", index = False)
-    
     # Save cluster weight graph
     fig, ax = plt.subplots(figsize=(size, size))
     plot_w = np.arange(components) + 1
@@ -1082,9 +1138,53 @@ def plot_model(Means, Covariance, Weights, uniques, analysis_file):
     ax.set_ylabel('Posterior expected mixture weight');
     fig.suptitle("Mixture Weight per Class" ,fontsize=20 )
     plt.tight_layout()
-    plt.savefig( str(analysis) + "Mixture Weights" + ".png", dpi=graphing_dpi)
+    plt.savefig( str(analysis) + " Mixture Weights" + ".png", dpi=graphing_dpi)
     plt.close(fig)
     gc.collect()
+    
+    precisions_cholesky = np.linalg.cholesky(np.linalg.inv(Covariance))
+
+    
+    for i in range(Covariance.shape[0] ):
+        fig = plt.figure(constrained_layout=False, figsize=(10,5), dpi=200)
+
+        ax2 = fig.add_subplot()
+        ax2.set_title("Class " + str(i) + " Correlation Matrix", fontsize = 15)
+        
+        
+        plt.sca(ax2)
+        stdev = np.sqrt(np.abs(Covariance[i]))
+        stdev[Covariance[i] < 0.0] = -1 * stdev[Covariance[i] < 0.0] 
+        annot = np.diag(precisions_cholesky[i],0)
+        annot = np.round(annot,2)
+        annot = annot.astype('str')
+        annot[annot=='0.0']=''
+        try:     
+            sns.heatmap(correlation_from_covariance(Covariance[i]), xticklabels = display_shells, yticklabels = display_shells, center = 0, vmin = 0, vmax = 1, linewidths=1, linecolor = 'white', cmap = 'bwr', mask = np.triu(stdev), cbar_kws={'label': 'Correlation', 'orientation': 'vertical'})
+        except NameError: 
+            sns.heatmap(correlation_from_covariance(Covariance[i]), center = 0, vmin = 0, vmax = 1, linewidths=1, linecolor = 'white', cmap = 'bwr', mask = np.triu(stdev), cbar_kws={'label': 'Correlation', 'orientation': 'vertical'})
+    
+        
+        
+        ax2.tick_params(axis='x', pad=5)
+        ax2.set_yticklabels( ax2.get_yticklabels(), rotation=0)
+        ax2.set_xticklabels( ax2.get_xticklabels(), rotation=90)
+        
+        for label in (ax2.get_xticklabels() + ax2.get_yticklabels()):
+            label.set_fontsize(6)
+            
+        cbar = ax2.collections[0].colorbar
+        cbar.ax.tick_params(labelsize=12)               # colorbar tick size 
+        ax2.figure.axes[-1].yaxis.label.set_size(10)    # colorbar label size 
+        ax2.figure.axes[-1].xaxis.label.set_size(10)    # colorbar label size 
+        plt.xlabel("Electron Shell", fontsize = 12)
+        plt.ylabel("Electron Shell", fontsize = 12)
+        
+        plt.tight_layout()
+        plt.savefig("Class " + str(i) + " Correlation Matrix.png")
+        plt.close(fig)
+        gc.collect()
+        
                            
 
 def main():
@@ -1220,7 +1320,14 @@ def main():
                             Weights = file['GMM Parameters']['Weights'][...]
                             uniques = range(len(Weights))
                             
-                            plot_model(Means, Covariance, Weights, uniques, analysis_file)
+                            metadata = pd.DataFrame()
+                            for meta in montage_file['Metadata'].keys():
+                                try:
+                                    metadata[meta] = montage_file['Metadata'][meta][...]
+                                except ValueError:
+                                    pass
+                            
+                            plot_model(Means, Covariance, Weights, uniques, analysis_file, segmentation)
                             
                     
                             if len(available_backgrounds) > 0: 
@@ -1234,14 +1341,15 @@ def main():
                                                     if (bk_grd == key): 
                                                         background = montage_file[folder][key][...]
                                                         background = np.array(background, dtype = np.float32 )
-                                                        plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, bk_grd, montage)                          
+                                                        plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, bk_grd, montage, metadata, analysis_file)                          
                                             except:
+                                                print("GMM Graphing Error")
                                                 pass 
                                             
                             else:
                                 background = file['Montages'][str(montage)]['Channels'][...]
                                 background = np.sum(background, axis = 2 )
-                                plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, "Spectral Intensity", montage)                      
+                                plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, "Spectral Intensity", montage, metadata, analysis_file)                      
     
     else: 
         available_backgrounds = []                     
@@ -1277,7 +1385,7 @@ def main():
             Weights = file['GMM Parameters']['Weights'][...]
             uniques = range(len(Weights))
             
-            plot_model(Means, Covariance, Weights, uniques, analysis_file)
+            plot_model(Means, Covariance, Weights, uniques, analysis_file, segmentation)
             
             if len(available_backgrounds) > 0: 
                 for i, bk_grd in enumerate(available_backgrounds): 
@@ -1290,14 +1398,14 @@ def main():
                                     if (bk_grd == key): 
                                         background = montage_file[folder][key][...]
                                         background = np.array(background, dtype = np.float32 )
-                                        plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, bk_grd, montage)                          
+                                        plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, bk_grd, montage, None, analysis_file)                          
                             except:
                                 pass 
                             
             else:
                 background = file['Montages'][str(montage)]['Channels'][...]
                 background = np.sum(background, axis = 2 )
-                plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, "Spectral Intensity", montage)         
+                plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, "Spectral Intensity", montage, None, analysis_file)         
                     
         
         
