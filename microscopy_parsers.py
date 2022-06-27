@@ -2392,9 +2392,7 @@ def bruker_parse_bcf_metadata(montage_name, hardware_vendor, software_version, f
 
 
 
-
-
-if __name__ == "__main__":
+def main(): 
     print("")
     print("This software parses proprietry electron microscope files into a common format for VBGMM analysis")
     print("Select a supported input format from the following options: ")
@@ -2422,7 +2420,15 @@ if __name__ == "__main__":
     elif file_type == 3: 
         bruker_parse_STEM()
     else: 
-        raise NameError("Error: Enter a number for a supported format type")
+        raise NameError("Error: Enter a number for a supported format type") 
+
+
+
+if __name__ == "__main__":
+    
+    main() 
+    
+
 
 
 
