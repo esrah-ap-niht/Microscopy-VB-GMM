@@ -1562,7 +1562,10 @@ def bruker_montage(montage_file, montage, metadata, file_list):
     
         for file_path in tqdm(file_list, total = len(file_list) ): 
             # load all data with hyperspy 
-            all_data = hs.load(file_path)
+            try: 
+                all_data = hs.load(file_path)
+            except: 
+                continue 
             
             # Find and load the EDS data 
             for i in range(len(all_data)):
@@ -1820,14 +1823,19 @@ def bruker_parse_metadata(file_list, montage_name):
     
             # skip file_path file that are not bcf 
             if Path(file_path).suffix == '.bcf': 
-                if initializing_flag: 
-                    metadata = bruker_parse_bcf_metadata(montage_name, "Bruker", "Unknown", "Unknown", file_path)
-                  
-                    initializing_flag = False
-                else: 
-                    metadata_placeholder = bruker_parse_bcf_metadata(montage_name, "Bruker", "Unknown", "Unknown", file_path)
+                
+                try: 
+                    if initializing_flag: 
+                        metadata = bruker_parse_bcf_metadata(montage_name, "Bruker", "Unknown", "Unknown", file_path)
+                      
+                        initializing_flag = False
+                    else: 
+                        metadata_placeholder = bruker_parse_bcf_metadata(montage_name, "Bruker", "Unknown", "Unknown", file_path)
+                        
+                        metadata = pd.concat( [metadata, metadata_placeholder], ignore_index = True )
+                except:
+                    pass
                     
-                    metadata = pd.concat( [metadata, metadata_placeholder], ignore_index = True )
         return metadata
     elif isinstance(file_list, str): 
         metadata = bruker_parse_bcf_metadata(montage_name, "Bruker", "Unknown", "Unknown", file_path)
