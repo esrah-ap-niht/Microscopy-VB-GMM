@@ -1436,6 +1436,24 @@ def bruker_parse_SEM():
     
     print("")
     print("Parsing metadata")
+    file_list = list(file_list)
+    for i, file_name in enumerate(file_list): 
+        if any(x in file_name for x in ['[', ']']): 
+            new_file_name = file_name
+            try: 
+                new_file_name = new_file_name.replace('[', '')
+            except: 
+                pass 
+            
+            try: 
+                new_file_name = new_file_name.replace(']', '')
+            except: 
+                pass 
+            
+            os.rename(file_name, new_file_name)
+            file_list[i] = new_file_name
+    file_list = tuple(file_list)
+    
     metadata = bruker_parse_metadata(file_list, montage)
     
     
@@ -1612,7 +1630,13 @@ def bruker_montage(montage_file, montage, metadata, file_list):
                     except: 
                         pass 
               
+                    try: 
+                        save_file['EDS'].create_dataset('Xray Intensity', shape = (y_range, x_range ), chunks=True, dtype = 'int16')
+                    except: 
+                        pass 
+                    
                     save_file['EDS']['Xray Spectrum'][y_location:y_location + int(y_size), x_location:x_location + int(x_size), :] = block 
+                    save_file['EDS']['Xray Intensity'][y_location:y_location + int(y_size), x_location:x_location + int(x_size)] = np.sum( block, axis = 2)
     
                     save_file.close() 
                     
@@ -1838,7 +1862,7 @@ def bruker_parse_metadata(file_list, montage_name):
                     
         return metadata
     elif isinstance(file_list, str): 
-        metadata = bruker_parse_bcf_metadata(montage_name, "Bruker", "Unknown", "Unknown", file_path)
+        metadata = bruker_parse_bcf_metadata(montage_name, "Bruker", "Unknown", "Unknown", file_list)
         return metadata
         
 
