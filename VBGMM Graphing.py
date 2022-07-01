@@ -25,7 +25,7 @@ from pathlib import Path
 import h5py
 import glob
 import hyperspy.api as hs
-from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
+from matplotlib.ticker import (MultipleLocator, AutoMinorLocator, MaxNLocator)
 import matplotlib.ticker as tck
 import matplotlib as mpl
 from tqdm import tqdm
@@ -519,7 +519,13 @@ def plot_model(Means, Covariance, Weights, uniques, analysis_file, segmentation)
     gc.collect()
     
     precisions_cholesky = np.linalg.cholesky(np.linalg.inv(Covariance))
-    
+    try:
+        with h5py.File(analysis_file, 'r+') as file: 
+            analysis_kev = file['Channel KeV Peaks'][...]
+            analysis_kev = [ round(x, 2) for x in analysis_kev]
+    except: 
+        pass 
+        
     for i in range(Covariance.shape[0] ):
         fig = plt.figure(constrained_layout=False, figsize=(10,5), dpi=200)
 
@@ -530,21 +536,17 @@ def plot_model(Means, Covariance, Weights, uniques, analysis_file, segmentation)
         plt.sca(ax2)
         stdev = np.sqrt(np.abs(Covariance[i]))
         stdev[Covariance[i] < 0.0] = -1 * stdev[Covariance[i] < 0.0] 
-        annot = np.diag(precisions_cholesky[i],0)
-        annot = np.round(annot,2)
-        annot = annot.astype('str')
-        annot[annot=='0.0']=''
+        display_shells = analysis_kev
         try:     
             sns.heatmap(correlation_from_covariance(Covariance[i]), xticklabels = display_shells, yticklabels = display_shells, center = 0, vmin = 0, vmax = 1, linewidths=1, linecolor = 'white', cmap = 'bwr', mask = np.triu(stdev), cbar_kws={'label': 'Correlation', 'orientation': 'vertical'})
         except NameError: 
             sns.heatmap(correlation_from_covariance(Covariance[i]), center = 0, vmin = 0, vmax = 1, linewidths=1, linecolor = 'white', cmap = 'bwr', mask = np.triu(stdev), cbar_kws={'label': 'Correlation', 'orientation': 'vertical'})
     
-        
-        
         ax2.tick_params(axis='x', pad=5)
+
         ax2.set_yticklabels( ax2.get_yticklabels(), rotation=0)
         ax2.set_xticklabels( ax2.get_xticklabels(), rotation=90)
-        
+            
         for label in (ax2.get_xticklabels() + ax2.get_yticklabels()):
             label.set_fontsize(6)
             
@@ -552,8 +554,8 @@ def plot_model(Means, Covariance, Weights, uniques, analysis_file, segmentation)
         cbar.ax.tick_params(labelsize=12)               # colorbar tick size 
         ax2.figure.axes[-1].yaxis.label.set_size(10)    # colorbar label size 
         ax2.figure.axes[-1].xaxis.label.set_size(10)    # colorbar label size 
-        plt.xlabel("Electron Shell", fontsize = 12)
-        plt.ylabel("Electron Shell", fontsize = 12)
+        plt.xlabel("Electron Shell (KeV)", fontsize = 12)
+        plt.ylabel("Electron Shell (KeV)", fontsize = 12)
         
         plt.tight_layout()
         plt.savefig("Class " + str(i) + " Correlation Matrix.png")

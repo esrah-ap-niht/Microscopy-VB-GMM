@@ -1441,12 +1441,12 @@ def bruker_parse_SEM():
         if any(x in file_name for x in ['[', ']']): 
             new_file_name = file_name
             try: 
-                new_file_name = new_file_name.replace('[', '')
+                new_file_name = new_file_name.replace('[', '_')
             except: 
                 pass 
             
             try: 
-                new_file_name = new_file_name.replace(']', '')
+                new_file_name = new_file_name.replace(']', '_')
             except: 
                 pass 
             
