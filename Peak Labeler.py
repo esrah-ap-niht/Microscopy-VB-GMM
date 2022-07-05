@@ -174,51 +174,60 @@ while True:
             
             #tellme('You will define a triangle, click to begin')
             
+            fontsize = 12
             
-            fig, ( ax2, ax3, ax4) = plt.subplots(3, 1, figsize = (8,8 ) , dpi = 200)
+            fig, ( ax2, ax3, ax4) = plt.subplots(3, 1, figsize = (14, 10 ) )
+            
             #plt.clf()
             #plt.setp(plt.gca(), autoscale_on=False)
 
             
-            fig.suptitle('Potential Peak at ' + str( round( (channel_offset + channel_width*peak)/1_000.0, 2 )) + "KeV", fontsize=16)
+            fig.suptitle('Potential Peak at ' + str( round( (channel_offset + channel_width*peak)/1_000.0, 2 )) + "KeV", fontsize=fontsize)
+            fig.tight_layout()
+            #plt.subplots_adjust(top=0.85)
+            
+            
             
             
             plt.sca(ax2)
-            plt.scatter(x = (channel_offset + channel_width*np.asarray(temp))/1_000.0, y = highest_spectrum[temp], s = 50)
+            plt.plot((channel_offset + channel_width*np.linspace(0,len(sum_spectrum), num=len(sum_spectrum)))/1_000.0, highest_spectrum, color = "black")
 
-            plt.scatter(x = (channel_offset + channel_width*max_x)/1_000.0, y = highest_spectrum[ max_x ], s = 500, color = 'red')
-            plt.plot((channel_offset + channel_width*np.linspace(0,1024, num=1024))/1_000.0, highest_spectrum, color = "Green")
-            plt.title("Sum of Spectrum of Entire Dataset - Suggested Peaks", fontsize=16)
+            plt.scatter(x = (channel_offset + channel_width*np.asarray(temp))/1_000.0, y = highest_spectrum[temp], s = 75, alpha = 1)
+
+            plt.scatter(x = (channel_offset + channel_width*max_x)/1_000.0, y = highest_spectrum[ max_x ], color = 'red', s = 150, alpha = 1)
+            plt.title("Sum of Spectrum of Entire Dataset - Suggested Peaks", fontsize=fontsize)
             plt.tight_layout()
-            plt.xlabel("KeV", fontsize=16)
-            plt.ylabel("X-Ray Counts", fontsize=16)
-            plt.xticks(fontsize= 16)
-            plt.yticks(fontsize= 16)
+            plt.xlabel("KeV", fontsize=fontsize)
+            plt.ylabel("X-Ray Counts", fontsize=fontsize)
+            plt.xticks(fontsize= fontsize)
+            plt.yticks(fontsize= fontsize)
             
-            ax2.tick_params(which = 'major', length = 25, bottom = True, left = True)
-            ax2.tick_params(which = 'minor', axis = 'x', length = 15, bottom = True, left = True)
+            
+            #ax2.tick_params(which = 'major', length = 25, bottom = True, left = True)
+            #ax2.tick_params(which = 'minor', axis = 'x', length = 15, bottom = True, left = True)
             
             ax2.minorticks_on()
             
-            ax2.xaxis.set_major_locator(MultipleLocator(5))
-            ax2.xaxis.set_minor_locator(tck.AutoMinorLocator())
+            #ax2.xaxis.set_major_locator(MultipleLocator(5))
+            #ax2.xaxis.set_minor_locator(tck.AutoMinorLocator())
                  
             
             
             plt.sca(ax3)
-            plt.scatter(x = (channel_offset + channel_width*np.asarray(temp))/1_000.0, y = sum_spectrum[temp], s = 50)
+            plt.scatter(x = (channel_offset + channel_width*np.asarray(temp))/1_000.0, y = sum_spectrum[temp])
 
-            plt.scatter(x = (channel_offset + channel_width*max_x)/1_000.0, y = sum_spectrum[ max_x ], s = 500, color = 'red')
-            plt.plot((channel_offset + channel_width*np.linspace(0,1024, num=1024))/1_000.0, sum_spectrum, color = "Green")
+            plt.scatter(x = (channel_offset + channel_width*max_x)/1_000.0, y = sum_spectrum[ max_x ], color = 'red')
+            plt.plot((channel_offset + channel_width*np.linspace(0,len(sum_spectrum), num=len(sum_spectrum)))/1_000.0, sum_spectrum, color = "black")
  
          
-            plt.title("Sum of Spectrum of Entire Dataset - Suggested Peaks", fontsize=16)
+            plt.title("Sum of Spectrum of Entire Dataset - Suggested Peaks", fontsize=fontsize)
             plt.tight_layout()
-            plt.xlabel("KeV", fontsize=16)
-            plt.ylabel("X-Ray Counts", fontsize=16)
-            
-            ax3.tick_params(which = 'major', length = 25, bottom = True, left = True)
-            ax3.tick_params(which = 'minor', axis = 'x', length = 15, bottom = True, left = True)
+            plt.xlabel("KeV", fontsize=fontsize)
+            plt.ylabel("X-Ray Counts", fontsize=fontsize)
+            plt.xticks(fontsize= fontsize)
+            plt.yticks(fontsize= fontsize)
+            #ax3.tick_params(which = 'major', length = 25, bottom = True, left = True)
+            #ax3.tick_params(which = 'minor', axis = 'x', length = 15, bottom = True, left = True)
             
             ax3.minorticks_on()
             
@@ -239,9 +248,9 @@ while True:
           
     
             plt.sca(ax4)
-            plt.scatter(x = (channel_offset + channel_width*max_x)/1_000.0, y = sum_spectrum[ max_x ], s = 50, color = 'red')
-            plt.plot((channel_offset + channel_width*np.linspace(0,1024, num=1024))/1_000.0, sum_spectrum, color = "Green")
-            plt.title("Sum of Spectrum of Entire Dataset - User Specified Peaks", fontsize=16)
+            plt.scatter(x = (channel_offset + channel_width*max_x)/1_000.0, y = sum_spectrum[ max_x ], color = 'red')
+            plt.plot((channel_offset + channel_width*np.linspace(0,len(sum_spectrum), num=len(sum_spectrum)))/1_000.0, sum_spectrum, color = "black")
+            plt.title("Sum of Spectrum of Entire Dataset - User Specified Peaks", fontsize=fontsize)
             
             for element in element_filters:
                 print(str(element) ) 
@@ -271,11 +280,12 @@ while True:
                         pass 
                 
             plt.tight_layout()
-            plt.xlabel("KeV", fontsize=16)
-            plt.ylabel("X-Ray Counts", fontsize=16)
-            
-            ax4.tick_params(which = 'major', length = 25, bottom = True, left = True)
-            ax4.tick_params(which = 'minor', axis = 'x', length = 15, bottom = True, left = True)
+            plt.xlabel("KeV", fontsize=fontsize)
+            plt.ylabel("X-Ray Counts", fontsize=fontsize)
+            plt.xticks(fontsize= fontsize)
+            plt.yticks(fontsize= fontsize)
+            #ax4.tick_params(which = 'major', length = 25, bottom = True, left = True)
+            #ax4.tick_params(which = 'minor', axis = 'x', length = 15, bottom = True, left = True)
             
             ax4.minorticks_on()
             
@@ -284,7 +294,6 @@ while True:
             
             fig.canvas.draw()
             fig.canvas.flush_events()
-            #time.sleep(0.1)
             plt.draw()
             
             while True:
@@ -294,7 +303,6 @@ while True:
             #plt.waitforbuttonpress()
             
             plt.show()
-            #plt.pause(0.0001)
             
             print("Existing element list:")
             print(str(element_filters))

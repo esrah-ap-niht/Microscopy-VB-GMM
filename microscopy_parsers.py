@@ -1361,8 +1361,8 @@ def oxford_parse():
             
             # Save autodetected peaks, sum of spectrum, and highest intensity spectrum for each montage 
             save_h5(montage_file, 'EDS', ['array', 'Autodetected Peak Bins'], np.array(appended_peaks ).astype(np.uint16) )
-            save_h5(montage_file, 'EDS', ['array', 'Sum of Spectrum'], np.array(sum_spectrum ).astype(np.uint16) )
-            save_h5(montage_file, 'EDS', ['array', 'Highest Intensity Spectrum'], np.array(highest_spectrum ).astype(np.uint16) )
+            save_h5(montage_file, 'EDS', ['array', 'Sum of Spectrum'], np.array(sum_spectrum ).astype(np.uint64) )
+            save_h5(montage_file, 'EDS', ['array', 'Highest Intensity Spectrum'], np.array(highest_spectrum ).astype(np.uint64) )
             print("Saved datacube, autodetected peaks, sum of spectrum, highest intensity spectrum")
             print("")
             
@@ -1640,8 +1640,8 @@ def bruker_montage(montage_file, montage, metadata, file_list):
     
                     save_file.close() 
                     
-                    new_highest_spectrum =  np.max( block[:, :, :], axis = (0,1)).flatten() 
-                    new_sum_spectrum =  np.sum( block[:, :, :], axis = (0,1)).flatten() 
+                    new_highest_spectrum =  np.max( np.asarray( block[:, :, :], dtype = np.uint64) , axis = (0,1)).flatten() 
+                    new_sum_spectrum =  np.sum( np.asarray( block[:, :, :], dtype = np.uint64) , axis = (0,1)).flatten() 
                     
                     # Sum new block with existing data
                     try: 
