@@ -498,7 +498,7 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
 def plot_model(Means, Covariance, Weights, uniques, analysis_file, segmentation): 
     size = 40
     graphing_dpi = 400
-    color = 'seismic_r'
+    color = 'brg'
     fontsize = 60
     ratio = 2 
    
@@ -538,9 +538,9 @@ def plot_model(Means, Covariance, Weights, uniques, analysis_file, segmentation)
         stdev[Covariance[i] < 0.0] = -1 * stdev[Covariance[i] < 0.0] 
         display_shells = analysis_kev
         try:     
-            sns.heatmap(correlation_from_covariance(Covariance[i]), xticklabels = display_shells, yticklabels = display_shells, center = 0, vmin = 0, vmax = 1, linewidths=1, linecolor = 'white', cmap = 'bwr', mask = np.triu(stdev), cbar_kws={'label': 'Correlation', 'orientation': 'vertical'})
+            sns.heatmap(correlation_from_covariance(Covariance[i]), xticklabels = display_shells, yticklabels = display_shells, vmin = 0, vmax = 1, linewidths=1, linecolor = 'white', cmap = color, mask = np.triu(stdev), cbar_kws={'label': 'Correlation', 'orientation': 'vertical'})
         except NameError: 
-            sns.heatmap(correlation_from_covariance(Covariance[i]), center = 0, vmin = 0, vmax = 1, linewidths=1, linecolor = 'white', cmap = 'bwr', mask = np.triu(stdev), cbar_kws={'label': 'Correlation', 'orientation': 'vertical'})
+            sns.heatmap(correlation_from_covariance(Covariance[i]), vmin = 0, vmax = 1, linewidths=1, linecolor = 'white', cmap = color, mask = np.triu(stdev), cbar_kws={'label': 'Correlation', 'orientation': 'vertical'})
     
         ax2.tick_params(axis='x', pad=5)
 
