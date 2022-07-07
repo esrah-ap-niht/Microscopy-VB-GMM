@@ -175,12 +175,11 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
         
         def reverse_y(y):
             return (y - y_min)/1000
-
-    
-
     except: 
         pass 
            
+
+        
     # Create agglomerative hierarchial model and save results 
     fig, ax = plt.subplots(figsize=(size, size))
     heir = sklearn.cluster.AgglomerativeClustering(distance_threshold=0, n_clusters=None, linkage = 'single')

@@ -85,6 +85,12 @@ offsets = []
 sums = []
 highest = [] 
 bins = [] 
+search_width = 3
+element_search_half_distance = 0.2 # +- distance to search for x-ray band matches from peaks. Units are KeV 
+auto_suggest_filters = ['Ka']
+element_filters = [] 
+distance = 3
+
 # extract calibration parameters, sum of spectrum and highest intensity spectrum 
 for montage_path in montage_list: 
     with h5py.File(montage_path, 'r+') as file:     
@@ -99,267 +105,271 @@ for montage_path in montage_list:
         sum_spectrum = file['EDS']['Sum of Spectrum'][...]
         highest_spectrum = file['EDS']['Highest Intensity Spectrum'][...]
         peak_bins = file['EDS']['Autodetected Peak Bins'][...]
-
-    # verify that the calibrations are correct
-    # Oxford in particular does not appear to export the correct calibration for EDS datasets
-    # but rather the most recent calibration - which may or may not be appropriate 
-    print(os.path.basename(montage_path))
-    print("")
     
-    print("Autodetected EDS Starting Channel is: " + str(channel_offset) + " eV")
-    print("Enter optional replacement value in eV and press ENTER, otherwise leave field blank and press ENTER to keep autodetected value")
-    new = input()
-    if new != "": 
-        channel_offset = float(new)
-    print("")
+        # verify that the calibrations are correct
+        # Oxford in particular does not appear to export the correct calibration for EDS datasets
+        # but rather the most recent calibration - which may or may not be appropriate 
+        print(os.path.basename(montage_path))
+        print("")
         
-    print("Autodetected EDS Channel Width is: " + str(channel_width) + " eV")
-    print("Enter optional replacement value in eV and press ENTER, otherwise leave field blank and press ENTER to keep autodetected value")
-    new = input()
-    if new != "": 
-        channel_width = new
-    print("")
-    
-    # append values to lists
-    # each list entry is for a unique montage 
-    widths.append(channel_offset)
-    offsets.append(channel_width)
-    sums.append(sum_spectrum)
-    highest.append(highest_spectrum)
-    bins.append(peak_bins)
+        print("Autodetected EDS Starting Channel is: " + str(channel_offset) + " eV")
+        print("Enter optional replacement value in eV and press ENTER, otherwise leave field blank and press ENTER to keep autodetected value")
+        new = input()
+        if new != "": 
+            channel_offset = float(new)
+            file['Metadata']['EDS Starting Bin Voltage (eV)'][...] = channel_offset
+        print("")
+            
+        print("Autodetected EDS Channel Width is: " + str(channel_width) + " eV")
+        print("Enter optional replacement value in eV and press ENTER, otherwise leave field blank and press ENTER to keep autodetected value")
+        new = input()
+        if new != "": 
+            channel_width = new
+            file['Metadata']['EDS Voltage Bin Width (eV)'][...] = channel_width
+        print("")
+        
+        # append values to lists
+        # each list entry is for a unique montage 
+        widths.append(channel_width)
+        offsets.append(channel_offset)
+        sums.append(sum_spectrum)
+        highest.append(highest_spectrum)
+        bins.append(peak_bins)
     
 ########
-search_width = 3
-element_search_half_distance = 0.2 # +- distance to search for x-ray band matches from peaks. Units are KeV 
 
-auto_suggest_filters = ['Ka']
-element_filters = [] 
-distance = 3
+for z, montage_path in enumerate(montage_list): 
     
-
-temp = list( bins[0].copy() ) 
-highest_spectrum = highest[0].copy() 
-sum_spectrum = sums[0].copy()
-
-while True:      
+    temp = list( bins[z].copy() ) 
+    highest_spectrum = highest[z].copy() 
+    sum_spectrum = sums[z].copy()
+    new_command = ''
+    
+    while True:      
+            
+        if len(temp) == 0:
+            break 
+        if new_command == 'exit':
+            break
         
-    if len(temp) == 0:
-        break 
-    
-    
-    for i, peak in enumerate(temp):  
-        while True: 
-            
-            new_filters = input("Change auto suggest filters: ").split(",")
-            
-            for command in new_filters: 
-                if command.startswith('+'): 
-                    auto_suggest_filters.append(command.split('+')[1] )
-                    
-                elif command.startswith('-'): 
-                    try: 
-                        auto_suggest_filters.remove(command.split('-')[1] )
-                    except ValueError:
-                        print( str( command.split('-')[1] ) + "not found in auto suggest filters")
-                        
-                elif command == '': 
-                    pass
-                else: 
-                    print("Error: " + str(command) + " - commands must begin with + or -")
-                 
-            max_x = peak
-            
-                        
-            
-            
-            #tellme('You will define a triangle, click to begin')
-            
-            fontsize = 12
-            
-            fig, ( ax2, ax3, ax4) = plt.subplots(3, 1, figsize = (14, 10 ) )
-            
-            #plt.clf()
-            #plt.setp(plt.gca(), autoscale_on=False)
-
-            
-            fig.suptitle('Potential Peak at ' + str( round( (channel_offset + channel_width*peak)/1_000.0, 2 )) + "KeV", fontsize=fontsize)
-            fig.tight_layout()
-            #plt.subplots_adjust(top=0.85)
-            
-            
-            
-            
-            plt.sca(ax2)
-            plt.plot((channel_offset + channel_width*np.linspace(0,len(sum_spectrum), num=len(sum_spectrum)))/1_000.0, highest_spectrum, color = "black")
-
-            plt.scatter(x = (channel_offset + channel_width*np.asarray(temp))/1_000.0, y = highest_spectrum[temp], s = 75, alpha = 1)
-
-            plt.scatter(x = (channel_offset + channel_width*max_x)/1_000.0, y = highest_spectrum[ max_x ], color = 'red', s = 150, alpha = 1)
-            plt.title("Sum of Spectrum of Entire Dataset - Suggested Peaks", fontsize=fontsize)
-            plt.tight_layout()
-            plt.xlabel("KeV", fontsize=fontsize)
-            plt.ylabel("X-Ray Counts", fontsize=fontsize)
-            plt.xticks(fontsize= fontsize)
-            plt.yticks(fontsize= fontsize)
-            
-            
-            #ax2.tick_params(which = 'major', length = 25, bottom = True, left = True)
-            #ax2.tick_params(which = 'minor', axis = 'x', length = 15, bottom = True, left = True)
-            
-            ax2.minorticks_on()
-            
-            #ax2.xaxis.set_major_locator(MultipleLocator(5))
-            #ax2.xaxis.set_minor_locator(tck.AutoMinorLocator())
-                 
-            
-            
-            plt.sca(ax3)
-            plt.scatter(x = (channel_offset + channel_width*np.asarray(temp))/1_000.0, y = sum_spectrum[temp])
-
-            plt.scatter(x = (channel_offset + channel_width*max_x)/1_000.0, y = sum_spectrum[ max_x ], color = 'red')
-            plt.plot((channel_offset + channel_width*np.linspace(0,len(sum_spectrum), num=len(sum_spectrum)))/1_000.0, sum_spectrum, color = "black")
- 
-         
-            plt.title("Sum of Spectrum of Entire Dataset - Suggested Peaks", fontsize=fontsize)
-            plt.tight_layout()
-            plt.xlabel("KeV", fontsize=fontsize)
-            plt.ylabel("X-Ray Counts", fontsize=fontsize)
-            plt.xticks(fontsize= fontsize)
-            plt.yticks(fontsize= fontsize)
-            #ax3.tick_params(which = 'major', length = 25, bottom = True, left = True)
-            #ax3.tick_params(which = 'minor', axis = 'x', length = 15, bottom = True, left = True)
-            
-            ax3.minorticks_on()
-            
-            ax3.xaxis.set_major_locator(MultipleLocator(5))
-            ax3.xaxis.set_minor_locator(tck.AutoMinorLocator())
-            
-            auto_suggest_elements = hs.eds.get_xray_lines_near_energy((channel_offset + channel_width*max_x)/1_000.0, only_lines = auto_suggest_filters, width = 0.5)
-            print(auto_suggest_elements)
-            for z, element in enumerate(auto_suggest_elements):     
-                ax3.annotate(str(element ),
-                        xy = ( 0.9, (len(auto_suggest_elements) + 1 - z )/ ( len(auto_suggest_elements) + 1 ) - 0.02),
-                        xycoords='data',
-                        #xytext=( 15, max(group)*(len(elements) - z)), 
-                        textcoords='axes fraction',
-                        horizontalalignment='left', 
-                        verticalalignment='top')
-                
-          
-    
-            plt.sca(ax4)
-            plt.scatter(x = (channel_offset + channel_width*max_x)/1_000.0, y = sum_spectrum[ max_x ], color = 'red')
-            plt.plot((channel_offset + channel_width*np.linspace(0,len(sum_spectrum), num=len(sum_spectrum)))/1_000.0, sum_spectrum, color = "black")
-            plt.title("Sum of Spectrum of Entire Dataset - User Specified Peaks", fontsize=fontsize)
-            
-            for element in element_filters:
-                print(str(element) ) 
-                keys = eval ('hs.material.elements.' + str(element) + '.Atomic_properties.Xray_lines.keys()' ) 
-            
-                for key in keys:
-                    
-                    try: 
-                        #print( hs.material.elements.Fe.Atomic_properties.Xray_lines.get_item(keys[0]).get_item('energy (keV)') )
-                        print("   " + str(key))
-                        print( "   " + str(eval( "hs.material.elements." + str(element) + ".Atomic_properties.Xray_lines.get_item('" + key + "').get_item('energy (keV)')" )))
-                        eV = eval( "hs.material.elements." + str(element) + ".Atomic_properties.Xray_lines.get_item('" + key + "').get_item('energy (keV)')" )
-                        eV2 = round( ( eV*1000.0 - channel_offset)/ channel_width)
-                        y = sum_spectrum[eV2]
-                        ax4.annotate( str(element) + "_" + str(key) , xy=(eV, y + 0.25*np.max(sum_spectrum)),  
-                                     xycoords='data',
-                                     textcoords = 'data',
-                                     horizontalalignment='right', 
-                                     verticalalignment='top'
-                                     )
-                        plt.bar(x = eV, 
-                                height = y,
-                                width = 0.075,
-                                color = 'red')
-            
-                    except IndexError: 
-                        pass 
-                
-            plt.tight_layout()
-            plt.xlabel("KeV", fontsize=fontsize)
-            plt.ylabel("X-Ray Counts", fontsize=fontsize)
-            plt.xticks(fontsize= fontsize)
-            plt.yticks(fontsize= fontsize)
-            #ax4.tick_params(which = 'major', length = 25, bottom = True, left = True)
-            #ax4.tick_params(which = 'minor', axis = 'x', length = 15, bottom = True, left = True)
-            
-            ax4.minorticks_on()
-            
-            ax4.xaxis.set_major_locator(MultipleLocator(5))
-            ax4.xaxis.set_minor_locator(tck.AutoMinorLocator())
-            
-            fig.canvas.draw()
-            fig.canvas.flush_events()
-            plt.draw()
-            
-            while True:
-                if plt.waitforbuttonpress():
-                    break
-    
-            #plt.waitforbuttonpress()
-            
-            plt.show()
-            
-            print("Existing element list:")
-            print(str(element_filters))
-            print("")
-            print("Add and/or remove one or more elements (e.g. +Mn, -Al, +Cr). Seperate elements with commas")
-            print("Enter 'z' to remove peak from review list")
-            print("Enter 'end' to continue to next peak but not remove from review list")
-            new_command = input("")
-            
-            if new_command == 'end': 
-                print("Continuing to next peak")
-                break 
-            elif new_command == 'z': 
-                temp.remove(peak)
+        for i, peak in enumerate(temp):  
+            if new_command == 'exit':
                 break
-            else: 
-                new_command = new_command.split(',')
-                for command in new_command: 
-                    
-                    try: 
-                        command = command.replace(" ", "")
-                    except:
-                        pass 
-                    
+            
+            while True: 
+                
+                if new_command == 'exit':
+                    break
+                
+                new_filters = input("Change auto suggest filters: ").split(",")
+                
+                for command in new_filters: 
                     if command.startswith('+'): 
-                        try:
-                            element_filters.append(command.replace('+', ''))
-                        except ValueError: 
-                            print(str(command) + " not found in list of elements")
+                        auto_suggest_filters.append(command.split('+')[1] )
                         
                     elif command.startswith('-'): 
-                        try:
-                            element_filters.remove(command.replace('-', ''))
-                        except ValueError: 
-                            print(str(command) + " not found in list of elements")
+                        try: 
+                            auto_suggest_filters.remove(command.split('-')[1] )
+                        except ValueError:
+                            print( str( command.split('-')[1] ) + "not found in auto suggest filters")
                             
+                    elif command == '': 
+                        pass
                     else: 
                         print("Error: " + str(command) + " - commands must begin with + or -")
+                     
+                max_x = peak
                 
-            print( "Specified Peaks: ")
-            
-            
-            for element in element_filters:
-                print("   " + str(element) ) 
+                            
                 
-     
-        
-             
-            
-     
+                
+                #tellme('You will define a triangle, click to begin')
+                
+                fontsize = 12
+                
+                fig, ( ax2, ax3, ax4) = plt.subplots(3, 1, figsize = (14, 8 ) )
+                
+                #plt.clf()
+                #plt.setp(plt.gca(), autoscale_on=False)
     
-    element_filters.sort()
-    energy_locs = list((channel_offset + channel_width*np.asarray(appended_peaks))/1_000.0)
+                
+                fig.suptitle('Potential Peak at ' + str( round( (channel_offset + channel_width*peak)/1_000.0, 2 )) + "KeV", fontsize=fontsize)
+                fig.tight_layout()
+                #plt.subplots_adjust(top=0.85)
+                
+                
+                
+                
+                plt.sca(ax2)
+                plt.plot((channel_offset + channel_width*np.linspace(0,len(sum_spectrum), num=len(sum_spectrum)))/1_000.0, highest_spectrum, color = "black")
+    
+                plt.scatter(x = (channel_offset + channel_width*np.asarray(temp))/1_000.0, y = highest_spectrum[temp], s = 75, alpha = 1)
+    
+                plt.scatter(x = (channel_offset + channel_width*max_x)/1_000.0, y = highest_spectrum[ max_x ], color = 'red', s = 150, alpha = 1)
+                plt.title("Maximum Bin Intensity of Entire Dataset - Suggested Peaks", fontsize=fontsize)
+                plt.tight_layout()
+                plt.xlabel("KeV", fontsize=fontsize)
+                plt.ylabel("X-Ray Counts", fontsize=fontsize)
+                plt.xticks(fontsize= fontsize)
+                plt.yticks(fontsize= fontsize)
+                
+                
+                ax2.tick_params(which = 'major', length = 10, width = 3, axis = 'x', bottom = True, left = True)
+                ax2.tick_params(which = 'minor', length = 5, width = 3, axis = 'x', bottom = True, left = True)
+                
+                ax2.minorticks_on()
+                
+                #ax2.xaxis.set_major_locator(MultipleLocator(5))
+                #ax2.xaxis.set_minor_locator(tck.AutoMinorLocator())
+                     
+                
+                
+                plt.sca(ax3)
+                plt.scatter(x = (channel_offset + channel_width*np.asarray(temp))/1_000.0, y = sum_spectrum[temp],  s = 75, alpha = 1)
+    
+                plt.scatter(x = (channel_offset + channel_width*max_x)/1_000.0, y = sum_spectrum[ max_x ], color = 'red',  s = 150)
+                plt.plot((channel_offset + channel_width*np.linspace(0,len(sum_spectrum), num=len(sum_spectrum)))/1_000.0, sum_spectrum, color = "black")
+     
+             
+                plt.title("Sum of Spectrum of Entire Dataset - Suggested Peaks", fontsize=fontsize)
+                plt.tight_layout()
+                plt.xlabel("KeV", fontsize=fontsize)
+                plt.ylabel("X-Ray Counts", fontsize=fontsize)
+                plt.xticks(fontsize= fontsize)
+                plt.yticks(fontsize= fontsize)
+                
+                ax3.tick_params(which = 'major', length = 10, width = 3, axis = 'x', bottom = True, left = True)
+                ax3.tick_params(which = 'minor', length = 5, width = 3, axis = 'x', bottom = True, left = True)
+                
+                ax3.minorticks_on()
+                
+                ax3.xaxis.set_major_locator(MultipleLocator(5))
+                ax3.xaxis.set_minor_locator(tck.AutoMinorLocator())
+                
+                auto_suggest_elements = hs.eds.get_xray_lines_near_energy((channel_offset + channel_width*max_x)/1_000.0, only_lines = auto_suggest_filters, width = 0.5)
+                print(auto_suggest_elements)
+                for z, element in enumerate(auto_suggest_elements):     
+                    ax3.annotate(str(element ),
+                            xy = ( 0.9, (len(auto_suggest_elements) + 1 - z )/ ( len(auto_suggest_elements) + 1 ) - 0.02),
+                            xycoords='data',
+                            #xytext=( 15, max(group)*(len(elements) - z)), 
+                            textcoords='axes fraction',
+                            horizontalalignment='left', 
+                            verticalalignment='top')
+                    
+              
+        
+                plt.sca(ax4)
+                plt.scatter(x = (channel_offset + channel_width*max_x)/1_000.0, y = sum_spectrum[ max_x ], color = 'red',  s = 150)
+                plt.plot((channel_offset + channel_width*np.linspace(0,len(sum_spectrum), num=len(sum_spectrum)))/1_000.0, sum_spectrum, color = "black")
+                plt.title("Sum of Spectrum of Entire Dataset - User Specified Peaks", fontsize=fontsize)
+                
+                for element in element_filters:
+                    print(str(element) ) 
+                    keys = eval ('hs.material.elements.' + str(element) + '.Atomic_properties.Xray_lines.keys()' ) 
+                
+                    for key in keys:
+                        
+                        try: 
+                            #print( hs.material.elements.Fe.Atomic_properties.Xray_lines.get_item(keys[0]).get_item('energy (keV)') )
+                            print("   " + str(key))
+                            print( "   " + str(eval( "hs.material.elements." + str(element) + ".Atomic_properties.Xray_lines.get_item('" + key + "').get_item('energy (keV)')" )))
+                            eV = eval( "hs.material.elements." + str(element) + ".Atomic_properties.Xray_lines.get_item('" + key + "').get_item('energy (keV)')" )
+                            eV2 = round( ( eV*1000.0 - channel_offset)/ channel_width)
+                            y = sum_spectrum[eV2]
+                            ax4.annotate( str(element) + "_" + str(key) , xy=(eV, y + 0.25*np.max(sum_spectrum)),  
+                                         xycoords='data',
+                                         textcoords = 'data',
+                                         horizontalalignment='right', 
+                                         verticalalignment='top'
+                                         )
+                            plt.bar(x = eV, 
+                                    height = y,
+                                    width = 0.075,
+                                    color = 'red')
+                
+                        except IndexError: 
+                            pass 
+                    
+                plt.tight_layout()
+                plt.xlabel("KeV", fontsize=fontsize)
+                plt.ylabel("X-Ray Counts", fontsize=fontsize)
+                plt.xticks(fontsize= fontsize)
+                plt.yticks(fontsize= fontsize)
+                ax4.tick_params(which = 'major', length = 10, width = 3, axis = 'x', bottom = True, left = True)
+                ax4.tick_params(which = 'minor', length = 5, width = 3, axis = 'x', bottom = True, left = True)
+                
+                ax4.minorticks_on()
+                
+                ax4.xaxis.set_major_locator(MultipleLocator(5))
+                ax4.xaxis.set_minor_locator(tck.AutoMinorLocator())
+                
+                fig.canvas.draw()
+                fig.canvas.flush_events()
+                plt.draw()
+                
+                while True:
+                    if plt.waitforbuttonpress():
+                        break
+        
+                #plt.waitforbuttonpress()
+                
+                plt.show()
+                
+                print("Existing element list:")
+                print(str(element_filters))
+                print("")
+                print("Add and/or remove one or more elements (e.g. +Mn, -Al, +Cr). Seperate elements with commas")
+                print("Enter 'z' to remove peak from review list")
+                print("Enter 'end' to continue to next peak but not remove from review list")
+                print("Enter 'exit' to discontinue labeling peaks")
+                new_command = input("")
+                plt.close(fig)
+                
+                if (new_command == 'end') or (new_command == 'exit'): 
+                    print("Continuing to next peak")
+                    break 
+                elif new_command == 'z': 
+                    temp.remove(peak)
+                    break
+                else: 
+                    new_command = new_command.split(',')
+                    for command in new_command: 
+                        
+                        try: 
+                            command = command.replace(" ", "")
+                        except:
+                            pass 
+                        
+                        if command.startswith('+'): 
+                            try:
+                                element_filters.append(command.replace('+', ''))
+                            except ValueError: 
+                                print(str(command) + " not found in list of elements")
+                            
+                        elif command.startswith('-'): 
+                            try:
+                                element_filters.remove(command.replace('-', ''))
+                            except ValueError: 
+                                print(str(command) + " not found in list of elements")
+                                
+                        else: 
+                            print("Error: " + str(command) + " - commands must begin with + or -")
+                    
+                print( "Specified Peaks: ")
+                
+                
+                for element in element_filters:
+                    print("   " + str(element) ) 
+                
+                
+    ###########     
+    #element_filters.sort()
+    energy_locs = list((channel_offset + channel_width*np.asarray(bins[z]))/1_000.0)
     
     element_energies = []
     element_shells = []
-    display_shells = ["" for n in range(len(appended_peaks) )]
+    display_shells = ["" for n in range(len(bins[z]) )]
     
     for element in element_filters:
         keys = eval ('hs.material.elements.' + str(element) + '.Atomic_properties.Xray_lines.keys()' ) 
@@ -379,90 +389,32 @@ while True:
         
         if (np.min(diff) < 0.05) and (display_shells[az] == "") :
             
-            display_shells[az] = element_shells[loc] 
+            display_shells[az] = element_shells[loc]
         
         elif (np.min(diff) < 0.05) and (display_shells[az] != ""): 
             old_value = ( np.abs(energy - element_energies[loc]) > np.abs(energy - element_energies[ np.argwhere( np.asarray(element_shells) == display_shells[az] ) ] ))
             
             if old_value > np.minimum(diff):
-                display_shells[az] = element_shells[loc] 
+                display_shells[az] = element_shells[loc]
     
-    
-    order = np.argsort(np.asarray(display_shells ))
-    display_shells.sort()
-    temp_appended_peaks = [] 
-    
-    
-    for value in order: 
-        
-    
-    
-    
-    test = appended_peaks.copy()
-    
-    test = list(test.flatten()) 
-    test.sort(key = list(order.flatten()) )
-    
-    (key = order)
-    
-    sorted(test , key = order.flatten() )
-    
-    
-    
-        
-    for montage in unique_montages:
+with h5py.File(analysis_file, 'r+') as file: 
+    try:
+        file['EDS'].create_dataset( 'Autodetected Peak Labels' , data = display_shells)
+    except:
         
         try: 
-                os.mkdir(os.path.join(output_src, 'Data', 'Montages', str(montage) ))
-                os.chdir(os.path.join(output_src, 'Data', 'Montages', str(montage) ))
-        except FileExistsError:
-            os.chdir(os.path.join(output_src, 'Data', 'Montages', str(montage) ))
-       
-        np.save("appended_peaks", appended_peaks, allow_pickle = False)
-        np.save("display_shells", display_shells, allow_pickle = False)
-        gc.collect()
-        
+            file['EDS']['Autodetected Peak Labels'][...] = display_shells
+        except: 
+            pass 
+          
             
-    # If the same greyscale backgrounds are available for all montages, input from user which to use 
-    if len(available_specifications) > 0:
-        
-        print("Select the background grayscale to use:")
-        for i, spec in enumerate(available_specifications):
-            print(str(i) + " " + str(spec)) 
-        background = int(input("Enter the number of the background to use: "))
-        background = available_specifications[background]
-        background = np.load( (os.path.join(output_src, 'Data', 'Montages', str(montage), str(background) + '.npy' )))
-    
-    else:
-        print("No single grayscale background image available for all montages")
-        print("Using X-Ray count intensities as artificial grayscale background instead")
-        background = None
-    
-    #display_shells = np.load('display_shells.npy')
-    
-    
-    energy_locs = list((channel_offset + channel_width*np.asarray(appended_peaks))/1_000.0)
-    
-    temp = []
-    for i in range(len(display_shells)):
-        if str(display_shells[i]) != '':
-            temp.append(str(display_shells[i]) + ": " + str( round(energy_locs[i], 3) ) + "KeV")
-        else: 
-            temp.append( str( round(energy_locs[i], 3) ) + "KeV")
             
-    display_shells = temp.copy()
-    
-    
-    
-    
-
-
-
-
-
-
-
-
+            
+            
+            
+            
+            
+        
 
 
 
