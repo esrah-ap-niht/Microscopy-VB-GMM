@@ -55,16 +55,10 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 # plotting, garbage collection, and tkinter settings 
 ##############################################################################################################
 gc.enable()
-#plt.ioff()
-#plt.ion()
-#%matplotlib qt
-
 
 root = Tk()
 root.withdraw()
 root.attributes('-topmost',1)
-#sns.set(font_scale = 3)
-#sns.set_style("white")
 
 # Get user to select analysis file 
 analysis_path = filedialog.askopenfilename( title = "Select input analysis file", filetypes=[("H5 files", ".h5")] )
@@ -73,7 +67,7 @@ analysis_file = os.path.abspath( analysis_path )
 # Get user to select montage file(s) 
 montage_list = []
 while True: 
-    montage_paths = filedialog.askopenfilenames( title = "Select montage files(s). Press 'cancel' to stop adding folders")
+    montage_paths = filedialog.askopenfilenames( title = "Select montage files(s). Press 'cancel' to stop adding folders", filetypes=[("H5 files", ".h5")] )
     if montage_paths != '':
         for path in montage_paths:
             montage_list.append(path)
@@ -84,13 +78,13 @@ widths = []
 offsets = []
 sums = []
 highest = [] 
-bins = [] 
 search_width = 3
 element_search_half_distance = 0.2 # +- distance to search for x-ray band matches from peaks. Units are KeV 
 auto_suggest_filters = ['Ka']
 element_filters = [] 
 distance = 3
 
+########
 # extract calibration parameters, sum of spectrum and highest intensity spectrum 
 for montage_path in montage_list: 
     with h5py.File(montage_path, 'r+') as file:     
@@ -104,7 +98,6 @@ for montage_path in montage_list:
         
         sum_spectrum = file['EDS']['Sum of Spectrum'][...]
         highest_spectrum = file['EDS']['Highest Intensity Spectrum'][...]
-        peak_bins = file['EDS']['Autodetected Peak Bins'][...]
     
         # verify that the calibrations are correct
         # Oxford in particular does not appear to export the correct calibration for EDS datasets
@@ -134,16 +127,21 @@ for montage_path in montage_list:
         offsets.append(channel_offset)
         sums.append(sum_spectrum)
         highest.append(highest_spectrum)
-        bins.append(peak_bins)
+
+########
+with h5py.File(analysis_file, 'r+') as file:     
+    peak_energies = file['Channel KeV Peaks'][...]  # KeV units 
     
 ########
-
 for z, montage_path in enumerate(montage_list): 
     
-    temp = list( bins[z].copy() ) 
-    highest_spectrum = highest[z].copy() 
-    sum_spectrum = sums[z].copy()
+    channel_width = widths[z]               # eV units 
+    channel_offset = offsets[z]             # eV units
+    temp = list( peak_energies.copy() ) 
+    highest_spectrum = highest[z].copy()    # KeV units 
+    sum_spectrum = sums[z].copy()           # KeV units 
     new_command = ''
+    bins = [round(x) for x in (peak_energies*1_000.0 - channel_offset)/channel_width ] 
     
     while True:      
             
@@ -193,7 +191,7 @@ for z, montage_path in enumerate(montage_list):
                 #plt.setp(plt.gca(), autoscale_on=False)
     
                 
-                fig.suptitle('Potential Peak at ' + str( round( (channel_offset + channel_width*peak)/1_000.0, 2 )) + "KeV", fontsize=fontsize)
+                fig.suptitle('Potential Peak at ' + str( round( peak, 2 )) + "KeV", fontsize=fontsize)
                 fig.tight_layout()
                 #plt.subplots_adjust(top=0.85)
                 
@@ -203,9 +201,9 @@ for z, montage_path in enumerate(montage_list):
                 plt.sca(ax2)
                 plt.plot((channel_offset + channel_width*np.linspace(0,len(sum_spectrum), num=len(sum_spectrum)))/1_000.0, highest_spectrum, color = "black")
     
-                plt.scatter(x = (channel_offset + channel_width*np.asarray(temp))/1_000.0, y = highest_spectrum[temp], s = 75, alpha = 1)
+                plt.scatter(x = temp, y = highest_spectrum[bins], s = 75, alpha = 1)
     
-                plt.scatter(x = (channel_offset + channel_width*max_x)/1_000.0, y = highest_spectrum[ max_x ], color = 'red', s = 150, alpha = 1)
+                plt.scatter(x = peak, y = highest_spectrum[ bins[i] ], color = 'red', s = 150, alpha = 1)
                 plt.title("Maximum Bin Intensity of Entire Dataset - Suggested Peaks", fontsize=fontsize)
                 plt.tight_layout()
                 plt.xlabel("KeV", fontsize=fontsize)
@@ -225,9 +223,9 @@ for z, montage_path in enumerate(montage_list):
                 
                 
                 plt.sca(ax3)
-                plt.scatter(x = (channel_offset + channel_width*np.asarray(temp))/1_000.0, y = sum_spectrum[temp],  s = 75, alpha = 1)
+                plt.scatter(x = temp, y = sum_spectrum[bins],  s = 75, alpha = 1)
     
-                plt.scatter(x = (channel_offset + channel_width*max_x)/1_000.0, y = sum_spectrum[ max_x ], color = 'red',  s = 150)
+                plt.scatter(x = peak, y = sum_spectrum[ bins[i] ], color = 'red',  s = 150)
                 plt.plot((channel_offset + channel_width*np.linspace(0,len(sum_spectrum), num=len(sum_spectrum)))/1_000.0, sum_spectrum, color = "black")
      
              
@@ -246,7 +244,7 @@ for z, montage_path in enumerate(montage_list):
                 ax3.xaxis.set_major_locator(MultipleLocator(5))
                 ax3.xaxis.set_minor_locator(tck.AutoMinorLocator())
                 
-                auto_suggest_elements = hs.eds.get_xray_lines_near_energy((channel_offset + channel_width*max_x)/1_000.0, only_lines = auto_suggest_filters, width = 0.5)
+                auto_suggest_elements = hs.eds.get_xray_lines_near_energy(peak, only_lines = auto_suggest_filters, width = 0.5)
                 print(auto_suggest_elements)
                 for z, element in enumerate(auto_suggest_elements):     
                     ax3.annotate(str(element ),
@@ -260,7 +258,7 @@ for z, montage_path in enumerate(montage_list):
               
         
                 plt.sca(ax4)
-                plt.scatter(x = (channel_offset + channel_width*max_x)/1_000.0, y = sum_spectrum[ max_x ], color = 'red',  s = 150)
+                plt.scatter(x = peak, y = sum_spectrum[ bins[i] ], color = 'red',  s = 150)
                 plt.plot((channel_offset + channel_width*np.linspace(0,len(sum_spectrum), num=len(sum_spectrum)))/1_000.0, sum_spectrum, color = "black")
                 plt.title("Sum of Spectrum of Entire Dataset - User Specified Peaks", fontsize=fontsize)
                 
@@ -331,6 +329,7 @@ for z, montage_path in enumerate(montage_list):
                     break 
                 elif new_command == 'z': 
                     temp.remove(peak)
+                    bins.remove( bins[i] )
                     break
                 else: 
                     new_command = new_command.split(',')
@@ -363,47 +362,47 @@ for z, montage_path in enumerate(montage_list):
                     print("   " + str(element) ) 
                 
                 
-    ###########     
-    #element_filters.sort()
-    energy_locs = list((channel_offset + channel_width*np.asarray(bins[z]))/1_000.0)
+###########     
+#element_filters.sort()
+energy_locs = list(peak_energies)
+
+element_energies = []
+element_shells = []
+display_shells = ["" for n in range(len(peak_energies) )]
+
+for element in element_filters:
+    keys = eval ('hs.material.elements.' + str(element) + '.Atomic_properties.Xray_lines.keys()' ) 
+
+    for key in keys:
+        energy = eval( "hs.material.elements." + str(element) + ".Atomic_properties.Xray_lines.get_item('" + key + "').get_item('energy (keV)')" )
+        element_energies.append(energy) 
+        element_shells.append(str(element) + "_" + str(key))
+        
+        
+for az, energy in enumerate(energy_locs): 
     
-    element_energies = []
-    element_shells = []
-    display_shells = ["" for n in range(len(bins[z]) )]
+    diff = np.abs( np.asarray(element_energies) - energy) 
+    loc = np.argmin(diff)
     
-    for element in element_filters:
-        keys = eval ('hs.material.elements.' + str(element) + '.Atomic_properties.Xray_lines.keys()' ) 
     
-        for key in keys:
-            energy = eval( "hs.material.elements." + str(element) + ".Atomic_properties.Xray_lines.get_item('" + key + "').get_item('energy (keV)')" )
-            element_energies.append(energy) 
-            element_shells.append(str(element) + "_" + str(key))
-            
-            
-    for az, energy in enumerate(energy_locs): 
+    
+    if (np.min(diff) < 0.05) and (display_shells[az] == "") :
         
-        diff = np.abs( np.asarray(element_energies) - energy) 
-        loc = np.argmin(diff)
+        display_shells[az] = element_shells[loc]
+    
+    elif (np.min(diff) < 0.05) and (display_shells[az] != ""): 
+        old_value = ( np.abs(energy - element_energies[loc]) > np.abs(energy - element_energies[ np.argwhere( np.asarray(element_shells) == display_shells[az] ) ] ))
         
-        
-        
-        if (np.min(diff) < 0.05) and (display_shells[az] == "") :
-            
+        if old_value > np.minimum(diff):
             display_shells[az] = element_shells[loc]
-        
-        elif (np.min(diff) < 0.05) and (display_shells[az] != ""): 
-            old_value = ( np.abs(energy - element_energies[loc]) > np.abs(energy - element_energies[ np.argwhere( np.asarray(element_shells) == display_shells[az] ) ] ))
-            
-            if old_value > np.minimum(diff):
-                display_shells[az] = element_shells[loc]
-    
+
 with h5py.File(analysis_file, 'r+') as file: 
     try:
-        file['EDS'].create_dataset( 'Autodetected Peak Labels' , data = display_shells)
+        file.create_dataset( 'Autodetected Peak Labels' , data = display_shells)
     except:
         
         try: 
-            file['EDS']['Autodetected Peak Labels'][...] = display_shells
+            file['Autodetected Peak Labels'][...] = display_shells
         except: 
             pass 
           

@@ -524,7 +524,19 @@ def plot_model(Means, Covariance, Weights, uniques, analysis_file, segmentation)
             analysis_kev = [ round(x, 2) for x in analysis_kev]
     except: 
         pass 
+    
+    try:
+        with h5py.File(analysis_file, 'r+') as file: 
+            display_shells = file['Autodetected Peak Labels'][...]
+    except: 
+        pass     
+         
+    try: 
+        display_shells = [ str(round(analysis_kev[q], 2)) + " " + display_shells[q].decode('utf-8') for q in range(len(analysis_kev))]
+    except: 
+        display_shells = [round(analysis_kev[q], 2) for q in range(len(analysis_kev))]
         
+            
     for i in range(Covariance.shape[0] ):
         fig = plt.figure(constrained_layout=False, figsize=(10,5), dpi=200)
 
@@ -535,7 +547,8 @@ def plot_model(Means, Covariance, Weights, uniques, analysis_file, segmentation)
         plt.sca(ax2)
         stdev = np.sqrt(np.abs(Covariance[i]))
         stdev[Covariance[i] < 0.0] = -1 * stdev[Covariance[i] < 0.0] 
-        display_shells = analysis_kev
+        
+        
         try:     
             sns.heatmap(correlation_from_covariance(Covariance[i]), xticklabels = display_shells, yticklabels = display_shells, vmin = 0, vmax = 1, linewidths=1, linecolor = 'white', cmap = color, mask = np.triu(stdev), cbar_kws={'label': 'Correlation', 'orientation': 'vertical'})
         except NameError: 
