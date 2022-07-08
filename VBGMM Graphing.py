@@ -96,6 +96,25 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
     except NameError:
         montage = "Unlabeled"
         
+    try:
+        with h5py.File(analysis_file, 'r+') as file: 
+            analysis_kev = file['Channel KeV Peaks'][...]
+            analysis_kev = [ round(x, 2) for x in analysis_kev]
+    except: 
+        pass 
+    
+    try:
+        with h5py.File(analysis_file, 'r+') as file: 
+            display_shells = file['Autodetected Peak Labels'][...]
+    except: 
+        pass     
+         
+    try: 
+        display_shells = [ str(round(analysis_kev[q], 2)) + " " + display_shells[q].decode('utf-8') for q in range(len(analysis_kev))]
+    except: 
+        display_shells = [round(analysis_kev[q], 2) for q in range(len(analysis_kev))]
+        
+        
     try :
         with h5py.File(montage_path) as f:
             headers = list( f['Metadata'].keys() )
@@ -217,8 +236,12 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
     linkage_matrix['Area Fraction'] = area 
     linkage_matrix['Training/Testing Ratio'] = linkage_matrix['Class Weights'] / linkage_matrix['Area Fraction']
     
-    for i in range( Means.shape[1] ):
-        linkage_matrix['Energy Bin ' + str( i ) ] = Means[:,i]
+    try: 
+        for i in range( Means.shape[1] ):
+               linkage_matrix['KeV' + str( display_shells[i] ) ] = Means[:,i]   
+    except: 
+        for i in range( Means.shape[1] ):
+            linkage_matrix['Energy Bin: ' + str( i ) ] = Means[:,i]
     linkage_matrix.to_excel(str(montage) + " Class Data.xlsx", index = False)
 
     ########
