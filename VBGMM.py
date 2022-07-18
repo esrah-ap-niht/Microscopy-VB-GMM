@@ -452,8 +452,15 @@ def main():
         
     ########
     elif analysis_type == 2: 
-        # Get user to select input files  
-        file_list = filedialog.askopenfilenames ( title = "Select input montage files(s)")
+        # Get user to select montage file(s) 
+        file_list = []
+        while True: 
+            montage_paths = filedialog.askopenfilenames( title = "Select montage files(s). Press 'cancel' to stop adding folders", filetypes=[("H5 files", ".h5")] )
+            if montage_paths != '':
+                for path in montage_paths:
+                    file_list.append(path)
+            else:
+                break
 
         # Get user to select output directory 
         #output_src = filedialog.askdirectory( title = "Select output directory")

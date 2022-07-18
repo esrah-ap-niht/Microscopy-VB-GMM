@@ -191,7 +191,7 @@ for z, montage_path in enumerate(montage_list):
                 #plt.setp(plt.gca(), autoscale_on=False)
     
                 
-                fig.suptitle('Potential Peak at ' + str( round( peak, 2 )) + "KeV", fontsize=fontsize)
+                fig.suptitle(os.path.basename(montage_path) + ': Potential Peak at ' + str( round( peak, 2 )) + "KeV", fontsize=fontsize)
                 fig.tight_layout()
                 #plt.subplots_adjust(top=0.85)
                 
@@ -407,14 +407,5 @@ with h5py.File(analysis_file, 'r+') as file:
             pass 
           
             
-            
-            
-            
-            
-            
-            
-        
-
-
 
 

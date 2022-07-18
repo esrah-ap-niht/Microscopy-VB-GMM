@@ -82,7 +82,7 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
     global x_min
     global y_min
     size = 40
-    graphing_dpi = 400
+    graphing_dpi = 300
     color_fixed = 'bwr_r'
     color_floating = 'gist_ncar_r'
     fontsize = 60
@@ -90,6 +90,13 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
     background = np.array(background, dtype = np.float32)
     uniques = range(len(Weights))
     analysis = Path(analysis_file).stem
+    
+    # Verfiy that the background image and segmentation are of the same shape. 
+    # If not, resize the background image to have the same shape as the segmentation 
+    # Note: The CV2 Resize function has backwards shape (y,x)
+    if ( background.shape[0] != segmentation.shape[0] ) or ( background.shape[1] != segmentation.shape[1] ):
+        background = cv2.resize(background, dsize = ( segmentation.shape[1], segmentation.shape[0] ), interpolation = cv2.INTER_CUBIC )
+        
     
     try: 
         montage = Path(montage_path).stem.replace("Montage ", "")
@@ -409,7 +416,7 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
         
         #ax1 = fig.add_subplot(gs[0:3, 0:3])
         #ax1 = fig.add_subplot()
-        ax1.set_title('Class Map', fontsize = 15)
+        ax1.set_title('Class Map: ' + str(ind2), fontsize = 15)
         
         plt.sca(ax1)
         plt.tick_params(left = True)
@@ -434,7 +441,8 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
             secondy_ax.tick_params(which='major', width = 5, length=15)
         except NameError: 
             pass 
-    
+        
+        """
         divider = make_axes_locatable(ax1)
         #cax = divider.append_axes("right", size="5%", pad=0.05)
         #cb = plt.colorbar(plot, cax=cax)   
@@ -445,10 +453,11 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
         ax1.figure.axes[-1].yaxis.label.set_size(10)    # colorbar label size 
         ax1.figure.axes[-1].xaxis.label.set_size(10)    # colorbar label size 
         #plt.xlabel("Scale (um)", fontsize = 12)
+        
         plt.xticks(fontsize = 10)
         plt.yticks(fontsize = 10)
         ax1.set_aspect(aspect = segmentation.shape[0]/segmentation.shape[1], adjustable = 'box')
-        
+        """
         try:
             plt.sca(ax1)
             plot = plt.imshow(background, alpha = 0.3, cmap = 'gray_r')

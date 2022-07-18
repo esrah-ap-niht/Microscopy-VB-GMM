@@ -1216,6 +1216,12 @@ def convert_oxford_RPL_to_H5(montage, metadata, file_list, output_src):
             except: 
                 pass 
             
+            try: 
+                save_file['EDS'].create_dataset('Xray Intensity', shape = (y_range, x_range ), chunks=True, dtype = 'int16')
+            except: 
+                pass 
+            
+            save_file['EDS']['Xray Intensity'][y_location:y_location + int(y_size), x_location:x_location + int(x_size)] = np.sum( block, axis = 2)
             save_file['EDS']['Xray Spectrum'][y_location:y_location + int(y_size), x_location:x_location + int(x_size), :] = block 
 
             save_file.close() 
