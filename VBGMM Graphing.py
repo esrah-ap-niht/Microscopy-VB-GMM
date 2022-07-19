@@ -82,7 +82,7 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
     global x_min
     global y_min
     size = 40
-    graphing_dpi = 300
+    graphing_dpi = 200
     color_fixed = 'bwr_r'
     color_floating = 'gist_ncar_r'
     fontsize = 60
@@ -474,8 +474,9 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
         # Create gridview to indicate where each tile comes from 
         fig, ax = plt.subplots(figsize=(size, size), dpi=graphing_dpi)
         
-        
         blank = background.copy()
+        #if blank.dtype = 
+        
         try: 
             blank = cv2.cvtColor(np.array(blank, dtype = np.uint8),cv2.COLOR_GRAY2RGB)
         except:
@@ -494,8 +495,8 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
         
         for index, row in metadata.iterrows():
             #print(index)
-            x = int( (float( row['EDS Stage X Position (mm)'].decode('utf-8') ) - start_x) * 1_000/ float(row['EDS X Step Size (um)'].decode('utf-8') ) )
-            y = int( (float( row['EDS Stage Y Position (mm)'].decode('utf-8') ) - start_y) * 1_000/ float(row['EDS Y Step Size (um)'].decode('utf-8') ) )
+            x = int( (float( row['EDS Stage X Position (mm)'].decode('utf-8') ) - start_x) * 1_000.0/ float(row['EDS X Step Size (um)'].decode('utf-8') ) )
+            y = int( (float( row['EDS Stage Y Position (mm)'].decode('utf-8') ) - start_y) * 1_000.0/ float(row['EDS Y Step Size (um)'].decode('utf-8') ) )
             x_range = int( row['EDS Number of X Cells'].decode('utf-8') )
             y_range = int( row['EDS Number of Y Cells'].decode('utf-8') )
             cmp = (random.randint(50, 255), random.randint(50, 255), random.randint(50, 255)) 
@@ -520,7 +521,55 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
         print("Gridview Error")
         pass 
 
+    try: 
+        # Create gridview to indicate where each tile comes from 
+        fig, ax = plt.subplots(figsize=(size, size), dpi=graphing_dpi)
+        
+        blank = segmentation.copy()
+        
+        try: 
+            blank = cv2.cvtColor(np.array(blank, dtype = np.uint8),cv2.COLOR_GRAY2RGB)
+        except:
+            pass 
+        
+        start_x = []
+        for value in metadata['EDS Stage X Position (mm)']:
+            start_x.append(value.decode('utf-8'))
+        start_x = np.min( np.array( start_x , dtype = float) )
+        
+        start_y = []
+        for value in metadata['EDS Stage Y Position (mm)']:
+            start_y.append(value.decode('utf-8'))
+        start_y = np.min( np.array( start_y , dtype = float) )
+        
+        
+        for index, row in metadata.iterrows():
+            #print(index)
+            x = int( (float( row['EDS Stage X Position (mm)'].decode('utf-8') ) - start_x) * 1_000.0/ float(row['EDS X Step Size (um)'].decode('utf-8') ) )
+            y = int( (float( row['EDS Stage Y Position (mm)'].decode('utf-8') ) - start_y) * 1_000.0/ float(row['EDS Y Step Size (um)'].decode('utf-8') ) )
+            x_range = int( row['EDS Number of X Cells'].decode('utf-8') )
+            y_range = int( row['EDS Number of Y Cells'].decode('utf-8') )
+            cmp = (random.randint(50, 255), random.randint(50, 255), random.randint(50, 255)) 
+            title = str( row['EDS Field'].decode('utf-8') )
+            
+            cv2.rectangle(blank, (x,y), (x+x_range, y+y_range) , cmp, 10 )
+            cv2.putText(blank, title, (x + int(x_range/10), y + int(y_range/2) ), cv2.FONT_HERSHEY_TRIPLEX, 3, cmp, 10)
+        
+        plt.imshow(blank)
+       
+        plt.xticks([])
+        plt.yticks([])
+        
+        plt.title(str(montage) + " Gridview", fontsize = fontsize)
+        
+        plt.tight_layout()
+        plt.savefig(str(montage) + " Gridview " + str("Segmentation") + ".png")
+        plt.close(fig)
+        gc.collect()
 
+    except: 
+        print("Gridview Error")
+        pass 
 
 
 
