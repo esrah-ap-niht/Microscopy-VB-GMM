@@ -82,7 +82,7 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
     global x_min
     global y_min
     size = 40
-    graphing_dpi = 200
+    graphing_dpi = 300
     color_fixed = 'bwr_r'
     color_floating = 'gist_ncar_r'
     fontsize = 60
@@ -349,7 +349,78 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
     plt.savefig(str(montage) + " Floating Scale Log Liklihoods with Colorbar" + str(bk_grd) + ".png")
     plt.close(fig)
     gc.collect()
+         
+    ########
+    # Create boxed relative uncertainty intensity map
+    fig, ax = plt.subplots(figsize=(size, size), dpi=graphing_dpi)
+    # if available, plot the background image as well
+    temp = uncertainty.copy() 
+    temp[temp >= -25] = 0   
+    temp[temp < -25] = 255   
+    temp = np.array(temp, dtype = np.uint8)
+    contours, hierarchy = cv2.findContours(temp, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    del temp 
+    
+    temp = np.zeros(dtype = np.uint8, shape = (uncertainty.shape[0], uncertainty.shape[1]) )
+    #temp = np.ma.array(temp)
+    
+    
+    for i, cnt in enumerate(contours): 
+        x,y,w,h = cv2.boundingRect(cnt)
+        
+        if (hierarchy[0][i][3] == -1) and (cv2.contourArea(cnt) > 4):
+            cv2.rectangle(temp, (x,y), (x+w,y+h), (50), 3)
+    
+    temp = np.ma.masked_where(temp[:,:] == 0, temp)
+    
+    
+    try:
+        plt.imshow(background)
+
+        plot = plt.imshow(uncertainty, cmap = color_floating, vmax = 0, alpha = 0.60 )
+        plt.imshow(temp, cmap = 'Reds_r', vmax = 255, vmin = 0)
+
+    except NameError:
+        plot = plt.imshow(uncertainty, cmap = color_floating, vmax = 0 )
+        pass 
+    
+    # we wish to provide users with information both about the stage location and px/um scaling
+    # It is not strictly necessary to provide a scale bar, because if the stage coordinates are provided, users can easily get the scaling
+    
+    # Turn off all tick marks and labels for the images 
+    plt.xticks([])
+    plt.yticks([])
+  
+    try: 
+        # add secondary axis labels for the stage locations             
+        secondx_ax = ax.secondary_xaxis('bottom', functions = (forward_x, reverse_x))
+        secondx_ax.set_xlabel('X Stage Location (mm)')
+        secondx_ax.tick_params(labelsize=30)
+        secondx_ax.tick_params(which='major', width = 5, length=15)
             
+        secondy_ax = ax.secondary_yaxis('left',  functions = (forward_y, reverse_y))
+        secondy_ax.set_ylabel('Y Stage Location (mm)')
+        secondy_ax.tick_params(labelsize=30)
+        secondy_ax.tick_params(which='major', width = 5, length=15)
+    except NameError: 
+        pass 
+    
+    # add figure title 
+    plt.title(str(montage) + " Floating Scale Log Liklihoods", fontsize = fontsize)
+    
+    plt.tight_layout()
+    
+    # add color bar 
+    divider = make_axes_locatable(ax)
+    cax = divider.append_axes("right", size="5%", pad=0.1)
+    cbar = plt.colorbar(plot, cax=cax)
+    cbar.ax.tick_params(labelsize=fontsize*(0.7))
+    
+    # auto-fit padding and spacing, then save figure and clear memory 
+    plt.savefig(str(montage) + " Floating Scale Log Liklihoods with Boxes " + str(bk_grd) + ".png")
+    plt.close(fig)
+    gc.collect()
+    
     ########
     # Save semantic segmentation map 
     fig, ax = plt.subplots(figsize = (size, size), dpi=graphing_dpi) 
@@ -475,7 +546,13 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
         fig, ax = plt.subplots(figsize=(size, size), dpi=graphing_dpi)
         
         blank = background.copy()
-        #if blank.dtype = 
+        """
+        if (blank.dtype == np.float32) or (blank.dtype == np.int32) or (blank.dtype == np.uint32):
+            blank = blank/(2^32)
+            blank= blank*255.0
+        """    
+            
+            
         
         try: 
             blank = cv2.cvtColor(np.array(blank, dtype = np.uint8),cv2.COLOR_GRAY2RGB)
@@ -659,7 +736,7 @@ def plot_model(Means, Covariance, Weights, uniques, analysis_file, segmentation)
 
 def main():
     # Get user to select analysis file 
-    analysis_path = filedialog.askopenfilename( title = "Select input analysis file")
+    analysis_path = filedialog.askopenfilename( title = "Select input analysis file", filetypes=[("H5 files", ".h5")])
     analysis_file = os.path.abspath( analysis_path )
 
     # Get user to select montage directories 
@@ -807,7 +884,6 @@ def main():
                                             try:     
                                                 keys = list( montage_file[str(folder)].keys() )
                                                 for key in keys: 
-                                                    
                                                     if (bk_grd == key): 
                                                         background = montage_file[folder][key][...]
                                                         background = np.array(background, dtype = np.float32 )

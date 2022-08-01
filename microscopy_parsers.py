@@ -44,7 +44,7 @@ def save_h5(h5_file, h5_path, array_or_attribute, data):
     try: 
         if array_or_attribute[0] == 'array': 
             try:
-                file[h5_path].create_dataset(array_or_attribute[1], data = data, chunks=True)
+                file[h5_path].create_dataset(array_or_attribute[1], data = data, chunks=True, dtype = 'float64')
             except: 
                 file[h5_path + '/' + str(array_or_attribute[1])] = data
             
@@ -864,13 +864,19 @@ def oxford_montage_stitcher(montage, metadata, specification, file_list, eds_lay
                            
                         # load data, reshape and get the XY coodinates for the field 
                         if specification[1] == "SE":
-                            field_ID = str(file['1']['Electron Image']['Header']['Analysis Label'][0] ).split("'")[1::2][0].split(" ")[2]
-                            block = file['1']['Electron Image']['Data']['SE']['Electron Image ' + str(field_ID)][...].reshape( y_size, x_size )
+                            #field_ID = str(file['1']['Electron Image']['Header']['Analysis Label'][0] ).split("'")[1::2][0].split(" ")[2]
+                            #block = file['1']['Electron Image']['Data']['SE']['Electron Image ' + str(field_ID)][...].reshape( y_size, x_size )
+                            
+                            field_ID = list( file['1']['Electron Image']['Data']['SE'].keys() )[0]
+                            block = file['1']['Electron Image']['Data']['SE'][str(field_ID)][...].reshape( y_size, x_size )
                             block = np.flip( block, 1)
                         
                         elif specification[1] == "BSE":
-                            field_ID = str(file['1']['Electron Image']['Header']['Analysis Label'][0] ).split("'")[1::2][0].split(" ")[2]
-                            block = file['1']['Electron Image']['Data']['BSE']['Electron Image ' + str(field_ID)][...].reshape( y_size, x_size )
+                            #field_ID = str(file['1']['Electron Image']['Header']['Analysis Label'][0] ).split("'")[1::2][0].split(" ")[2]
+                            #block = file['1']['Electron Image']['Data']['BSE']['Electron Image ' + str(field_ID)][...].reshape( y_size, x_size )
+                            
+                            field_ID = list( file['1']['Electron Image']['Data']['BSE'].keys() )[0]
+                            block = file['1']['Electron Image']['Data']['BSE'][str(field_ID)][...].reshape( y_size, x_size )
                             block = np.flip( block, 1)
                             
                         elif specification[1] in ["FSE Lower Left", "FSE Lower Centre", "FSE Lower Right", "FSE Upper Left", "FSE Upper Right"]:
@@ -1212,12 +1218,12 @@ def convert_oxford_RPL_to_H5(montage, metadata, file_list, output_src):
                 pass 
             
             try: 
-                save_file['EDS'].create_dataset('Xray Spectrum', shape = (y_range, x_range, block.shape[2] ), chunks=True, dtype = 'int16')
+                save_file['EDS'].create_dataset('Xray Spectrum', shape = (y_range, x_range, block.shape[2] ), chunks=(True, True, 50), dtype = 'int64')
             except: 
                 pass 
             
             try: 
-                save_file['EDS'].create_dataset('Xray Intensity', shape = (y_range, x_range ), chunks=True, dtype = 'int16')
+                save_file['EDS'].create_dataset('Xray Intensity', shape = (y_range, x_range ), chunks=True, dtype = 'int64')
             except: 
                 pass 
             
@@ -1632,12 +1638,12 @@ def bruker_montage(montage_file, montage, metadata, file_list):
                         pass 
                 
                     try: 
-                        save_file['EDS'].create_dataset('Xray Spectrum', shape = (y_range, x_range, block.shape[2] ), chunks=True, dtype = 'int16')
+                        save_file['EDS'].create_dataset('Xray Spectrum', shape = (y_range, x_range, block.shape[2] ), chunks=(True, True, 50), dtype = 'int64')
                     except: 
                         pass 
               
                     try: 
-                        save_file['EDS'].create_dataset('Xray Intensity', shape = (y_range, x_range ), chunks=True, dtype = 'int16')
+                        save_file['EDS'].create_dataset('Xray Intensity', shape = (y_range, x_range ), chunks=True, dtype = 'int64')
                     except: 
                         pass 
                     
@@ -1750,12 +1756,18 @@ def bruker_montage(montage_file, montage, metadata, file_list):
                     pass 
             
                 try: 
-                    save_file['EDS'].create_dataset('Xray Spectrum', shape = (block.shape[0], block.shape[1], block.shape[2] ), dtype = 'int16')
+                    save_file['EDS'].create_dataset('Xray Spectrum', shape = (y_range, x_range, block.shape[2] ), chunks=(True, True, 50), dtype = 'int64')
                 except: 
                     pass 
-          
-                save_file['EDS']['Xray Spectrum'][:,:,:] = block 
-
+                
+                try: 
+                    save_file['EDS'].create_dataset('Xray Intensity', shape = (y_range, x_range ), chunks=True, dtype = 'int64')
+                except: 
+                    pass 
+                
+                save_file['EDS']['Xray Intensity'][y_location:y_location + int(y_size), x_location:x_location + int(x_size)] = np.sum( block, axis = 2)
+                save_file['EDS']['Xray Spectrum'][y_location:y_location + int(y_size), x_location:x_location + int(x_size), :] = block 
+    
                 save_file.close() 
                 
                 new_highest_spectrum =  np.max( block[:, :, :], axis = (0,1)).flatten() 
