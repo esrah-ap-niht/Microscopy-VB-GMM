@@ -602,12 +602,8 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
         # Create gridview to indicate where each tile comes from 
         fig, ax = plt.subplots(figsize=(size, size), dpi=graphing_dpi)
         
-        blank = segmentation.copy()
-        
-        try: 
-            blank = cv2.cvtColor(np.array(blank, dtype = np.uint8),cv2.COLOR_GRAY2RGB)
-        except:
-            pass 
+        blank = np.zeros( shape = (segmentation.shape[0], segmentation.shape[1]) , dtype = np.uint8)
+        blank2 = np.zeros( shape = (segmentation.shape[0], segmentation.shape[1]) , dtype = np.uint8)
         
         start_x = []
         for value in metadata['EDS Stage X Position (mm)']:
@@ -626,18 +622,42 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
             y = int( (float( row['EDS Stage Y Position (mm)'].decode('utf-8') ) - start_y) * 1_000.0/ float(row['EDS Y Step Size (um)'].decode('utf-8') ) )
             x_range = int( row['EDS Number of X Cells'].decode('utf-8') )
             y_range = int( row['EDS Number of Y Cells'].decode('utf-8') )
-            cmp = (random.randint(50, 255), random.randint(50, 255), random.randint(50, 255)) 
+            cmp = random.randint(0, 255)
             title = str( row['EDS Field'].decode('utf-8') )
             
             cv2.rectangle(blank, (x,y), (x+x_range, y+y_range) , cmp, 10 )
             cv2.putText(blank, title, (x + int(x_range/10), y + int(y_range/2) ), cv2.FONT_HERSHEY_TRIPLEX, 3, cmp, 10)
+            cv2.putText(blank2, title, (x + int(x_range/10), y + int(y_range/2) ), cv2.FONT_HERSHEY_TRIPLEX, 3, (255,255,255), 16)
         
-        plt.imshow(blank)
-       
+        alpha = np.zeros( shape = segmentation.shape, dtype = np.uint8 )
+        alpha[ blank > 0 ] = 1
+        alpha = np.ma.masked_where(alpha == 0, alpha)
+        
+        alpha2 = np.zeros( shape = segmentation.shape, dtype = np.uint8 )
+        alpha2[ blank2 > 0 ] = 1
+        alpha2 = np.ma.masked_where(alpha2 == 0, alpha2)
+        
+        cmap = plt.get_cmap('gist_ncar', np.max(segmentation)-np.min(segmentation)+1)
+
+        try:
+            plt.imshow(background)
+            plot = plt.imshow(segmentation, cmap=cmap, alpha = 0.7, vmin = np.min(segmentation)-.5, vmax = np.max(segmentation)+.5)
+        except NameError:
+            plot = plt.imshow(segmentation, cmap=cmap, alpha = 1, vmin = np.min(segmentation)-.5, vmax = np.max(segmentation)+.5)
+            pass 
+        
+        plt.imshow(blank2, cmap = 'binary', alpha = alpha2)
+        plt.imshow(blank, cmap = 'prism', alpha = alpha)
+
         plt.xticks([])
         plt.yticks([])
-        
         plt.title(str(montage) + " Gridview", fontsize = fontsize)
+
+        divider = make_axes_locatable(ax)
+        cax = divider.append_axes("right", size="5%", pad=0.05)
+        cbar = plt.colorbar(plot, cax=cax, ticks=np.arange(np.min(segmentation),np.max(segmentation)+1))
+        cbar.ax.tick_params(labelsize=25) 
+    
         
         plt.tight_layout()
         plt.savefig(str(montage) + " Gridview " + str("Segmentation") + ".png")

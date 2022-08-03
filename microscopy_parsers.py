@@ -1579,12 +1579,12 @@ def bruker_montage(montage_file, montage, metadata, file_list):
         y_size = np.unique(metadata['EDS Number of Y Cells'])
         
         # find minimum coodinates so that we can create an appropriately sized array 
-        x_min = int( math.ceil(min(x_list)/x_scale))
-        y_min = int( math.ceil(min(y_list)/y_scale))
+        x_min = int( math.ceil(min(x_list)*1000.0/x_scale))
+        y_min = int( math.ceil(min(y_list)*1000.0/y_scale))
         
         # determine how large of an array is neeed 
-        x_range = int (math.ceil( ( (max(x_list) - min(x_list))/x_scale ) ) + x_size )
-        y_range = int( math.ceil( ( (max(y_list) - min(y_list))/y_scale ) ) + y_size )
+        x_range = int (math.ceil( ( 1000*(max(x_list) - min(x_list))/x_scale ) ) + x_size )
+        y_range = int( math.ceil( ( 1000*(max(y_list) - min(y_list))/y_scale ) ) + y_size )
       
         eds_layers = np.unique( metadata["EDS Number of Channels"] )
         
@@ -1621,7 +1621,7 @@ def bruker_montage(montage_file, montage, metadata, file_list):
                             y_location = int(y_location)
                         
                         block = data.data
-                        temp_block = np.empty( shape = block.shape )
+                        temp_block = np.empty( shape = block.shape, dtype = np.uint16 )
                         for i in range(block.shape[2]):
                             temp_block[:,:, i ] = np.flip( block[:,:,i], 1)
                         block = temp_block.copy()
@@ -1638,7 +1638,7 @@ def bruker_montage(montage_file, montage, metadata, file_list):
                         pass 
                 
                     try: 
-                        save_file['EDS'].create_dataset('Xray Spectrum', shape = (y_range, x_range, block.shape[2] ), chunks=(True, True, 50), dtype = 'int64')
+                        save_file['EDS'].create_dataset('Xray Spectrum', shape = (y_range, x_range, block.shape[2] ), chunks= (block.shape[0], block.shape[1], 10), dtype = 'int16')
                     except: 
                         pass 
               
@@ -1904,7 +1904,7 @@ def bruker_parse_bcf_metadata(montage_name, hardware_vendor, software_version, f
                 eds_site =                              np.nan
                 eds_voltage =                           data.original_metadata.Microscope.HV  
                 eds_magnification =                     data.original_metadata.Microscope.Mag
-                eds_field =                             np.nan
+                eds_field =                             Path(str(file_path)).stem
                 eds_binning =                           np.nan
                 eds_bin_width =                         data.original_metadata.Spectrum.CalibLin*1_000        # eV bin width
                 eds_start_channel =                     data.original_metadata.Spectrum.CalibAbs*1_000        # eV offset? 
@@ -1937,9 +1937,9 @@ def bruker_parse_bcf_metadata(montage_name, hardware_vendor, software_version, f
                 eds_processor =                         np.nan
                 eds_date =                              data.metadata.General.date  
                 try:
-                    eds_x_pos =                             data.original_metadata.Stage.X                          # stage position in um 
-                    eds_y_pos =                             data.original_metadata.Stage.Y                          # stage position in um 
-                    eds_z_pos =                             data.original_metadata.Stage.Z                          # stage position in um 
+                    eds_x_pos =                             data.original_metadata.Stage.X / 1_000.0                # stage position in um 
+                    eds_y_pos =                             data.original_metadata.Stage.Y / 1_000.0                # stage position in um 
+                    eds_z_pos =                             data.original_metadata.Stage.Z / 1_000.0                # stage position in um 
                     eds_tilt_radians  =                     data.original_metadata.Stage.Tilt                       # stage tile in 
                     eds_rotation_radians =                  data.original_metadata.Stage.Rotation                   # working distance in mm 
                 except AttributeError:
