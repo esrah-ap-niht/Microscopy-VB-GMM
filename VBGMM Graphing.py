@@ -622,7 +622,8 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
             y = int( (float( row['EDS Stage Y Position (mm)'].decode('utf-8') ) - start_y) * 1_000.0/ float(row['EDS Y Step Size (um)'].decode('utf-8') ) )
             x_range = int( row['EDS Number of X Cells'].decode('utf-8') )
             y_range = int( row['EDS Number of Y Cells'].decode('utf-8') )
-            cmp = random.randint(0, 255)
+            #cmp = random.randint(0, 255)
+            cmp = 255
             title = str( row['EDS Field'].decode('utf-8') )
             
             cv2.rectangle(blank, (x,y), (x+x_range, y+y_range) , cmp, 10 )
@@ -647,7 +648,7 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
             pass 
         
         plt.imshow(blank2, cmap = 'binary', alpha = alpha2)
-        plt.imshow(blank, cmap = 'prism', alpha = alpha)
+        plt.imshow(blank, cmap = 'gray', alpha = alpha)
 
         plt.xticks([])
         plt.yticks([])

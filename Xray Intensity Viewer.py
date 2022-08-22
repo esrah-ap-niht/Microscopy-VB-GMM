@@ -73,7 +73,9 @@ while True:
     else:
         break
     
-    
+output_src = filedialog.askdirectory( title = "Select output directory")
+os.chdir(os.path.join(output_src))
+ 
 for montage_path in montage_list: 
     with h5py.File(montage_path, 'r+') as file:     
         
@@ -89,10 +91,12 @@ for montage_path in montage_list:
         fig.suptitle( os.path.basename(montage_path) )
             
         plt.imshow(data, cmap = 'gist_ncar')
-        plt.show() 
+        plt.savefig("Xray Intensity" + str(os.path.basename(montage_path).split(".")[0]) + ".png")    
+        plt.close(fig)
+        gc.collect()
 
-
-
+print("Completed graphing all selected files")
+print(" ")
 
 
 
