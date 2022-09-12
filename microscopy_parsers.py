@@ -2441,6 +2441,617 @@ def bruker_parse_bcf_metadata(montage_name, hardware_vendor, software_version, f
     ##########
 
 
+def EDAX_parse(): 
+    output_src = filedialog.askdirectory( title = "Select output directory")
+    file_path = filedialog.askopenfilename( title = "Select HDF5 File", filetypes=[("H5 files", ".h5"), ("H5 files", ".h5oina")])
+    file = h5py.File(os.path.join(file_path), "r")
+    
+    projects = list(file.keys())
+    for project in projects: 
+        samples = list(file[str(project)].keys())
+        for sample in samples: 
+            areas = list(file[str(project)][str(sample)].keys())
+            for area in areas: 
+                if "Area" in area: 
+                    X = list( file[str(project)][str(sample)][str(area)].keys() )
+                    for montage in X: 
+                        if "Montage" in montage: 
+       
+                            Y = list(file[str(project)][str(sample)][str(area)][str(montage)].keys())
+                            for field in Y: 
+                                if "Field" in field: 
+                                    #raise Exception() 
+                                    #print(file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['MAPIMAGEIPR']['MicronsPerPixelX'][0])
+                                    
+                                    
+                                    #file[str(project)][str(sample)][str(area)][str(montage)]['MAPIMAGECOLLECTIONPARAMS'][...]
+                                    
+                                    
+                                    dat = file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['SPC'][...]
+                                    
+                                    
+                                    """
+                                    file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['SpotSize'][0]
+                                    file[str(project)][str(sample)][str(area)][str(montage)][str(field)].keys()
+                                    file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['MAPIMAGECOLLECTIONPARAMS'][...]
+                                    file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['MAPIMAGECOLLECTIONPARAMS'][...]
+                                    file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['ELEMENTOVRLAYIMGCOLLECTIONPARAMS'][...]
+                                    file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['MAPIMAGEIPR'][...]
+                                    file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['MAPIMAGECOLLECTIONPARAMS'][...]
+                                    """
+                                    
+                                    
+                                    hardware_vendor =   "EDAX" 
+                                    software_version =  dat['AppVersion'][0]
+                                    format_version =    np.nan
+                                    project_name =      project
+                                    site_name =         area      
+                                    specimen_name =     sample      
+                                    field_name =        field    
+                                    montage_name =      montage
+                                    
+                                    electron_image_project =                project_name 
+                                    electron_image_specimen =               specimen_name
+                                    electron_image_site =                   site_name
+                                    electron_image_field =                  field_name
+                                    electron_image_voltage =                file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['KV'][0]
+                                    electron_image_magnification =          file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['Magnification'][0]
+                                    electron_image_unique_vendor_id =       file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['Id'][0] # unique id 
+                                    electron_image_drift_correction =       np.nan 
+                                    electron_image_dwell_time =             np.nan 
+                                    electron_image_average_frames =         np.nan 
+                                    electron_image_x_cells =                int(file[str(project)][str(sample)][str(area)]['FOVIMAGECOLLECTIONPARAMS']['Width'])
+                                    electron_image_y_cells =                int(file[str(project)][str(sample)][str(area)]['FOVIMAGECOLLECTIONPARAMS']['Height'])
+                                    electron_image_x_step =                 file[str(project)][str(sample)][str(area)][str(montage)]['FOVIMAGECOLLECTIONPARAMS']['MicronsPerPixelX'][0]
+                                    electron_image_y_step =                 file[str(project)][str(sample)][str(area)][str(montage)]['FOVIMAGECOLLECTIONPARAMS']['MicronsPerPixelY'][0]
+                                    electron_image_date =                   np.nan 
+                                    electron_image_x_pos =                  file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['StageXPosition'][0]
+                                    electron_image_y_pos =                  file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['StageYPosition'][0]
+                                    electron_image_z_pos =                  file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['StageZPosition'][0] 
+                                    electron_image_tilt_radians  =          math.radians(file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['Tilt'][0]) 
+                                    electron_image_rotation_radians =       math.radians(file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['Rotation'][0])
+                                    electron_image_working_distance =       file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['WD'][0]
+                                    
+                                    eds_project =                           project_name 
+                                    eds_specimen =                          specimen_name
+                                    eds_site =                              site_name
+                                    eds_voltage =                           file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['KV'][0]
+                                    eds_magnification =                     file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['Magnification'][0]
+                                    eds_field =                             field_name
+                                    eds_binning =                           np.nan 
+                                    eds_bin_width =                         dat['evPerChannel'][0]
+                                    eds_start_channel =                     dat['StartEnergy'][0]
+                                    eds_averaged_frames =                   file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['MAPIMAGEIPR']['NFrames'][0]
+                                    eds_process_time =                      np.nan 
+                                    eds_x_cells =                           file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['MAPIMAGECOLLECTIONPARAMS']['Width'][0]                          
+                                    eds_y_cells =                           file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['MAPIMAGECOLLECTIONPARAMS']['Height'][0]
+                                    eds_x_step =                            file[str(project)][str(sample)][str(area)][str(montage)]['FOVIMAGECOLLECTIONPARAMS']['MicronsPerPixelX'][0]
+                                    eds_y_step =                            file[str(project)][str(sample)][str(area)][str(montage)]['FOVIMAGECOLLECTIONPARAMS']['MicronsPerPixelY'][0]
+                                    eds_real_time_sum =                     dat['DeadTime'][0] + dat['LiveTime'][0]
+                                    eds_live_time =                         dat['LiveTime'][0]  # sum across image 
+                                    eds_unique_vendor_id =                  file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['Id'][0] # unique id 
+                                    eds_detector_azimuth_radians =          math.radians(dat['AzimuthAngle'][0])
+                                    eds_detector_elevation_radians =        math.radians(dat['ElevationAngle'][0])
+                                    eds_hardware_detector_serial_number =   np.nan
+                                    eds_hardware_detector_model =           np.nan
+                                    eds_drift_correction =                  np.nan
+                                    eds_num_bins =                          dat['NumberOfPoints'][0]
+                                    eds_processor =                         np.nan
+                                    eds_date =                              np.nan
+                                                                            #dat['CollectDateTime']
+                                                                            #dat['DataStart']
+                                    eds_magnification =                     file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['Magnification'][0]
+                                    eds_x_pos =                             file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['StageXPosition'][0]
+                                    eds_y_pos =                             file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['StageYPosition'][0]
+                                    eds_z_pos =                             file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['StageZPosition'][0]
+                                    eds_tilt_radians  =                     math.radians(file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['Tilt'][0]) 
+                                    eds_rotation_radians =                  math.radians(file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['Rotation'][0])
+                                    eds_strobe_area =                       np.nan
+                                    eds_strobe_FWHM =                       np.nan
+                                    eds_window_type =                       np.nan
+                                    eds_working_distance =                  file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['WD'][0]
+                                   
+                                    ebsd_project =                          project_name
+                                    ebsd_specimen =                         specimen_name
+                                    ebsd_site =                             site_name
+                                    ebsd_voltage =                          file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['KV'][0]
+                                    ebsd_magnification =                    file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['Magnification'][0]
+                                    ebsd_field =                            field_name
+                                    ebsd_acq_date =                         np.nan
+                                    ebsd_acq_speed =                        np.nan 
+                                    ebsd_acq_time =                         np.nan
+                                    ebsd_label =                            np.nan
+                                    ebsd_unique_ID =                        file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['Id'][0] # unique id 
+                                    ebsd_background_correction =            np.nan
+                                    ebsd_band_detection_mode =              np.nan
+                                    ebsd_beam_voltage =                     np.nan
+                                    ebsd_bounding_box =                     np.nan
+                                    ebsd_bounding_box_x =                   np.nan
+                                    ebsd_bounding_box_y =                   np.nan
+                                    ebsd_camera_binning_mode =              np.nan
+                                    ebsd_camera_exposure_time =             np.nan
+                                    ebsd_camera_gain =                      np.nan
+                                    ebsd_detector_insertion_distance =      np.nan
+                                    ebsd_detector_orientation_euler =       np.nan
+                                    ebsd_detector_orientation_euler_a =     np.nan
+                                    ebsd_detector_orientation_euler_b =     np.nan
+                                    ebsd_detector_orientation_euler_c =     np.nan 
+                                    ebsd_drift_correction =                 np.nan
+                                    ebsd_hit_rate =                         np.nan
+                                    ebsd_hough_resolution =                 np.nan
+                                    ebsd_indexing_mode =                    np.nan
+                                    ebsd_lens_distortion =                  np.nan
+                                    ebsd_lens_field_view =                  np.nan
+                                    ebsd_magnification =                    np.nan
+                                    ebsd_number_bands_detected =            np.nan
+                                    ebsd_number_frames_averaged =           np.nan
+                                    ebsd_pattern_height =                   np.nan
+                                    ebsd_pattern_width =                    np.nan
+                                    ebsd_project_file =                     np.nan
+                                    ebsd_project_label =                    np.nan
+                                    ebsd_project_notes =                    np.nan
+                                    ebsd_relative_offset =                  np.nan
+                                    ebsd_relative_offset_x =                np.nan
+                                    ebsd_relative_offset_y =                np.nan
+                                    ebsd_relative_size =                    np.nan
+                                    ebsd_relative_size_x =                  np.nan
+                                    ebsd_relative_size_y =                  np.nan
+                                    ebsd_scanning_rotation_angle =          np.nan
+                                    ebsd_site_label =                       np.nan
+                                    ebsd_site_notes =                       np.nan
+                                    ebsd_specimen_label =                   np.nan
+                                    ebsd_specimen_notes =                   np.nan
+                                    ebsd_specimen_orientation =             np.nan
+                                    ebsd_specimen_orientation_a =           np.nan
+                                    ebsd_specimen_orientation_b =           np.nan
+                                    ebsd_specimen_orientation_c =           np.nan
+                                    ebsd_stage_x =                          file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['StageXPosition'][0]
+                                    ebsd_stage_y =                          file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['StageYPosition'][0]
+                                    ebsd_stage_z =                          file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['StageZPosition'][0]
+                                    ebsd_stage_rotation =                   math.radians(file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['Rotation'][0])
+                                    ebsd_stage_tilt =                       math.radians(file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['Tilt'][0]) 
+                                    ebsd_static_background_correction =     np.nan
+                                    ebsd_tilt_angle =                       np.nan
+                                    ebsd_tilt_axis =                        np.nan
+                                    ebsd_working_distance =                 file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['WD'][0]
+                                    ebsd_xcells =                           int(file[str(project)][str(sample)][str(area)]['FOVIMAGECOLLECTIONPARAMS']['Width'])
+                                    ebsd_ycells =                           int(file[str(project)][str(sample)][str(area)]['FOVIMAGECOLLECTIONPARAMS']['Height'])
+                                    ebsd_xstep =                            file[str(project)][str(sample)][str(area)][str(montage)]['FOVIMAGECOLLECTIONPARAMS']['MicronsPerPixelX'][0]
+                                    ebsd_ystep =                            file[str(project)][str(sample)][str(area)][str(montage)]['FOVIMAGECOLLECTIONPARAMS']['MicronsPerPixelY'][0]
+                                       
+                                    metadata_list = [] 
+        
+                                    metadata_list.append( (
+                                        montage_name,
+                                        hardware_vendor,
+                                        software_version, 
+                                        format_version, 
+                                
+                                        electron_image_project,
+                                        electron_image_specimen,
+                                        electron_image_site,
+                                        electron_image_field,
+                                        electron_image_voltage,
+                                        electron_image_magnification,
+                                        electron_image_unique_vendor_id,
+                                        electron_image_drift_correction,
+                                        electron_image_dwell_time,
+                                        electron_image_average_frames,
+                                        electron_image_x_cells,
+                                        electron_image_y_cells,
+                                        electron_image_x_step,
+                                        electron_image_y_step,
+                                        electron_image_date,
+                                        electron_image_x_pos,
+                                        electron_image_y_pos,
+                                        electron_image_z_pos,
+                                        electron_image_tilt_radians,
+                                        electron_image_rotation_radians,
+                                        electron_image_working_distance,
+                                        
+                                        eds_project,
+                                        eds_specimen,
+                                        eds_site,
+                                        eds_field,
+                                        eds_voltage,
+                                        eds_magnification,
+                                        eds_binning,
+                                        eds_bin_width,
+                                        eds_start_channel,
+                                        eds_averaged_frames,
+                                        eds_process_time,
+                                        eds_x_cells,
+                                        eds_y_cells,
+                                        eds_x_step,
+                                        eds_y_step,
+                                        eds_real_time_sum,
+                                        eds_live_time,
+                                        eds_unique_vendor_id,
+                                        eds_detector_azimuth_radians,
+                                        eds_detector_elevation_radians,
+                                        eds_hardware_detector_serial_number,
+                                        eds_hardware_detector_model,
+                                        eds_drift_correction,
+                                        eds_num_bins,
+                                        eds_processor,
+                                        eds_date,
+                                        eds_x_pos,
+                                        eds_y_pos,
+                                        eds_z_pos,
+                                        eds_tilt_radians,
+                                        eds_rotation_radians,
+                                        eds_strobe_area,
+                                        eds_strobe_FWHM,
+                                        eds_window_type,
+                                        eds_working_distance,
+                                        
+                                        ebsd_project,
+                                        ebsd_specimen,
+                                        ebsd_site,
+                                        ebsd_field,
+                                        ebsd_voltage,
+                                        ebsd_magnification,
+                                        ebsd_acq_date,
+                                        ebsd_acq_speed,
+                                        ebsd_acq_time,
+                                        ebsd_unique_ID,
+                                        ebsd_background_correction,
+                                        ebsd_band_detection_mode,
+                                        ebsd_bounding_box_x,
+                                        ebsd_bounding_box_y,
+                                        ebsd_camera_binning_mode,
+                                        ebsd_camera_exposure_time,
+                                        ebsd_camera_gain,
+                                        ebsd_detector_insertion_distance,
+                                        ebsd_detector_orientation_euler_a,
+                                        ebsd_detector_orientation_euler_b,
+                                        ebsd_detector_orientation_euler_c,
+                                        ebsd_drift_correction,
+                                        ebsd_hit_rate,
+                                        ebsd_hough_resolution,
+                                        ebsd_indexing_mode,
+                                        ebsd_lens_distortion,
+                                        ebsd_lens_field_view,
+                                        ebsd_magnification,
+                                        ebsd_number_bands_detected,
+                                        ebsd_number_frames_averaged,
+                                        ebsd_pattern_height,
+                                        ebsd_pattern_width,
+                                        ebsd_project_file,
+                                        ebsd_project_notes,
+                                        ebsd_relative_offset_x,
+                                        ebsd_relative_offset_y,      
+                                        ebsd_relative_size_x,        
+                                        ebsd_relative_size_y,
+                                        ebsd_scanning_rotation_angle,
+                                        ebsd_site_notes,
+                                        ebsd_specimen_notes,
+                                        ebsd_specimen_orientation_a,
+                                        ebsd_specimen_orientation_b,
+                                        ebsd_specimen_orientation_c,
+                                        ebsd_stage_x,
+                                        ebsd_stage_y ,
+                                        ebsd_stage_z,
+                                        ebsd_stage_rotation,
+                                        ebsd_stage_tilt,
+                                        ebsd_static_background_correction,
+                                        ebsd_tilt_angle,
+                                        ebsd_tilt_axis,
+                                        ebsd_working_distance,
+                                        ebsd_xcells,
+                                        ebsd_ycells,
+                                        ebsd_xstep,
+                                        ebsd_ystep
+                                        ) ) 
+                            
+                                    metadata_list = np.asarray(metadata_list, dtype=object)
+                                    
+                                    ##########    
+                                    cols = ["Montage Label",
+                                            "Hardware Vendor",
+                                            "Software Version", 
+                                            "Format Version", 
+                                
+                                            "SEM Project",
+                                            "SEM Specimen",
+                                            "SEM Site",
+                                            "SEM Field",
+                                            "SEM Voltage (KeV)",
+                                            "SEM Magnification",            
+                                            "SEM Vendor Unique ID",
+                                            "SEM Drift Correction",
+                                            "SEM Dwell Time (us)",
+                                            "SEM Average Frames",
+                                            "SEM Number of X Cells",
+                                            "SEM Number of Y Cells",
+                                            "SEM X Step Size (um)",
+                                            "SEM Y Step Size (um)",
+                                            "SEM Date",
+                                            "SEM Stage X Position (mm)",
+                                            "SEM Stage Y Position (mm)",
+                                            "SEM Stage Z Position (mm)",
+                                            "SEM Stage Tilt (rad)",
+                                            "SEM Stage Rotation (rad)",
+                                            "SEM Working Distance (mm)",
+                                            
+                                            "EDS Project",
+                                            "EDS Specimen",
+                                            "EDS Site",
+                                            "EDS Field",
+                                            "EDS Voltage (KeV)",
+                                            "EDS Magnification",
+                                            "EDS Binning Factor",
+                                            "EDS Voltage Bin Width (eV)",
+                                            "EDS Starting Bin Voltage (eV)",
+                                            "EDS Number of Averaged Frames",
+                                            "EDS Process Time",
+                                            "EDS Number of X Cells",
+                                            "EDS Number of Y Cells",
+                                            "EDS X Step Size (um)",
+                                            "EDS Y Step Size (um)",
+                                            "EDS Real Time Sum (s)",
+                                            "EDS Live Time (s)",
+                                            "EDS Vendor Unique ID",
+                                            "EDS Azimuth Angle (rad)",
+                                            "EDS Detector Angle (rad)",
+                                            "EDS Detector Serial Number",
+                                            "EDS Detector Model Number",
+                                            "EDS Drift Correction",
+                                            "EDS Number of Channels",
+                                            "EDS Processor Type",
+                                            "EDS Date",
+                                            "EDS Stage X Position (mm)",
+                                            "EDS Stage Y Position (mm)",
+                                            "EDS Stage Z Position (mm)",
+                                            "EDS Stage Tilt (rad)",
+                                            "EDS Stage Rotation (rad)",
+                                            "EDS Strobe Area",
+                                            "EDS Strobe FWHM (ev)",
+                                            "EDS Window Type",
+                                            "EDS Working Distance (mm)",
+                                            
+                                            "EBSD Project",
+                                            "EBSD Specimen",
+                                            "EBSD Site",
+                                            "EBSD Field",
+                                            "EBSD Voltage (KeV)",
+                                            "EBSD Magnification",
+                                            "EBSD Acquisition Date",
+                                            "EBSD Acquisition Speed (Hz)",
+                                            "EBSD Acquisition Time (s)",
+                                            "EBSD Vendor Unique ID",
+                                            "EBSD Auto Background Correction",
+                                            "EBSD Band Detection Mode",
+                                            "EBSD Bounding Box X (um)",
+                                            "EBSD Bounding Box Y (um)",
+                                            "EBSD Camera Binning Mode",
+                                            "EBSD Camera Exposure Time (ms)",
+                                            "EBSD Camera Gain",
+                                            "EBSD Detector Insertion Distance (mm)",
+                                            "EBSD Detector Orientation Euler A (rad)",
+                                            "EBSD Detector Orientation Euler B (rad)",
+                                            "EBSD Detector Orientation Euler C (rad)",
+                                            "EBSD Drift Correction",
+                                            "EBSD Hit Rate",
+                                            "EBSD Hough Resolution",
+                                            "EBSD Indexing Mode",
+                                            "EBSD Lens Distortion",
+                                            "EBSD Lens Field View (mm)",
+                                            "EBSD Magnification",
+                                            "EBSD Number Bands Detected",
+                                            "EBSD Number Frames Averaged",
+                                            "EBSD Pattern Height (px)",
+                                            "EBSD Pattern Width (px)",
+                                            "EBSD Project File",
+                                            "EBSD Project Notes",
+                                            "EBSD Relative Offset X",
+                                            "EBSD Relative Offset Y",
+                                            "EBSD Relative Size X",
+                                            "EBSD Relative Size Y",
+                                            "EBSD Scanning Rotation Angle (rad)",
+                                            "EBSD Site Notes",
+                                            "EBSD Specimen Notes",
+                                            "EBSD Specimen Orientation A",
+                                            "EBSD Specimen Orientation B",
+                                            "EBSD Specimen Orientation C",
+                                            "EBSD Stage X Position (mm)",
+                                            "EBSD Stage Y Position (mm)" ,
+                                            "EBSD Stage Z Position (mm)",
+                                            "EBSD Stage Rotation (rad)",
+                                            "EBSD Stage Tilt (rad)",
+                                            "EBSD Static Background Correction",
+                                            "EBSD Tilt Angle (rad)",
+                                            "EBSD Tilt Axis",
+                                            "EBSD Working Distance (mm)",
+                                            "EBSD Number X Pixels",
+                                            "EBSD Number Y Pixels",
+                                            "EBSD X Step Size (um)",
+                                            "EBSD Y Step Size (um)"]
+                                
+                                    metadata_list = pd.DataFrame( data = metadata_list, columns = cols)
+                                    
+                                    try:
+                                        metadata = pd.concat([metadata, metadata_list], sort=False, axis = 0, ignore_index = True)
+                                    except NameError: 
+                                        metadata = pd.DataFrame( data = metadata_list, columns = cols)
+                                 
+                            x_scale = np.unique( metadata['EDS X Step Size (um)'] )[0]
+                            y_scale = np.unique( metadata['EDS Y Step Size (um)'] )[0]
+                            
+                            # get the XY coordinates for each field 
+                            x_list =  list( np.unique( metadata['EDS Stage X Position (mm)'][metadata['Montage Label'] == montage] ) )
+                            y_list =  list( np.unique( metadata['EDS Stage Y Position (mm)'][metadata['Montage Label'] == montage] ) ) 
+                           
+                            x_size = np.unique(metadata['EDS Number of X Cells'])
+                            y_size = np.unique(metadata['EDS Number of Y Cells'])
+                            
+                            # find minimum coodinates so that we can create an appropriately sized array 
+                            x_min = int( math.ceil(min(x_list)*1000.0/x_scale))
+                            y_min = int( math.ceil(min(y_list)*1000.0/y_scale))
+                            
+                            # determine how large of an array is neeed 
+                            x_range = int (math.ceil( ( 1000.0*(max(x_list) - min(x_list))/x_scale ) ) + x_size )
+                            y_range = int( math.ceil( ( 1000.0*(max(y_list) - min(y_list))/y_scale ) ) + y_size )
+                          
+                            eds_layers = np.unique( metadata["EDS Number of Channels"] )
+                            
+                            output_path = os.path.join(output_src, str(sample) + "_" + str(area) + "_" + str(montage) + ".h5" ) 
+                            
+                            try: 
+                                save_file = h5py.File(output_path, 'a')
+                            except: 
+                                save_file = h5py.File(output_path, 'r+') 
+            
+                            #save_file.create_dataset('array', shape = (y_range, x_range, eds_layers), chunks=True, dtype = 'int32')
+                            
+                            for field in tqdm(Y): 
+                                if "Field" in field: 
+                                     
+                                    #file[str(project)][str(sample)][str(area)][str(x)][str(field)]['MAPIMAGECOLLECTIONPARAMS'][...]
+                                    height = file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['MAPIMAGECOLLECTIONPARAMS']['Height'][0]
+                                    width = file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['MAPIMAGECOLLECTIONPARAMS']['Width'][0]
+                                    # = file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['SPC']['NumberOfPoints'][0]
+                                    
+                                    KV = file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['KV'][0]
+                                    
+                                    
+                                    evPch = file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['SPC']['evPerChannel'][0]
+                                    num_bins = int( (KV*1_000) / evPch )
+    
+                                    eds_x_pos = file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['StageXPosition'][0]
+                                    eds_y_pos = file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['HOSTPARAMS']['StageYPosition'][0] 
+        
+                                    x_location = (eds_x_pos*1_000)/x_scale - x_min
+                                    y_location = (eds_y_pos*1_000)/y_scale - y_min
+                
+                                    if x_location < 0:
+                                        x_location = 0
+                                    else:
+                                        x_location = int(x_location)
+                            
+                                    if y_location < 0:
+                                        y_location = 0
+                                    else:
+                                        y_location = int(y_location)
+                                        
+                                    #print(x_location)
+                                    #print(y_location)
+                                    ########
+                                    block = file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['SPD'][...].reshape(height, width, num_bins)
+                                    block = np.flip(block, axis = 1)
+                                    block = np.flip(block, axis = 0)
+                                    
+                                    try:
+                                        save_file.create_group('EDS')
+                                    except:
+                                        pass 
+                                
+                                    try: 
+                                        save_file['EDS'].create_dataset('Xray Spectrum', shape = (y_range, x_range, block.shape[2] ), chunks= (block.shape[0], block.shape[1], 10), dtype = 'int16')
+                                    except: 
+                                        pass 
+                              
+                                    try: 
+                                        save_file['EDS'].create_dataset('Xray Intensity', shape = (y_range, x_range ), chunks=True, dtype = 'int64')
+                                    except: 
+                                        pass 
+                                    
+                                    save_file['EDS']['Xray Spectrum'][y_location:y_location + int(y_size), x_location:x_location + int(x_size), :] = block 
+                                    save_file['EDS']['Xray Intensity'][y_location:y_location + int(y_size), x_location:x_location + int(x_size)] = np.sum( block, axis = 2)
+                           
+                                    new_highest_spectrum =  np.max( block[:, :, :], axis = (0,1)).flatten() 
+                                    new_sum_spectrum =  np.sum( block[:, :, :], axis = (0,1)).flatten() 
+                                    
+                                    # Sum new block with existing data
+                                    try: 
+                                        sum_spectrum += new_sum_spectrum
+                                    except NameError:
+                                        sum_spectrum = np.zeros( shape = new_sum_spectrum.shape, dtype = np.float64 )
+                                        sum_spectrum += new_sum_spectrum
+                                    
+                                    # Keep only highest peaks from every block of data 
+                                    try: 
+                                        highest_spectrum = np.maximum( np.asarray(highest_spectrum), np.asarray(new_highest_spectrum))
+                                    except NameError:
+                                        highest_spectrum = np.zeros( shape = new_highest_spectrum.shape , dtype = np.float64 )
+                                        highest_spectrum = np.maximum( np.asarray(highest_spectrum), np.asarray(new_highest_spectrum))
+                                        
+                                    gc.collect()
+                
+                            appended_peaks = []
+                            search_width = 6
+                            peaks_mean, _ = scipy.signal.find_peaks(sum_spectrum, 
+                                                               prominence = (0.10*statistics.median( sum_spectrum ), None),
+                                                               distance = 5
+                                                               )
+                            
+                            peaks_max, _ = scipy.signal.find_peaks(highest_spectrum, 
+                                                               height = (np.percentile(highest_spectrum, 95), None ),
+                                                               prominence = 2,
+                                                               distance = 5
+                                                               )
+                            
+                            peaks_mean = list( peaks_mean )
+                            peaks_max = list( peaks_max)  
+                            
+                            # Sort candidate peaks by the x ray intensity. We want to add the strongest peaks first
+                            a = np.argsort(sum_spectrum[peaks_mean]) 
+                            peaks_mean[:] = [peaks_mean[i] for i in a][:len(peaks_mean)]             
+                            
+                            a = np.argsort(highest_spectrum[peaks_max]) 
+                            peaks_max[:] = [peaks_max[i] for i in a][:len(peaks_max)]      
+                            
+                            # Iterate through all candidate peaks that were found for the montage and include the peak if it is more than X bins from previously detected peaks 
+                            i = 0 
+                            while True:          
+                                
+                                try: 
+                                    peak_candidate = peaks_mean[i]
+                                
+                                    if np.all( abs(appended_peaks - peak_candidate) > search_width ): 
+                                        appended_peaks.append(peak_candidate)
+                                        peaks_mean.remove(peak_candidate)
+                                        i = 0
+                                    else:
+                                        i += 1 
+                                            
+                                except: 
+                                    break 
+                            
+                            i = 0 
+                            while True:          
+                                
+                                try: 
+                                    peak_candidate = peaks_max[i]
+                                
+                                    if np.all( abs(appended_peaks - peak_candidate) > search_width ): 
+                                        appended_peaks.append(peak_candidate)
+                                        peaks_max.remove(peak_candidate)
+                                        i = 0
+                                    else:
+                                        i += 1 
+                                            
+                                except: 
+                                    break 
+                                          
+                            # Save autodetected peaks, sum of spectrum, and highest intensity spectrum for each montage 
+                            save_h5(output_path, 'EDS', ['array', 'Autodetected Peak Bins'], np.array(appended_peaks ).astype(np.uint16) )
+                            save_h5(output_path, 'EDS', ['array', 'Sum of Spectrum'], np.array(sum_spectrum ).astype(np.uint64) )
+                            save_h5(output_path, 'EDS', ['array', 'Highest Intensity Spectrum'], np.array(highest_spectrum ).astype(np.uint64) )
+                                    
+                            for header in metadata.columns: 
+                                try:
+                                    save_file.create_dataset( 'Metadata/'+str(header) , data = metadata[str(header)][metadata['Montage Label'] == montage].astype('S'))
+                                except ValueError:
+                                    pass
+                        
+                            save_file.close() 
+                            del metadata
+                            
+    file.close()
+                            
+    
+
 
 def main(): 
     print("")
@@ -2459,6 +3070,8 @@ def main():
     print("3 for Bruker STEM-EDS")
     print("   Each individual tile image is parsed seperately")
     print("")
+    print("4 for EDAX SEM-EDS")
+    print("")
     print("Press 'enter' to execute")
     # get analysis type input 
     file_type =  int( input("") )
@@ -2469,6 +3082,8 @@ def main():
         bruker_parse_SEM()
     elif file_type == 3: 
         bruker_parse_STEM()
+    elif file_type == 4:
+        EDAX_parse()
     else: 
         raise NameError("Error: Enter a number for a supported format type") 
 
