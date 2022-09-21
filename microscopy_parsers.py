@@ -2458,7 +2458,7 @@ def EDAX_parse():
                         if "Montage" in montage: 
        
                             Y = list(file[str(project)][str(sample)][str(area)][str(montage)].keys())
-                            for field in Y: 
+                            for field in tqdm(Y): 
                                 if "Field" in field: 
                                     #raise Exception() 
                                     #print(file[str(project)][str(sample)][str(area)][str(montage)][str(field)]['MAPIMAGEIPR']['MicronsPerPixelX'][0])
@@ -2895,7 +2895,7 @@ def EDAX_parse():
                           
                             eds_layers = np.unique( metadata["EDS Number of Channels"] )
                             
-                            output_path = os.path.join(output_src, str(sample) + "_" + str(area) + "_" + str(montage) + ".h5" ) 
+                            output_path = os.path.join(output_src, "Montage " + str(sample) + "_" + str(area) + "_" + str(montage.replace("Montage", "", 1)) + ".h5" ) 
                             
                             try: 
                                 save_file = h5py.File(output_path, 'a')
@@ -2905,6 +2905,7 @@ def EDAX_parse():
                             #save_file.create_dataset('array', shape = (y_range, x_range, eds_layers), chunks=True, dtype = 'int32')
                             
                             for field in tqdm(Y): 
+                                                                    
                                 if "Field" in field: 
                                      
                                     #file[str(project)][str(sample)][str(area)][str(x)][str(field)]['MAPIMAGECOLLECTIONPARAMS'][...]
@@ -2947,7 +2948,7 @@ def EDAX_parse():
                                         pass 
                                 
                                     try: 
-                                        save_file['EDS'].create_dataset('Xray Spectrum', shape = (y_range, x_range, block.shape[2] ), chunks= (block.shape[0], block.shape[1], 10), dtype = 'int16')
+                                        save_file['EDS'].create_dataset('Xray Spectrum', shape = (y_range, x_range, block.shape[2] ), chunks= True, dtype = 'int16')
                                     except: 
                                         pass 
                               
