@@ -231,26 +231,39 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
         if (row in uniques) == False:
             index_to_delete.append(i)
     
-    linkage_matrix = np.delete(linkage_matrix, np.array(index_to_delete, dtype = np.int16), 0)
-    linkage_matrix = pd.DataFrame( data = linkage_matrix, columns = ["Class ID", "Dissimilarity Scale"])
-    linkage_matrix = linkage_matrix.sort_values(by=['Class ID'])
-    linkage_matrix['Class Weights'] = Weights * 100.0
     
+    ########
+    # Get xlsx files in current directory
+    files = [ f for f in os.listdir( os.curdir ) if (os.path.isfile(f) and f.endswith(".xlsx")) ]
+    
+    
+    if ("Class Data.xlsx" in files) == False: 
+    
+        linkage_matrix = np.delete(linkage_matrix, np.array(index_to_delete, dtype = np.int16), 0)
+        linkage_matrix = pd.DataFrame( data = linkage_matrix, columns = ["Class ID", "Dissimilarity Scale"])
+        linkage_matrix = linkage_matrix.sort_values(by=['Class ID'])
+        linkage_matrix['Class Weights'] = Weights * 100.0
+        
+        try: 
+            for i in range( Means.shape[1] ):
+                   linkage_matrix['KeV' + str( display_shells[i] ) ] = Means[:,i]   
+        except: 
+            for i in range( Means.shape[1] ):
+                linkage_matrix['Energy Bin: ' + str( i ) ] = Means[:,i]
+        linkage_matrix.to_excel("Class Data.xlsx", index = False)
+        
     area = []
     for row in uniques:        
         area.append( np.sum(segmentation == row) / segmentation.size * 100 )
     
-    linkage_matrix['Area Fraction'] = area 
-    linkage_matrix['Training/Testing Ratio'] = linkage_matrix['Class Weights'] / linkage_matrix['Area Fraction']
-    
     try: 
-        for i in range( Means.shape[1] ):
-               linkage_matrix['KeV' + str( display_shells[i] ) ] = Means[:,i]   
+        linkage_matrix = pd.read_excel("Class Data.xlsx")
     except: 
-        for i in range( Means.shape[1] ):
-            linkage_matrix['Energy Bin: ' + str( i ) ] = Means[:,i]
-    linkage_matrix.to_excel(str(montage) + " Class Data.xlsx", index = False)
-
+        pass 
+            
+    linkage_matrix[str(montage) + " Area Fraction"] = area 
+    linkage_matrix.to_excel("Class Data.xlsx", index = False)
+        
     ########
     # Create absolute uncertainty intensity map
     fig, ax = plt.subplots(figsize=(size, size), dpi=graphing_dpi)
@@ -854,9 +867,8 @@ def main():
                 if montage in montage_path: 
                     with h5py.File(montage_path, 'r+') as montage_file:    
                         with h5py.File(analysis_file, 'r+') as file: 
-                               
-                            
-                            
+                             
+                            print("Graphing: " + str(montage) )
                             # find and load the segmentation map 
                             try:      
                                 segmentation = file['Montages'][str(montage)]['Segmentation'][...]
@@ -897,7 +909,6 @@ def main():
                             
                             plot_model(Means, Covariance, Weights, uniques, analysis_file, segmentation)
                             
-                    
                             if len(available_backgrounds) > 0: 
                                 for i, bk_grd in enumerate(available_backgrounds): 
                                     if use_background[i] == 'y': 
