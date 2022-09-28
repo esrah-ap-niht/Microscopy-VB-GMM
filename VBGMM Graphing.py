@@ -20,6 +20,8 @@ import seaborn as sns
 from scipy.cluster.hierarchy import dendrogram
 import math
 import cv2
+import matplotlib.colors as mcolors
+import matplotlib.patheffects as PathEffects
 
 from pathlib import Path
 import h5py
@@ -30,6 +32,7 @@ import matplotlib.ticker as tck
 import matplotlib as mpl
 from tqdm import tqdm
 import collections 
+import networkx as nx
 
 ##############################################################################################################
 # plotting, garbage collection, and tkinter settings 
@@ -559,6 +562,8 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
         fig, ax = plt.subplots(figsize=(size, size), dpi=graphing_dpi)
         
         blank = background.copy()
+        blank2 = background.copy()
+        
         """
         if (blank.dtype == np.float32) or (blank.dtype == np.int32) or (blank.dtype == np.uint32):
             blank = blank/(2^32)
@@ -691,7 +696,7 @@ def plot_GMM(Means, Covariance, Weights, segmentation, uncertainty, background, 
 def plot_model(Means, Covariance, Weights, uniques, analysis_file, segmentation): 
     size = 40
     graphing_dpi = 400
-    color = 'brg'
+    color = mpl.colors.LinearSegmentedColormap.from_list("", [ "white",'blue',"magenta", "red"])
     fontsize = 60
     ratio = 2 
    
@@ -768,7 +773,48 @@ def plot_model(Means, Covariance, Weights, uniques, analysis_file, segmentation)
         plt.close(fig)
         gc.collect()
         
-                           
+    for attempt in range(3):     
+        for i in range(Covariance.shape[0] ):
+            fig = plt.figure(constrained_layout=False, figsize=(15,15), dpi=200)
+            ax2 = fig.add_subplot()
+            
+            ax2.set_title("Class " + str(i) + " Correlation Network - Randomization " + str(attempt), fontsize = 15)
+            G = nx.Graph()
+                   
+            stdev = correlation_from_covariance(Covariance[i])
+            stdev = np.tril(stdev)
+            
+            for j in range(stdev.shape[0]): 
+                stdev[j,j] = 0 
+                
+            locations = np.argwhere(stdev[:,:] >= 0.3)
+            unique_locations = np.unique(locations)
+            
+            d = [] 
+            for node in unique_locations: 
+                G.add_node( str(display_shells[node]) )
+                d.append(Means[i,node] )
+    
+            for edge in locations:
+                corr = stdev[ edge[0], edge[1]]
+                if (corr >= 0.25) and (corr <= 0.5):
+                    G.add_edge(str(display_shells[edge[0]]), str(display_shells[edge[1]]), weight=0.03, color = 'turquoise' )
+                elif (corr >= 0.50) and (corr <= 0.75):
+                    G.add_edge(str(display_shells[edge[0]]), str(display_shells[edge[1]]), weight=0.03, color = 'magenta' )
+                elif corr > 0.75:
+                    G.add_edge(str(display_shells[edge[0]]), str(display_shells[edge[1]]), weight=0.03, color = 'red' )
+    
+            edges = G.edges()
+            colors = [G[u][v]['color'] for u,v in edges]
+            
+            nx.drawing.nx_pylab.draw_shell
+            nx.draw(G, with_labels=True, font_weight='bold', font_size = 14, width = 10, font_color="black", node_color = 'lime', node_size=[v * 5_000 / np.max(d) for v in d], edge_color=colors)
+            
+            plt.tight_layout()
+            plt.savefig("Class " + str(i) + " Correlation Network - Randomization " + str(attempt) + ".png")
+            plt.close(fig)
+            gc.collect()
+                   
 
 def main():
     # Get user to select analysis file 
