@@ -1523,7 +1523,7 @@ def bruker_parse_STEM():
         for i in range(len(all_data)):
             data = all_data[i]
             
-            if data.metadata.Signal.signal_type == "EDS_TEM": 
+            if (data.metadata.Signal.signal_type == "EDS_TEM") or (data.metadata.Signal.signal_type == "EDS_SEM"): 
                 montage = Path(file_path).stem
                 montage_file = os.path.join(output_src, 'Montage ' + str(montage) + '.h5')
                 
@@ -1652,8 +1652,8 @@ def bruker_montage(montage_file, montage, metadata, file_list):
     
                     save_file.close() 
                     
-                    new_highest_spectrum =  np.max( np.asarray( block[:, :, :], dtype = np.uint64) , axis = (0,1)).flatten() 
-                    new_sum_spectrum =  np.sum( np.asarray( block[:, :, :], dtype = np.uint64) , axis = (0,1)).flatten() 
+                    new_highest_spectrum =  np.max( block[:, :, :], axis = (0,1)).flatten() 
+                    new_sum_spectrum =  np.sum( block[:, :, :], axis = (0,1)).flatten() 
                     
                     # Sum new block with existing data
                     try: 
