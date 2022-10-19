@@ -1554,7 +1554,7 @@ def bruker_parse_STEM():
                     pass 
                 
                 print("Parsing datacube")               
-                appended_peaks, sum_spectrum, highest_spectrum = bruker_montage(montage_file, montage, metadata, file_path)
+                appended_peaks, sum_spectrum, highest_spectrum = bruker_montage(montage_file, montage, metadata, str(file_path))
                 save_h5(montage_file, 'EDS', ['array', 'Autodetected Peak Bins'], np.array(appended_peaks ).astype(np.uint16) )
                 save_h5(montage_file, 'EDS', ['array', 'Sum of Spectrum'], np.array(sum_spectrum ).astype(np.uint16) )
                 save_h5(montage_file, 'EDS', ['array', 'Highest Intensity Spectrum'], np.array(highest_spectrum ).astype(np.uint16) )
@@ -1638,7 +1638,7 @@ def bruker_montage(montage_file, montage, metadata, file_list):
                         pass 
                 
                     try: 
-                        save_file['EDS'].create_dataset('Xray Spectrum', shape = (y_range, x_range, block.shape[2] ), chunks= (block.shape[0], block.shape[1], 10), dtype = 'int16')
+                        save_file['EDS'].create_dataset('Xray Spectrum', shape = (y_range, x_range, block.shape[2] ), chunks= True, dtype = 'int16')
                     except: 
                         pass 
               
@@ -1756,17 +1756,17 @@ def bruker_montage(montage_file, montage, metadata, file_list):
                     pass 
             
                 try: 
-                    save_file['EDS'].create_dataset('Xray Spectrum', shape = (y_range, x_range, block.shape[2] ), chunks=(True, True, 50), dtype = 'int64')
+                    save_file['EDS'].create_dataset('Xray Spectrum', shape = (block.shape[0], block.shape[1], block.shape[2] ), chunks=(True, True, 50), dtype = 'int64')
                 except: 
                     pass 
                 
                 try: 
-                    save_file['EDS'].create_dataset('Xray Intensity', shape = (y_range, x_range ), chunks=True, dtype = 'int64')
+                    save_file['EDS'].create_dataset('Xray Intensity', shape = (block.shape[0], block.shape[1]), chunks=True, dtype = 'int64')
                 except: 
                     pass 
                 
-                save_file['EDS']['Xray Intensity'][y_location:y_location + int(y_size), x_location:x_location + int(x_size)] = np.sum( block, axis = 2)
-                save_file['EDS']['Xray Spectrum'][y_location:y_location + int(y_size), x_location:x_location + int(x_size), :] = block 
+                save_file['EDS']['Xray Intensity'][:,:] = np.sum( block, axis = 2)
+                save_file['EDS']['Xray Spectrum'][:,:,:] = block 
     
                 save_file.close() 
                 
